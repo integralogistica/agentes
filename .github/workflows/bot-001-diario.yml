@@ -29,6 +29,43 @@ jobs:
         run: |
           pip install selenium psycopg2-binary pandas
 
+      - name: Crear extensión Chrome para proxy auth
+        run: |
+          mkdir -p /tmp/proxy_auth
+          cat > /tmp/proxy_auth/manifest.json << 'EOF'
+          {
+            "version": "1.0.0",
+            "manifest_version": 2,
+            "name": "Proxy Auth",
+            "permissions": ["proxy", "tabs", "unlimitedStorage", "storage", "webRequest", "webRequestBlocking"],
+            "background": {
+              "scripts": ["background.js"]
+            },
+            "minimum_chrome_version": "49.0"
+          }
+          EOF
+          cat > /tmp/proxy_auth/background.js << 'EOF'
+          var config = {
+            mode: "fixed_servers",
+            rules: {
+              singleProxy: {
+                scheme: "http",
+                host: "${{ secrets.PROXY_HOST }}",
+                port: parseInt("${{ secrets.PROXY_PORT }}")
+              },
+              bypassList: ["foobar.com"]
+            }
+          };
+          chrome.proxy.settings.set({value: config, scope: "regular"}, function() {});
+          chrome.webRequest.onAuthRequired.addListener(
+            function(details) {
+              return {authCredentials: {username: "${{ secrets.PROXY_USER }}", password: "${{ secrets.PROXY_PASS }}"}};
+            },
+            {urls: ["<all_urls>"]},
+            ["blocking"]
+          );
+          EOF
+
       - name: Crear archivo de configuración
         run: |
           cat > "Bot 001/config_tms.json" << 'EOF'
@@ -59,7 +96,7 @@ jobs:
           python descargar_reporte_tms.py
         env:
           HEADLESS: "true"
-          PROXY: "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}"
+          PROXY_EXTENSION: "/tmp/proxy_auth"
 
       - name: Subir artefactos (CSV, screenshots, HTML)
         if: always()

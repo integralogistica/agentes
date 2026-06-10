@@ -120,11 +120,11 @@ def crear_navegador(carpeta_descarga):
         opts.add_argument("--disable-gpu")
         opts.add_argument("--window-size=1920,1080")
 
-    # Proxy si está configurado (para IPs fijas autorizadas por el TMS)
-    proxy = os.environ.get("PROXY", "")
-    if proxy:
-        opts.add_argument(f"--proxy-server={proxy}")
-        log.info(f"Usando proxy: {proxy.split('@')[-1] if '@' in proxy else proxy}")
+    # Proxy via extensión de Chrome (maneja autenticación)
+    proxy_ext = os.environ.get("PROXY_EXTENSION", "")
+    if proxy_ext and os.path.isdir(proxy_ext):
+        opts.add_argument(f"--load-extension={proxy_ext}")
+        log.info(f"Usando proxy via extension Chrome")
     else:
         opts.add_argument("--start-maximized")
 
