@@ -2,14 +2,23 @@
 
 ## Qué hace
 
-Este bot entra automáticamente al sistema TMS (Appsis Core), descarga el Informe General y lo guarda en una base de datos PostgreSQL en Render. Corre solo todos los días a las 3:00 AM.
+Este bot entra automáticamente al sistema TMS (Appsis Core), descarga el Informe General y lo guarda en una base de datos PostgreSQL en Render. Corre solo todos los días a las 3:00 AM desde GitHub Actions (no depende de tu PC).
+
+## Dónde corre
+
+| Entorno | Cómo | Estado |
+|---|---|---|
+| **GitHub Actions** (nube) | Todos los días a las 3:00 AM automáticamente | ✅ Principal |
+| **Tu PC (Windows)** | Tarea programada o manual desde VS Code | ✅ Alternativa / respaldo |
+
+GitHub Actions usa un proxy con IP fija de Digital Ocean para que el TMS permita el acceso desde la nube.
 
 ## Flujo automático diario
 
 ### PASO 1 — Descarga del día (rápido, ~30 segundos)
 
-1. Abre Chrome y navega al TMS
-2. Inicia sesión con las credenciales del archivo `config_tms.json`
+1. Abre Chrome (headless) y navega al TMS vía proxy Digital Ocean
+2. Inicia sesión con las credenciales
 3. Navega: **Gestión de Informes → Avanzada → Informe General**
 4. Selecciona la fecha del día anterior
 5. Descarga el CSV (DESCARGAR INFORME FORMATO)
@@ -65,13 +74,15 @@ Cuando una guía ya existe en la base y no está ENTREGADA ni CON NOVEDAD, se ac
 
 ## Cómo usarlo
 
-### Modo automático (cada día a las 3:00 AM)
+### Modo automático (GitHub Actions — nube)
 
-Corre solo. No hay que hacer nada. La tarea programada de Windows se encarga.
+Corre solo a las 3:00 AM en los servidores de GitHub. No necesitas hacer nada.
 
-Para verificar la tarea: `Windows + R` → escribir `taskschd.msc` → Enter
+- Ver ejecuciones: [github.com/integralogistica/agentes/actions](https://github.com/integralogistica/agentes/actions)
+- Ejecutar manualmente: Actions → Bot 001 → Run workflow
+- Descargar artefactos (CSV, screenshots): clic en la ejecución → sección "Artifacts" abajo
 
-### Modo manual (para cargar un día específico)
+### Modo manual (desde tu PC)
 
 Desde VS Code o una terminal:
 
@@ -97,9 +108,11 @@ cd "C:\Users\ASUS\OneDrive - Integra Logistica\Desarrollos\AGENTE IA\Bot 001"
 python descargar_reporte_tms.py
 ```
 
-## Cómo cambiar la configuración
+## Configuración
 
-Editar el archivo `config_tms.json`:
+### En tu PC (archivo config_tms.json)
+
+Editar `config_tms.json`:
 
 ```json
 {
@@ -121,9 +134,26 @@ Editar el archivo `config_tms.json`:
 }
 ```
 
-- **tms.usuario/tms.clave**: Si cambias tu contraseña del TMS
-- **descarga.carpeta_destino**: Dónde se guarda el CSV descargado
-- **postgresql.***: Datos de conexión a la base de datos en Render
+### En GitHub Actions (secrets)
+
+Las credenciales se almacenan como **secrets** en GitHub (no visibles en el código):
+
+| Secret | Descripción |
+|---|---|
+| `TMS_URL` | URL del TMS |
+| `TMS_USUARIO` | Usuario del TMS |
+| `TMS_CLAVE` | Contraseña del TMS |
+| `PG_HOST` | Host de PostgreSQL en Render |
+| `PG_PORT` | Puerto de PostgreSQL |
+| `PG_DATABASE` | Nombre de la base de datos |
+| `PG_USUARIO` | Usuario de PostgreSQL |
+| `PG_CLAVE` | Contraseña de PostgreSQL |
+| `PROXY_HOST` | IP del proxy Digital Ocean |
+| `PROXY_PORT` | Puerto del proxy |
+| `PROXY_USER` | Usuario del proxy |
+| `PROXY_PASS` | Contraseña del proxy |
+
+Para editar: [github.com/integralogistica/agentes/settings/secrets/actions](https://github.com/integralogistica/agentes/settings/secrets/actions)
 
 ## Base de datos PostgreSQL
 
@@ -139,7 +169,7 @@ Editar el archivo `config_tms.json`:
 - Si una guía lleva más de 20 días pendiente, usar el modo manual con el rango de fechas
 - Las fechas vacías o con `0000-00-00` se guardan como NULL en la base
 
-## Requisitos
+## Requisitos (para ejecutar en PC local)
 
 - Python 3.13 o superior
 - Selenium (`pip install selenium`)
@@ -147,4 +177,9 @@ Editar el archivo `config_tms.json`:
 - Pandas (`pip install pandas`)
 - Google Chrome instalado
 - Conexión a internet
-- Computadora encendida a las 3:00 AM (para la ejecución automática)
+
+## Requisitos (para GitHub Actions)
+
+- Repositorio GitHub: `integralogistica/agentes`
+- Secrets configurados en el repositorio
+- Proxy Digital Ocean con IP autorizada por el TMS
