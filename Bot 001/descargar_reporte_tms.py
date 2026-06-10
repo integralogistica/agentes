@@ -119,6 +119,12 @@ def crear_navegador(carpeta_descarga):
         opts.add_argument("--disable-dev-shm-usage")
         opts.add_argument("--disable-gpu")
         opts.add_argument("--window-size=1920,1080")
+
+    # Proxy si está configurado (para IPs fijas autorizadas por el TMS)
+    proxy = os.environ.get("PROXY", "")
+    if proxy:
+        opts.add_argument(f"--proxy-server={proxy}")
+        log.info(f"Usando proxy: {proxy.split('@')[-1] if '@' in proxy else proxy}")
     else:
         opts.add_argument("--start-maximized")
 
@@ -138,6 +144,8 @@ def crear_navegador(carpeta_descarga):
     driver.execute_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
+    # Timeout para carga de pagina (5 minutos para conexiones lentas)
+    driver.set_page_load_timeout(300)
     return driver
 
 

@@ -9,6 +9,7 @@ on:
 jobs:
   descargar-informe:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: Checkout código
@@ -58,6 +59,7 @@ jobs:
           python descargar_reporte_tms.py
         env:
           HEADLESS: "true"
+          PROXY: "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}"
 
       - name: Subir CSV como artefacto (por si quieres verlo)
         if: always()
