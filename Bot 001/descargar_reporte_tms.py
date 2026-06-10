@@ -152,9 +152,30 @@ def crear_navegador(carpeta_descarga):
 def hacer_login(driver, url, usuario, clave):
     log.info("Iniciando sesion en el TMS...")
     driver.get(url)
-    time.sleep(2)
+    time.sleep(5)
+
+    # Screenshot para diagnosticar en la nube
+    if os.environ.get("HEADLESS") == "true":
+        ss_path = "/tmp/tms_downloads/debug_login.png"
+        driver.save_screenshot(ss_path)
+        log.info(f"Screenshot login: {ss_path}")
+
+    # Dump de inputs para diagnosticar
+    todos_inputs = driver.find_elements(By.TAG_NAME, "input")
+    log.info(f"Inputs encontrados en la pagina: {len(todos_inputs)}")
+    for i, inp in enumerate(todos_inputs):
+        tipo = inp.get_attribute("type") or ""
+        nombre = inp.get_attribute("name") or ""
+        iid = inp.get_attribute("id") or ""
+        placeholder = inp.get_attribute("placeholder") or ""
+        log.info(f"  input[{i}]: type='{tipo}' name='{nombre}' id='{iid}' placeholder='{placeholder}'")
+
     wait = WebDriverWait(driver, 15)
 
+    # Intentar encontrar campo de usuario con multiples estrategias
+    campo_usuario = None
+
+    # Estrategia 1: Buscar por atributos comunes
     try:
         campo_usuario = wait.until(
             EC.presence_of_element_located((
@@ -165,8 +186,21 @@ def hacer_login(driver, url, usuario, clave):
             ))
         )
     except TimeoutException:
-        campos = driver.find_elements(By.CSS_SELECTOR, "input[type='text'], input:not([type])")
-        campo_usuario = campos[0] if campos else None
+        pass
+
+    # Estrategia 2: Buscar primer input visible que no sea password/hidden/submit
+    if not campo_usuario:
+        for inp in todos_inputs:
+            tipo = (inp.get_attribute("type") or "").lower()
+            if tipo not in ("password", "hidden", "submit", "button", "checkbox", "radio"):
+                campo_usuario = inp
+                log.info(f"Campo usuario encontrado por estrategia 2: type='{tipo}'")
+                break
+
+    # Estrategia 3: Cualquier input
+    if not campo_usuario and todos_inputs:
+        campo_usuario = todos_inputs[0]
+        log.info("Campo usuario encontrado por estrategia 3 (primer input)")
 
     if not campo_usuario:
         raise Exception("No se encontro el campo de usuario")
