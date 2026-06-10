@@ -66,6 +66,15 @@ jobs:
           );
           EOF
 
+      - name: Probar conexion proxy → TMS
+        run: |
+          echo "Probando conexion directa al TMS..."
+          curl -s -o /dev/null -w "Status: %{http_code} | Tiempo: %{time_total}s" --max-time 30 "${{ secrets.TMS_URL }}" || echo "Fallo conexion directa"
+          echo ""
+          echo "Probando conexion via proxy..."
+          curl -s -o /dev/null -w "Status: %{http_code} | Tiempo: %{time_total}s" --max-time 30 -x "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}:${{ secrets.PROXY_PORT }}" "${{ secrets.TMS_URL }}" || echo "Fallo conexion via proxy"
+          echo ""
+
       - name: Crear archivo de configuración
         run: |
           cat > "Bot 001/config_tms.json" << 'EOF'
