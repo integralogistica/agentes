@@ -81,13 +81,15 @@ jobs:
               },
               "postgresql": {
                   "host": "${{ secrets.PG_HOST }}",
-                  "port": ${{ secrets.PG_PORT }},
+                  "port": "${{ secrets.PG_PORT }}",
                   "database": "${{ secrets.PG_DATABASE }}",
                   "usuario": "${{ secrets.PG_USUARIO }}",
                   "clave": "${{ secrets.PG_CLAVE }}"
               }
           }
           EOF
+          echo "Verificando config..."
+          cat "Bot 001/config_tms.json" | python -c "import sys,json; c=json.load(sys.stdin); print(f'PG host={c[\"postgresql\"][\"host\"]} port={c[\"postgresql\"][\"port\"]}')"
 
       - name: Ejecutar Bot 001
         run: |
