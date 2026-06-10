@@ -1,0 +1,18 @@
+{
+    "tms": {
+        "url": "https://integra.appsiscore.com/app/index.php",
+        "usuario": "ezarate01",
+        "clave": "1nt3gra2026"
+    },
+    "descarga": {
+        "carpeta_destino": "C:\\Users\\ASUS\\Downloads",
+        "prefijo_archivo": "informe_general"
+    },
+    "postgresql": {
+        "host": "dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com",
+        "port": 5432,
+        "database": "integra_db_vzhg",
+        "usuario": "integra_db_vzhg_user",
+        "clave": "9QKlLS1vZi96QQso6t5YDwX3rZ49WgKJ"
+    }
+}

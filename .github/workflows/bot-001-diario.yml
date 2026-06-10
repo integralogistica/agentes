@@ -1,0 +1,68 @@
+name: Bot 001 - Informe General TMS Diario
+
+on:
+  schedule:
+    # Corre a las 8:00 AM UTC = 3:00 AM hora Colombia (UTC-5)
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
+
+jobs:
+  descargar-informe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Instalar Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Instalar dependencias
+        run: |
+          pip install selenium psycopg2-binary pandas
+
+      - name: Crear archivo de configuración
+        run: |
+          cat > "Bot 001/config_tms.json" << 'EOF'
+          {
+              "tms": {
+                  "url": "${{ secrets.TMS_URL }}",
+                  "usuario": "${{ secrets.TMS_USUARIO }}",
+                  "clave": "${{ secrets.TMS_CLAVE }}"
+              },
+              "descarga": {
+                  "carpeta_destino": "/tmp/tms_downloads",
+                  "prefijo_archivo": "informe_general"
+              },
+              "postgresql": {
+                  "host": "${{ secrets.PG_HOST }}",
+                  "port": ${{ secrets.PG_PORT }},
+                  "database": "${{ secrets.PG_DATABASE }}",
+                  "usuario": "${{ secrets.PG_USUARIO }}",
+                  "clave": "${{ secrets.PG_CLAVE }}"
+              }
+          }
+          EOF
+
+      - name: Ejecutar Bot 001
+        run: |
+          mkdir -p /tmp/tms_downloads
+          cd "Bot 001"
+          python descargar_reporte_tms.py
+        env:
+          HEADLESS: "true"
+
+      - name: Subir CSV como artefacto (por si quieres verlo)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: informe-csv
+          path: /tmp/tms_downloads/*.csv
+          retention-days: 7

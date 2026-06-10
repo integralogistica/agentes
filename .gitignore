@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+debug_*.png
+diag_*.png
+diag_*.html
+*.crdownload
+Informe_General*.csv
+informe_general_*.csv
+.claude/
