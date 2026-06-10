@@ -61,10 +61,10 @@ jobs:
           HEADLESS: "true"
           PROXY: "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}"
 
-      - name: Subir CSV como artefacto (por si quieres verlo)
+      - name: Subir artefactos (CSV, screenshots, HTML)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: informe-csv
-          path: /tmp/tms_downloads/*.csv
+          name: resultados-bot
+          path: /tmp/tms_downloads/
           retention-days: 7

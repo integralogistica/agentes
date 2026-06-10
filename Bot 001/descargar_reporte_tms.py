@@ -154,11 +154,22 @@ def hacer_login(driver, url, usuario, clave):
     driver.get(url)
     time.sleep(5)
 
-    # Screenshot para diagnosticar en la nube
+    # Screenshot y HTML para diagnosticar en la nube
     if os.environ.get("HEADLESS") == "true":
         ss_path = "/tmp/tms_downloads/debug_login.png"
         driver.save_screenshot(ss_path)
         log.info(f"Screenshot login: {ss_path}")
+        # Guardar HTML de la pagina
+        html_path = "/tmp/tms_downloads/debug_login.html"
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(driver.page_source)
+        log.info(f"HTML guardado: {html_path}")
+        # Listar iframes
+        iframes = driver.find_elements(By.TAG_NAME, "iframe")
+        log.info(f"Iframes encontrados: {len(iframes)}")
+        for i, iframe in enumerate(iframes):
+            src = iframe.get_attribute("src") or ""
+            log.info(f"  iframe[{i}]: src='{src}'")
 
     # Dump de inputs para diagnosticar
     todos_inputs = driver.find_elements(By.TAG_NAME, "input")
