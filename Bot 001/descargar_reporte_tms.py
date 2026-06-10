@@ -151,7 +151,18 @@ def crear_navegador(carpeta_descarga):
 
 def hacer_login(driver, url, usuario, clave):
     log.info("Iniciando sesion en el TMS...")
-    driver.get(url)
+
+    # Reintentar carga de pagina si falla
+    for intento in range(3):
+        try:
+            driver.get(url)
+            break
+        except Exception as e:
+            log.warning(f"Error cargando pagina (intento {intento + 1}/3): {e}")
+            if intento == 2:
+                raise
+            time.sleep(5)
+
     time.sleep(5)
 
     # Screenshot y HTML para diagnosticar en la nube
