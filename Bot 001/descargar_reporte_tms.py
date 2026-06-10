@@ -413,10 +413,18 @@ def leer_csv(archivo_csv):
 
 def conectar_db(config_db):
     """Crea conexion a PostgreSQL."""
+    host = config_db.get("host", "")
+    port = config_db.get("port", "5432")
+    database = config_db.get("database", "")
+    log.info(f"Conectando a PostgreSQL: host='{host}' port='{port}' database='{database}'")
+
+    if not host:
+        raise Exception(f"Host de PostgreSQL vacio. Config recibida: {config_db}")
+
     return psycopg2.connect(
-        host=config_db["host"],
-        port=config_db["port"],
-        database=config_db["database"],
+        host=host,
+        port=int(port) if isinstance(port, str) else port,
+        database=database,
         user=config_db["usuario"],
         password=config_db["clave"],
         sslmode="require",
