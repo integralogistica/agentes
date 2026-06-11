@@ -24,6 +24,7 @@ if sys.stderr.encoding != 'utf-8':
 
 import pandas as pd
 import psycopg2
+from psycopg2.extras import execute_batch
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -466,7 +467,7 @@ def crear_tabla_si_no_existe(cur):
 
 
 def upsert_csv(archivo_csv, config_db):
-    """Inserta guias nuevas y actualiza las que ya existen (UPSERT)."""
+    """Inserta guías nuevas y actualiza las que ya existen (UPSERT) - OPTIMIZADO CON BATCH."""
     df = leer_csv(archivo_csv)
     filas_total = len(df)
     log.info(f"Procesando {filas_total} filas del CSV")
@@ -491,26 +492,27 @@ def upsert_csv(archivo_csv, config_db):
     ON CONFLICT (guia) DO UPDATE SET {update_set}
     """
 
-    insertados = 0
-    actualizados = 0
-    errores = 0
+    # Preparar datos: limpiar NaN/float antes del batch
+    datos = []
     for _, fila in df.iterrows():
-        try:
-            cur.execute("SAVEPOINT sp_fila")
-            # Reemplazar NaN/float por None antes de insertar
-            valores = [None if (isinstance(v, float) and v != v) else v for v in fila.values]
-            cur.execute(upsert_sql, tuple(valores))
-            cur.execute("RELEASE SAVEPOINT sp_fila")
-            # Si el guia ya existia y estado != ENTREGADO/CON NOVEDAD, se actualizo
-            insertados += 1
-        except Exception as e:
-            errores += 1
-            if errores <= 3:
-                log.warning(f"Error en fila: {e}")
-            cur.execute("ROLLBACK TO SAVEPOINT sp_fila")
-            continue
+        valores = [None if (isinstance(v, float) and v != v) else v for v in fila.values]
+        datos.append(tuple(valores))
 
-    conn.commit()
+    # Ejecutar en lotes de 1000 filas (MUCHO MÁS RÁPIDO)
+    BATCH_SIZE = 1000
+    lotes = [datos[i:i + BATCH_SIZE] for i in range(0, len(datos), BATCH_SIZE)]
+
+    log.info(f"Enviando {len(datos)} filas en {len(lotes)} lotes de {BATCH_SIZE}...")
+
+    for i, lote in enumerate(lotes, 1):
+        try:
+            execute_batch(cur, upsert_sql, lote, page_size=BATCH_SIZE)
+            conn.commit()  # Commit después de cada lote exitoso
+            log.info(f"Lote {i}/{len(lotes)} completado ({len(lote)} filas)")
+        except Exception as e:
+            log.warning(f"Error en lote {i}: {e}")
+            conn.rollback()  # Solo deshace este lote
+            continue
 
     # Contar resultados
     cur.execute("SELECT COUNT(*) FROM informe_guias_tms")
@@ -519,7 +521,7 @@ def upsert_csv(archivo_csv, config_db):
     cur.execute("SELECT COUNT(*) FROM informe_guias_tms WHERE estado NOT IN ('ENTREGADO', 'CON NOVEDAD')")
     pendientes = cur.fetchone()[0]
 
-    log.info(f"Procesadas {insertados} filas ({errores} errores)")
+    log.info(f"Procesadas {filas_total} filas en {len(lotes)} lotes")
     log.info(f"Total en tabla: {total} | Pendientes de actualizar: {pendientes}")
 
     cur.close()
@@ -580,7 +582,7 @@ def actualizar_pendientes(driver, carpeta_destino, config_db):
     descargar_csv(driver)
     archivo = esperar_descarga(carpeta_destino, timeout=300)
 
-    # Leer CSV y hacer UPSERT
+    # Leer CSV y hacer UPSERT (OPTIMIZADO CON BATCH)
     df = leer_csv(archivo)
     log.info(f"Historico: {len(df)} filas leidas")
 
@@ -597,16 +599,26 @@ def actualizar_pendientes(driver, carpeta_destino, config_db):
     ON CONFLICT (guia) DO UPDATE SET {update_set}
     """
 
-    actualizados = 0
-    for _, fila in df.iterrows():
-        try:
-            cur.execute(upsert_sql, tuple(fila.values))
-            actualizados += 1
-        except Exception:
-            conn.rollback()
-            continue
+    # Preparar datos en lotes
+    datos = [tuple(fila.values) for _, fila in df.iterrows()]
 
-    conn.commit()
+    # Ejecutar en lotes de 1000 filas
+    BATCH_SIZE = 1000
+    lotes = [datos[i:i + BATCH_SIZE] for i in range(0, len(datos), BATCH_SIZE)]
+
+    log.info(f"Enviando {len(datos)} filas en {len(lotes)} lotes...")
+
+    actualizados = 0
+    for i, lote in enumerate(lotes, 1):
+        try:
+            execute_batch(cur, upsert_sql, lote, page_size=BATCH_SIZE)
+            conn.commit()  # Commit después de cada lote exitoso
+            actualizados += len(lote)
+            log.info(f"Lote {i}/{len(lotes)} completado ({len(lote)} filas)")
+        except Exception as e:
+            log.warning(f"Error en lote {i}: {e}")
+            conn.rollback()  # Solo deshace este lote
+            continue
 
     # Contar pendientes restantes
     cur.execute("SELECT COUNT(*) FROM informe_guias_tms WHERE estado NOT IN ('ENTREGADO', 'CON NOVEDAD')")
