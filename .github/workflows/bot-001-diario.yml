@@ -29,6 +29,22 @@ jobs:
         run: |
           pip install selenium psycopg2-binary pandas
 
+      - name: Preparar secrets limpios
+        run: |
+          # Limpiar espacios/saltos de linea de todos los secrets
+          echo "PROXY_HOST=$(echo '${{ secrets.PROXY_HOST }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "PROXY_PORT=$(echo '${{ secrets.PROXY_PORT }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "PROXY_USER=$(echo '${{ secrets.PROXY_USER }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "PROXY_PASS=$(echo '${{ secrets.PROXY_PASS }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "TMS_URL=$(echo '${{ secrets.TMS_URL }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "TMS_USUARIO=$(echo '${{ secrets.TMS_USUARIO }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "TMS_CLAVE=$(echo '${{ secrets.TMS_CLAVE }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "PG_HOST=$(echo '${{ secrets.PG_HOST }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "PG_PORT=$(echo '${{ secrets.PG_PORT }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "PG_DATABASE=$(echo '${{ secrets.PG_DATABASE }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "PG_USUARIO=$(echo '${{ secrets.PG_USUARIO }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+          echo "PG_CLAVE=$(echo '${{ secrets.PG_CLAVE }}' | tr -d '[:space:]')" >> $GITHUB_ENV
+
       - name: Crear extensión Chrome para proxy auth
         run: |
           mkdir -p /tmp/proxy_auth
@@ -44,14 +60,14 @@ jobs:
             "minimum_chrome_version": "49.0"
           }
           EOF
-          cat > /tmp/proxy_auth/background.js << 'EOF'
+          cat > /tmp/proxy_auth/background.js << EOF
           var config = {
             mode: "fixed_servers",
             rules: {
               singleProxy: {
                 scheme: "http",
-                host: "${{ secrets.PROXY_HOST }}",
-                port: parseInt("${{ secrets.PROXY_PORT }}")
+                host: "${PROXY_HOST}",
+                port: parseInt("${PROXY_PORT}")
               },
               bypassList: ["foobar.com"]
             }
@@ -59,7 +75,7 @@ jobs:
           chrome.proxy.settings.set({value: config, scope: "regular"}, function() {});
           chrome.webRequest.onAuthRequired.addListener(
             function(details) {
-              return {authCredentials: {username: "${{ secrets.PROXY_USER }}", password: "${{ secrets.PROXY_PASS }}"}};
+              return {authCredentials: {username: "${PROXY_USER}", password: "${PROXY_PASS}"}};
             },
             {urls: ["<all_urls>"]},
             ["blocking"]
@@ -69,12 +85,11 @@ jobs:
       - name: Diagnosticar proxy
         run: |
           echo "=== Diagnostico de Proxy ==="
-          PROXY_HOST="${{ secrets.PROXY_HOST }}"
-          PROXY_PORT="${{ secrets.PROXY_PORT }}"
           echo "PROXY_HOST length: ${#PROXY_HOST}"
           echo "PROXY_HOST first 4 chars: ${PROXY_HOST:0:4}"
           echo "PROXY_HOST last 4 chars: ${PROXY_HOST: -4}"
-          echo "PROXY_PORT: ${{ secrets.PROXY_PORT }}"
+          echo "PROXY_PORT: ${PROXY_PORT}"
+          echo "TMS_URL length: ${#TMS_URL}"
           echo "PROXY_HOST is empty: $([ -z "$PROXY_HOST" ] && echo 'YES - EMPTY!' || echo 'No')"
 
           # Validar que PROXY_HOST no este vacio
@@ -89,18 +104,7 @@ jobs:
 
           echo ""
           echo "=== Probando conexion via proxy ==="
-          # Mostrar longitudes de todos los secrets para detectar espacios extra
-          PU="${{ secrets.PROXY_USER }}"
-          PP="${{ secrets.PROXY_PASS }}"
-          TU="${{ secrets.TMS_URL }}"
-          echo "PROXY_USER length: ${#PU}"
-          echo "PROXY_PASS length: ${#PP}"
-          echo "TMS_URL length: ${#TU}"
-          echo "TMS_URL first 10 chars: ${TU:0:10}"
-
-          # Intentar curl con verbose para ver el error
-          curl -v --max-time 30 -x "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}:${{ secrets.PROXY_PORT }}" "${{ secrets.TMS_URL }}" 2>&1 | tail -20
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 -x "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}:${{ secrets.PROXY_PORT }}" "${{ secrets.TMS_URL }}")
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 -x "http://${PROXY_USER}:${PROXY_PASS}@${PROXY_HOST}:${PROXY_PORT}" "${TMS_URL}")
           echo "Status: $HTTP_CODE"
           if [ "$HTTP_CODE" = "000" ] || [ -z "$HTTP_CODE" ]; then
             echo "ERROR: Proxy no responde (HTTP $HTTP_CODE). Deteniendo workflow."
@@ -110,23 +114,23 @@ jobs:
 
       - name: Crear archivo de configuración
         run: |
-          cat > "Bot 001/config_tms.json" << 'EOF'
+          cat > "Bot 001/config_tms.json" << EOF
           {
               "tms": {
-                  "url": "${{ secrets.TMS_URL }}",
-                  "usuario": "${{ secrets.TMS_USUARIO }}",
-                  "clave": "${{ secrets.TMS_CLAVE }}"
+                  "url": "${TMS_URL}",
+                  "usuario": "${TMS_USUARIO}",
+                  "clave": "${TMS_CLAVE}"
               },
               "descarga": {
                   "carpeta_destino": "/tmp/tms_downloads",
                   "prefijo_archivo": "informe_general"
               },
               "postgresql": {
-                  "host": "${{ secrets.PG_HOST }}",
-                  "port": "${{ secrets.PG_PORT }}",
-                  "database": "${{ secrets.PG_DATABASE }}",
-                  "usuario": "${{ secrets.PG_USUARIO }}",
-                  "clave": "${{ secrets.PG_CLAVE }}"
+                  "host": "${PG_HOST}",
+                  "port": "${PG_PORT}",
+                  "database": "${PG_DATABASE}",
+                  "usuario": "${PG_USUARIO}",
+                  "clave": "${PG_CLAVE}"
               }
           }
           EOF
