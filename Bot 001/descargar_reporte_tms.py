@@ -140,12 +140,12 @@ def crear_navegador(carpeta_descarga):
         "profile.password_manager_enabled": False,
     }
     opts.add_experimental_option("prefs", prefs)
-    driver = webdriver.Chrome(options=opts)
+    driver = webdriver.Chrome(options=opts, timeout=30)
     driver.execute_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
-    # Timeout para carga de pagina (5 minutos para conexiones lentas)
-    driver.set_page_load_timeout(300)
+    # Timeout para carga de pagina (30 segundos)
+    driver.set_page_load_timeout(30)
     return driver
 
 
