@@ -172,6 +172,7 @@ jobs:
         env:
           HEADLESS: "true"
           PROXY_LOCAL: "http://localhost:8888"
+          EXCLUIR_CLIENTES: "${{ secrets.EXCLUIR_CLIENTES }}"
 
       - name: Subir artefactos (CSV, screenshots, HTML)
         if: always()
