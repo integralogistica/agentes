@@ -2,8 +2,8 @@ name: Bot 001 - Informe General TMS Diario
 
 on:
   schedule:
-    # Corre a las 8:00 AM UTC = 3:00 AM hora Colombia (UTC-5)
-    - cron: '0 8 * * *'
+    # Corre a las 12:30 PM UTC = 7:30 AM hora Colombia (UTC-5)
+    - cron: '30 12 * * *'
   workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
 
 jobs:
