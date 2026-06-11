@@ -8,6 +8,9 @@
         "carpeta_destino": "C:\\Users\\ASUS\\Downloads",
         "prefijo_archivo": "informe_general"
     },
+    "excluir_clientes": [
+        "UNION_TEMPORAL_GRM_OIGAME"
+    ],
     "postgresql": {
         "host": "dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com",
         "port": 5432,

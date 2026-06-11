@@ -404,8 +404,8 @@ def esperar_descarga(carpeta_descarga, timeout=120):
 # ═════════════════════════════════════════════════════════════════════════════
 #  FUNCIONES DE POSTGRESQL
 # ═════════════════════════════════════════════════════════════════════════════
-def leer_csv(archivo_csv):
-    """Lee el CSV, filtra columnas, limpia espacios y fechas."""
+def leer_csv(archivo_csv, excluir_clientes=None):
+    """Lee el CSV, filtra columnas, limpia espacios y fechas. Excluye clientes indicados."""
     df = pd.read_csv(archivo_csv, sep=";", dtype=str, keep_default_na=False)
     columnas_csv = list(COLUMNAS.keys())
     df = df[columnas_csv]
@@ -415,6 +415,15 @@ def leer_csv(archivo_csv):
     for col in df.columns:
         if col not in COLUMNAS_FECHA:
             df[col] = df[col].apply(lambda v: " ".join(v.split()))
+
+    # Filtrar clientes excluidos
+    if excluir_clientes:
+        antes = len(df)
+        excluir_upper = [c.upper().strip() for c in excluir_clientes]
+        df = df[~df["nombre_cliente"].str.upper().str.strip().isin(excluir_upper)]
+        excluidas = antes - len(df)
+        if excluidas > 0:
+            log.info(f"Filtradas {excluidas} guías de clientes excluidos: {excluir_clientes}")
 
     # Limpiar fechas: 0000-00-00, vacios, NaN, NaT -> None
     for col in COLUMNAS_FECHA:
@@ -466,9 +475,9 @@ def crear_tabla_si_no_existe(cur):
     log.info("Tabla informe_guias_tms lista")
 
 
-def upsert_csv(archivo_csv, config_db):
+def upsert_csv(archivo_csv, config_db, excluir_clientes=None):
     """Inserta guías nuevas y actualiza las que ya existen (UPSERT) - OPTIMIZADO CON BATCH."""
-    df = leer_csv(archivo_csv)
+    df = leer_csv(archivo_csv, excluir_clientes=excluir_clientes)
     filas_total = len(df)
     log.info(f"Procesando {filas_total} filas del CSV")
 
@@ -547,7 +556,7 @@ def obtener_fechas_pendientes(config_db):
     return resultado  # (fecha_min, fecha_max, cantidad)
 
 
-def actualizar_pendientes(driver, carpeta_destino, config_db):
+def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_clientes=None):
     """Descarga el historico de guias pendientes y las actualiza en la DB."""
     # Consultar que fechas tienen guias pendientes
     fecha_min, fecha_max, cantidad = obtener_fechas_pendientes(config_db)
@@ -583,7 +592,7 @@ def actualizar_pendientes(driver, carpeta_destino, config_db):
     archivo = esperar_descarga(carpeta_destino, timeout=300)
 
     # Leer CSV y hacer UPSERT (OPTIMIZADO CON BATCH)
-    df = leer_csv(archivo)
+    df = leer_csv(archivo, excluir_clientes=excluir_clientes)
     log.info(f"Historico: {len(df)} filas leidas")
 
     conn = conectar_db(config_db)
@@ -662,6 +671,7 @@ def main():
     config = cargar_config()
     carpeta_destino = Path(config["descarga"]["carpeta_destino"])
     carpeta_destino.mkdir(parents=True, exist_ok=True)
+    excluir_clientes = config.get("excluir_clientes", [])
 
     driver = None
     archivo = None
@@ -694,7 +704,7 @@ def main():
         log.info("Guardando en PostgreSQL")
         log.info("=" * 50)
         try:
-            pendientes = upsert_csv(archivo, config["postgresql"])
+            pendientes = upsert_csv(archivo, config["postgresql"], excluir_clientes=excluir_clientes)
         except Exception as e:
             log.error(f"Error en PostgreSQL: {e}")
 
@@ -706,7 +716,7 @@ def main():
         try:
             driver = crear_navegador(carpeta_destino)
             hacer_login(driver, config["tms"]["url"], config["tms"]["usuario"], config["tms"]["clave"])
-            actualizar_pendientes(driver, carpeta_destino, config["postgresql"])
+            actualizar_pendientes(driver, carpeta_destino, config["postgresql"], excluir_clientes=excluir_clientes)
         except Exception as e:
             log.error(f"Error actualizando pendientes: {e}")
         finally:
