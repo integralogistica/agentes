@@ -140,7 +140,7 @@ def crear_navegador(carpeta_descarga):
         "profile.password_manager_enabled": False,
     }
     opts.add_experimental_option("prefs", prefs)
-    driver = webdriver.Chrome(options=opts, timeout=30)
+    driver = webdriver.Chrome(options=opts)
     driver.execute_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
