@@ -45,14 +45,69 @@ jobs:
           echo "PG_USUARIO=$(echo '${{ secrets.PG_USUARIO }}' | tr -d '[:space:]')" >> $GITHUB_ENV
           echo "PG_CLAVE=$(echo '${{ secrets.PG_CLAVE }}' | tr -d '[:space:]')" >> $GITHUB_ENV
 
-      - name: Instalar pproxy y crear proxy local
+      - name: Crear proxy local forwarder
         run: |
-          pip install pproxy
-          # Crear proxy local en puerto 8888 que reenvía al proxy de Squid con autenticación
-          pproxy -l http://localhost:8888 -r http://${PROXY_USER}:${PROXY_PASS}@${PROXY_HOST}:${PROXY_PORT} --daemon
+          cat > /tmp/proxy_forwarder.py << 'PYEOF'
+          import socket, threading, base64, sys, os
+
+          PROXY_HOST = os.environ.get("PROXY_HOST", "")
+          PROXY_PORT = int(os.environ.get("PROXY_PORT", "3128"))
+          PROXY_USER = os.environ.get("PROXY_USER", "")
+          PROXY_PASS = os.environ.get("PROXY_PASS", "")
+          AUTH = base64.b64encode(f'{PROXY_USER}:{PROXY_PASS}'.encode()).decode()
+          LOCAL_PORT = 8888
+
+          def forward(src, dst):
+              try:
+                  while True:
+                      data = src.recv(65536)
+                      if not data: break
+                      dst.sendall(data)
+              except: pass
+              finally: src.close(); dst.close()
+
+          def handle(client):
+              try:
+                  req = b''
+                  while b'\r\n\r\n' not in req:
+                      chunk = client.recv(4096)
+                      if not chunk: return
+                      req += chunk
+                  target = req.decode(errors='replace').split('\r\n')[0].split(' ')[1]
+                  proxy = socket.socket()
+                  proxy.settimeout(120)
+                  proxy.connect((PROXY_HOST, PROXY_PORT))
+                  proxy.sendall(f"CONNECT {target} HTTP/1.1\r\nHost: {target}\r\nProxy-Authorization: Basic {AUTH}\r\n\r\n".encode())
+                  resp = b''
+                  while b'\r\n\r\n' not in resp:
+                      chunk = proxy.recv(4096)
+                      if not chunk: return
+                      resp += chunk
+                  if b'200' in resp.split(b'\r\n')[0]:
+                      client.sendall(b'HTTP/1.1 200 Connection established\r\n\r\n')
+                      t1 = threading.Thread(target=forward, args=(client, proxy), daemon=True)
+                      t2 = threading.Thread(target=forward, args=(proxy, client), daemon=True)
+                      t1.start(); t2.start(); t1.join()
+                  else:
+                      client.sendall(resp); client.close(); proxy.close()
+              except Exception as e:
+                  print(f"Error: {e}")
+
+          server = socket.socket()
+          server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+          server.bind(('127.0.0.1', LOCAL_PORT))
+          server.listen(50)
+          print(f"Proxy local en 127.0.0.1:{LOCAL_PORT}")
+          sys.stdout.flush()
+          while True:
+              client, _ = server.accept()
+              threading.Thread(target=handle, args=(client,), daemon=True).start()
+          PYEOF
+          # Iniciar proxy en background
+          python /tmp/proxy_forwarder.py &
           sleep 2
-          # Verificar que el proxy local funciona
-          curl -s -o /dev/null -w "Proxy local status: %{http_code}" --max-time 10 -x http://localhost:8888 "${TMS_URL}"
+          # Verificar
+          curl -s -o /dev/null -w "Proxy local status: %{http_code}" --max-time 15 -x http://localhost:8888 "${TMS_URL}"
 
       - name: Diagnosticar proxy
         run: |
