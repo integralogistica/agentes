@@ -45,45 +45,14 @@ jobs:
           echo "PG_USUARIO=$(echo '${{ secrets.PG_USUARIO }}' | tr -d '[:space:]')" >> $GITHUB_ENV
           echo "PG_CLAVE=$(echo '${{ secrets.PG_CLAVE }}' | tr -d '[:space:]')" >> $GITHUB_ENV
 
-      - name: Crear extensión Chrome para proxy auth
+      - name: Instalar pproxy y crear proxy local
         run: |
-          mkdir -p /tmp/proxy_auth
-          cat > /tmp/proxy_auth/manifest.json << 'ENDMANIFEST'
-          {
-            "version": "1.0.0",
-            "manifest_version": 3,
-            "name": "Proxy Auth",
-            "permissions": ["proxy", "webRequest", "webRequestAuthProvider"],
-            "background": {
-              "service_worker": "background.js"
-            }
-          }
-          ENDMANIFEST
-          cat > /tmp/proxy_auth/background.js << ENDBACKGROUND
-          var config = {
-            mode: "fixed_servers",
-            rules: {
-              singleProxy: {
-                scheme: "http",
-                host: "${PROXY_HOST}",
-                port: parseInt("${PROXY_PORT}")
-              },
-              bypassList: ["foobar.com"]
-            }
-          };
-          chrome.proxy.settings.set({value: config, scope: "regular"}, function() {});
-          chrome.webRequest.onAuthRequired.addListener(
-            function(details) {
-              return {authCredentials: {username: "${PROXY_USER}", password: "${PROXY_PASS}"}};
-            },
-            {urls: ["<all_urls>"]},
-            ["asyncBlocking"]
-          );
-          ENDBACKGROUND
-          echo "=== Verificando extension proxy ==="
-          cat /tmp/proxy_auth/manifest.json
-          echo "---"
-          cat /tmp/proxy_auth/background.js | sed "s/${PROXY_USER}/***USER***/g; s/${PROXY_PASS}/***PASS***/g"
+          pip install pproxy
+          # Crear proxy local en puerto 8888 que reenvía al proxy de Squid con autenticación
+          pproxy -l http://localhost:8888 -r http://${PROXY_USER}:${PROXY_PASS}@${PROXY_HOST}:${PROXY_PORT} --daemon
+          sleep 2
+          # Verificar que el proxy local funciona
+          curl -s -o /dev/null -w "Proxy local status: %{http_code}" --max-time 10 -x http://localhost:8888 "${TMS_URL}"
 
       - name: Diagnosticar proxy
         run: |
@@ -147,7 +116,7 @@ jobs:
           python descargar_reporte_tms.py
         env:
           HEADLESS: "true"
-          PROXY_EXTENSION: "/tmp/proxy_auth"
+          PROXY_LOCAL: "http://localhost:8888"
 
       - name: Subir artefactos (CSV, screenshots, HTML)
         if: always()

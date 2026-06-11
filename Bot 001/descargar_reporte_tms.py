@@ -128,9 +128,13 @@ def crear_navegador(carpeta_descarga):
         opts.add_argument("--disable-gpu")
         opts.add_argument("--window-size=1920,1080")
 
-    # Proxy via extensión de Chrome (maneja autenticación)
+    # Proxy: local (pproxy) o extensión de Chrome
+    proxy_local = os.environ.get("PROXY_LOCAL", "")
     proxy_ext = os.environ.get("PROXY_EXTENSION", "")
-    if proxy_ext and os.path.isdir(proxy_ext):
+    if proxy_local:
+        opts.add_argument(f"--proxy-server={proxy_local}")
+        log.info(f"Usando proxy local: {proxy_local}")
+    elif proxy_ext and os.path.isdir(proxy_ext):
         opts.add_argument(f"--load-extension={proxy_ext}")
         log.info(f"Usando proxy via extension Chrome")
     else:
