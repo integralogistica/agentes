@@ -2,7 +2,7 @@
 
 ## Qué hace
 
-Este bot entra automáticamente al sistema TMS (Appsis Core), descarga el Informe General y lo guarda en una base de datos PostgreSQL en Render. Corre solo todos los días a las 3:00 AM desde GitHub Actions (no depende de tu PC).
+Este bot entra automáticamente al sistema TMS (Appsis Core), descarga el Informe General y lo guarda en una base de datos PostgreSQL en Render. Corre solo todos los días a las 3:00 AM (hora Colombia) desde GitHub Actions (no depende de tu PC).
 
 ## Dónde corre
 
@@ -20,7 +20,7 @@ GitHub Actions usa un proxy con IP fija de Digital Ocean para que el TMS permita
 1. Abre Chrome (headless) y navega al TMS vía proxy Digital Ocean
 2. Inicia sesión con las credenciales
 3. Navega: **Gestión de Informes → Avanzada → Informe General**
-4. Selecciona la fecha del día anterior
+4. Selecciona la fecha del día anterior (usa **zona horaria de Colombia UTC-5**)
 5. Descarga el CSV (DESCARGAR INFORME FORMATO)
 6. Lee el CSV y filtra solo los campos que nos interesan
 7. **UPSERT en PostgreSQL**: inserta guías nuevas y actualiza las que ya existen
@@ -32,6 +32,18 @@ GitHub Actions usa un proxy con IP fija de Digital Ocean para que el TMS permita
 2. Si hay, descarga el rango de fechas necesario (hasta 20 días atrás)
 3. Actualiza el estado, novedad, fecha de entrega e imagen de esas guías
 4. Las guías con estado ENTREGADO o CON NOVEDAD no se vuelven a tocar
+
+## Infraestructura
+
+```
+GitHub Actions (EE.UU.)
+    ↓ proxy vía extensión Chrome
+Droplet DigitalOcean (vulcano-proxy: 64.227.95.70:3128)
+    ↓ Squid proxy con autenticación
+TMS Appsis Core (integra.appsiscore.com)
+    ↓ descarga CSV
+PostgreSQL en Render (Ohio, EE.UU.)
+```
 
 ## Campos que se guardan en PostgreSQL
 
@@ -76,7 +88,7 @@ Cuando una guía ya existe en la base y no está ENTREGADA ni CON NOVEDAD, se ac
 
 ### Modo automático (GitHub Actions — nube)
 
-Corre solo a las 3:00 AM en los servidores de GitHub. No necesitas hacer nada.
+Corre solo a las 3:00 AM hora Colombia en los servidores de GitHub. No necesitas hacer nada.
 
 - Ver ejecuciones: [github.com/integralogistica/agentes/actions](https://github.com/integralogistica/agentes/actions)
 - Ejecutar manualmente: Actions → Bot 001 → Run workflow
@@ -136,24 +148,61 @@ Editar `config_tms.json`:
 
 ### En GitHub Actions (secrets)
 
-Las credenciales se almacenan como **secrets** en GitHub (no visibles en el código):
+Las credenciales se almacenan como **secrets** en GitHub (no visibles en el código). El workflow limpia automáticamente espacios en blanco de los secrets antes de usarlos.
 
-| Secret | Descripción |
-|---|---|
-| `TMS_URL` | URL del TMS |
-| `TMS_USUARIO` | Usuario del TMS |
-| `TMS_CLAVE` | Contraseña del TMS |
-| `PG_HOST` | Host de PostgreSQL en Render |
-| `PG_PORT` | Puerto de PostgreSQL |
-| `PG_DATABASE` | Nombre de la base de datos |
-| `PG_USUARIO` | Usuario de PostgreSQL |
-| `PG_CLAVE` | Contraseña de PostgreSQL |
-| `PROXY_HOST` | IP del proxy Digital Ocean |
-| `PROXY_PORT` | Puerto del proxy |
-| `PROXY_USER` | Usuario del proxy |
-| `PROXY_PASS` | Contraseña del proxy |
+| Secret | Descripción | Valor actual |
+|---|---|---|
+| `TMS_URL` | URL del TMS | `https://integra.appsiscore.com/app/index.php` |
+| `TMS_USUARIO` | Usuario del TMS | |
+| `TMS_CLAVE` | Contraseña del TMS | |
+| `PG_HOST` | Host de PostgreSQL en Render | |
+| `PG_PORT` | Puerto de PostgreSQL | `5432` |
+| `PG_DATABASE` | Nombre de la base de datos | |
+| `PG_USUARIO` | Usuario de PostgreSQL | |
+| `PG_CLAVE` | Contraseña de PostgreSQL | |
+| `PROXY_HOST` | IP del proxy Digital Ocean | `64.227.95.70` |
+| `PROXY_PORT` | Puerto del proxy | `3128` |
+| `PROXY_USER` | Usuario del proxy Squid | `integra` |
+| `PROXY_PASS` | Contraseña del proxy | |
 
 Para editar: [github.com/integralogistica/agentes/settings/secrets/actions](https://github.com/integralogistica/agentes/settings/secrets/actions)
+
+⚠️ **Importante**: Al guardar los secrets, NO dejar espacios ni saltos de línea al final. El workflow los limpia automáticamente, pero es mejor evitarlos.
+
+## Proxy Digital Ocean
+
+- **Droplet**: `vulcano-proxy`
+- **IP Pública**: `64.227.95.70`
+- **Software**: Squid en puerto `3128`
+- **Autenticación**: Basic Auth (usuario `integra`)
+- **Configuración**: `/etc/squid/squid.conf`
+- **Credenciales proxy**: `/etc/squid/passwords`
+- **Logs**: `/var/log/squid/access.log`
+
+### Comandos útiles en el droplet
+
+```bash
+# Ver estado del proxy
+systemctl status squid
+
+# Ver conexiones activas
+tail -20 /var/log/squid/access.log
+
+# Reiniciar proxy
+systemctl restart squid
+
+# Cambiar contraseña del usuario integra
+htpasswd /etc/squid/passwords integra
+
+# Ver puertos abiertos
+ss -tlnp
+```
+
+### Probar proxy desde tu PC
+
+```powershell
+curl.exe -x "http://integra:TU_CLAVE@64.227.95.70:3128" -s -o NUL -w "Status: %{http_code}" --max-time 30 "https://integra.appsiscore.com/app/index.php"
+```
 
 ## Base de datos PostgreSQL
 
@@ -161,13 +210,14 @@ Para editar: [github.com/integralogistica/agentes/settings/secrets/actions](http
 - **Tabla**: `informe_guias_tms`
 - **Identificador único**: campo `guia` (no se duplican)
 - **Las guías se insertan nuevas o se actualizan si ya existen (UPSERT)**
+- **Se usan savepoints por fila**: si una fila falla, las demás se insertan correctamente
 
 ## Comportamiento con guías pendientes
 
 - Una guía se considera **finalizada** cuando su estado es ENTREGADO o CON NOVEDAD
 - Las guías pendientes se re-consultan automáticamente hasta 20 días atrás
 - Si una guía lleva más de 20 días pendiente, usar el modo manual con el rango de fechas
-- Las fechas vacías o con `0000-00-00` se guardan como NULL en la base
+- Las fechas vacías, `0000-00-00`, `NaN` o `NaT` se guardan como NULL en la base
 
 ## Requisitos (para ejecutar en PC local)
 
@@ -183,3 +233,16 @@ Para editar: [github.com/integralogistica/agentes/settings/secrets/actions](http
 - Repositorio GitHub: `integralogistica/agentes`
 - Secrets configurados en el repositorio
 - Proxy Digital Ocean con IP autorizada por el TMS
+- Workflow con diagnóstico automático: valida proxy y detiene el proceso si no funciona
+
+## Historial de problemas conocidos y soluciones
+
+| Problema | Causa | Solución |
+|---|---|---|
+| Host de PostgreSQL vacío | Secret `PG_HOST` no configurado | Configurar todos los secrets en GitHub |
+| Proxy no conecta | IP del droplet cambió | Actualizar `PROXY_HOST` con IP actual (`64.227.95.70`) |
+| `NaN` en fecha_entrega | CSV tiene NaN como valor | Se filtra automáticamente: NaN → NULL |
+| Tabla desaparece tras error | Rollback deshacía el CREATE TABLE | Commit separado después de crear tabla + savepoints por fila |
+| Zona horaria incorrecta | `datetime.now()` usa UTC en GitHub | Se usa `ahora_colombia()` (UTC-5) para calcular "ayer" |
+| Secrets con espacios | Espacios/saltos de línea al final | Workflow limpia automáticamente con `tr -d '[:space:]'` |
+| Timeout del proxy | Squid con timeout corto | Timeouts aumentados en Squid: connect 60s, read/write/request 300s |

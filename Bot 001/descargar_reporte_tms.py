@@ -13,7 +13,7 @@ import io
 import os
 import time
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # Fix encoding para Windows
@@ -84,6 +84,14 @@ CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen"]
 
 # Maximo de dias hacia atras para consultar pendientes (para no demorar demasiado)
 MAX_DIAS_HISTORICO = 20
+
+# Zona horaria Colombia (UTC-5)
+TZ_COLOMBIA = timezone(timedelta(hours=-5))
+
+
+def ahora_colombia():
+    """Retorna la fecha/hora actual en zona horaria de Colombia."""
+    return datetime.now(TZ_COLOMBIA)
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -485,7 +493,9 @@ def upsert_csv(archivo_csv, config_db):
     for _, fila in df.iterrows():
         try:
             cur.execute("SAVEPOINT sp_fila")
-            cur.execute(upsert_sql, tuple(fila.values))
+            # Reemplazar NaN/float por None antes de insertar
+            valores = [None if (isinstance(v, float) and v != v) else v for v in fila.values]
+            cur.execute(upsert_sql, tuple(valores))
             cur.execute("RELEASE SAVEPOINT sp_fila")
             # Si el guia ya existia y estado != ENTREGADO/CON NOVEDAD, se actualizo
             insertados += 1
@@ -543,11 +553,11 @@ def actualizar_pendientes(driver, carpeta_destino, config_db):
     log.info(f"Guias pendientes: {cantidad} (desde {fecha_min} hasta {fecha_max})")
 
     # Calcular rango de fechas a consultar (limitado a MAX_DIAS_HISTORICO)
-    ayer = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    ayer = (ahora_colombia() - timedelta(days=1)).strftime("%Y-%m-%d")
     fecha_inicio = str(fecha_min)
 
     # Limitar el rango
-    limite = (datetime.now() - timedelta(days=MAX_DIAS_HISTORICO)).strftime("%Y-%m-%d")
+    limite = (ahora_colombia() - timedelta(days=MAX_DIAS_HISTORICO)).strftime("%Y-%m-%d")
     if fecha_inicio < limite:
         fecha_inicio = limite
         log.info(f"Rango limitado a {MAX_DIAS_HISTORICO} dias: desde {fecha_inicio}")
@@ -617,7 +627,7 @@ def main():
     args = parser.parse_args()
 
     # Determinar rango de fechas
-    ayer = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    ayer = (ahora_colombia() - timedelta(days=1)).strftime("%Y-%m-%d")
 
     if args.fecha_inicio:
         fecha_inicio = args.fecha_inicio
