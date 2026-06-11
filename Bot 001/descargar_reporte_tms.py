@@ -403,10 +403,10 @@ def leer_csv(archivo_csv):
         if col not in COLUMNAS_FECHA:
             df[col] = df[col].apply(lambda v: " ".join(v.split()))
 
-    # Limpiar fechas: 0000-00-00 y vacios -> None
+    # Limpiar fechas: 0000-00-00, vacios, NaN, NaT -> None
     for col in COLUMNAS_FECHA:
         df[col] = df[col].apply(
-            lambda v: None if (v.strip() == "" or v.strip() == "0000-00-00") else v.strip()
+            lambda v: None if (not isinstance(v, str) or v.strip() == "" or v.strip() == "0000-00-00" or v.strip().lower() == "nan") else v.strip()
         )
     return df
 
@@ -463,6 +463,7 @@ def upsert_csv(archivo_csv, config_db):
     conn.autocommit = False
     cur = conn.cursor()
     crear_tabla_si_no_existe(cur)
+    conn.commit()  # Confirmar CREATE TABLE para que rollback no la deshaga
 
     # Construir UPSERT: INSERT ... ON CONFLICT (guia) DO UPDATE
     cols = '", "'.join(df.columns)
@@ -483,14 +484,16 @@ def upsert_csv(archivo_csv, config_db):
     errores = 0
     for _, fila in df.iterrows():
         try:
+            cur.execute("SAVEPOINT sp_fila")
             cur.execute(upsert_sql, tuple(fila.values))
+            cur.execute("RELEASE SAVEPOINT sp_fila")
             # Si el guia ya existia y estado != ENTREGADO/CON NOVEDAD, se actualizo
             insertados += 1
         except Exception as e:
             errores += 1
             if errores <= 3:
                 log.warning(f"Error en fila: {e}")
-            conn.rollback()
+            cur.execute("ROLLBACK TO SAVEPOINT sp_fila")
             continue
 
     conn.commit()
