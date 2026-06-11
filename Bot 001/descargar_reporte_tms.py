@@ -144,8 +144,8 @@ def crear_navegador(carpeta_descarga):
     driver.execute_script(
         "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
     )
-    # Timeout para carga de pagina (30 segundos)
-    driver.set_page_load_timeout(30)
+    # Timeout para carga de pagina (60 segundos)
+    driver.set_page_load_timeout(60)
     return driver
 
 
