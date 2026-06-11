@@ -89,6 +89,17 @@ jobs:
 
           echo ""
           echo "=== Probando conexion via proxy ==="
+          # Mostrar longitudes de todos los secrets para detectar espacios extra
+          PU="${{ secrets.PROXY_USER }}"
+          PP="${{ secrets.PROXY_PASS }}"
+          TU="${{ secrets.TMS_URL }}"
+          echo "PROXY_USER length: ${#PU}"
+          echo "PROXY_PASS length: ${#PP}"
+          echo "TMS_URL length: ${#TU}"
+          echo "TMS_URL first 10 chars: ${TU:0:10}"
+
+          # Intentar curl con verbose para ver el error
+          curl -v --max-time 30 -x "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}:${{ secrets.PROXY_PORT }}" "${{ secrets.TMS_URL }}" 2>&1 | tail -20
           HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 -x "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}:${{ secrets.PROXY_PORT }}" "${{ secrets.TMS_URL }}")
           echo "Status: $HTTP_CODE"
           if [ "$HTTP_CODE" = "000" ] || [ -z "$HTTP_CODE" ]; then
