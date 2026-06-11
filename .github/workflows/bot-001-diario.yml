@@ -48,19 +48,18 @@ jobs:
       - name: Crear extensión Chrome para proxy auth
         run: |
           mkdir -p /tmp/proxy_auth
-          cat > /tmp/proxy_auth/manifest.json << 'EOF'
+          cat > /tmp/proxy_auth/manifest.json << 'ENDMANIFEST'
           {
             "version": "1.0.0",
-            "manifest_version": 2,
+            "manifest_version": 3,
             "name": "Proxy Auth",
-            "permissions": ["proxy", "tabs", "unlimitedStorage", "storage", "webRequest", "webRequestBlocking"],
+            "permissions": ["proxy", "webRequest", "webRequestAuthProvider"],
             "background": {
-              "scripts": ["background.js"]
-            },
-            "minimum_chrome_version": "49.0"
+              "service_worker": "background.js"
+            }
           }
-          EOF
-          cat > /tmp/proxy_auth/background.js << EOF
+          ENDMANIFEST
+          cat > /tmp/proxy_auth/background.js << ENDBACKGROUND
           var config = {
             mode: "fixed_servers",
             rules: {
@@ -78,9 +77,13 @@ jobs:
               return {authCredentials: {username: "${PROXY_USER}", password: "${PROXY_PASS}"}};
             },
             {urls: ["<all_urls>"]},
-            ["blocking"]
+            ["asyncBlocking"]
           );
-          EOF
+          ENDBACKGROUND
+          echo "=== Verificando extension proxy ==="
+          cat /tmp/proxy_auth/manifest.json
+          echo "---"
+          cat /tmp/proxy_auth/background.js | sed "s/${PROXY_USER}/***USER***/g; s/${PROXY_PASS}/***PASS***/g"
 
       - name: Diagnosticar proxy
         run: |
