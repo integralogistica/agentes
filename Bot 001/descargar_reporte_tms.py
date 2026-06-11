@@ -671,7 +671,14 @@ def main():
     config = cargar_config()
     carpeta_destino = Path(config["descarga"]["carpeta_destino"])
     carpeta_destino.mkdir(parents=True, exist_ok=True)
+
+    # Clientes excluidos: combinar config.json + variable de entorno (para GitHub Actions)
     excluir_clientes = config.get("excluir_clientes", [])
+    env_excluir = os.environ.get("EXCLUIR_CLIENTES", "")
+    if env_excluir:
+        excluir_clientes.extend([c.strip() for c in env_excluir.split(",") if c.strip()])
+    if excluir_clientes:
+        log.info(f"Clientes excluidos: {excluir_clientes}")
 
     driver = None
     archivo = None
