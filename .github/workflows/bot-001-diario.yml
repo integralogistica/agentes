@@ -66,13 +66,25 @@ jobs:
           );
           EOF
 
-      - name: Probar conexion proxy → TMS
+      - name: Diagnosticar proxy
         run: |
-          echo "Probando conexion directa al TMS..."
-          curl -s -o /dev/null -w "Status: %{http_code} | Tiempo: %{time_total}s" --max-time 30 "${{ secrets.TMS_URL }}" || echo "Fallo conexion directa"
+          echo "=== Diagnostico de Proxy ==="
+          PROXY_HOST="${{ secrets.PROXY_HOST }}"
+          PROXY_PORT="${{ secrets.PROXY_PORT }}"
+          echo "PROXY_HOST length: ${#PROXY_HOST}"
+          echo "PROXY_HOST first 4 chars: ${PROXY_HOST:0:4}"
+          echo "PROXY_HOST last 4 chars: ${PROXY_HOST: -4}"
+          echo "PROXY_PORT: ${{ secrets.PROXY_PORT }}"
+          echo "PROXY_HOST is empty: $([ -z "$PROXY_HOST" ] && echo 'YES - EMPTY!' || echo 'No')"
           echo ""
-          echo "Probando conexion via proxy..."
-          curl -s -o /dev/null -w "Status: %{http_code} | Tiempo: %{time_total}s" --max-time 30 -x "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}:${{ secrets.PROXY_PORT }}" "${{ secrets.TMS_URL }}" || echo "Fallo conexion via proxy"
+          echo "=== Probando conexion al puerto del proxy ==="
+          timeout 10 bash -c "echo > /dev/tcp/$PROXY_HOST/$PROXY_PORT" 2>&1 && echo "PUERTO $PROXY_PORT ABIERTO" || echo "PUERTO $PROXY_PORT CERRADO O INALCANZABLE"
+          echo ""
+          echo "=== Probando conexion directa al TMS ==="
+          curl -v -s -o /dev/null -w "Status: %{http_code} | Tiempo: %{time_total}s" --max-time 30 "${{ secrets.TMS_URL }}" 2>&1 || echo "Fallo conexion directa"
+          echo ""
+          echo "=== Probando conexion via proxy ==="
+          curl -v -s -o /dev/null -w "Status: %{http_code} | Tiempo: %{time_total}s" --max-time 30 -x "http://${{ secrets.PROXY_USER }}:${{ secrets.PROXY_PASS }}@${{ secrets.PROXY_HOST }}:${{ secrets.PROXY_PORT }}" "${{ secrets.TMS_URL }}" 2>&1 || echo "Fallo conexion via proxy"
           echo ""
 
       - name: Crear archivo de configuración
