@@ -37,13 +37,17 @@ GitHub Actions usa un proxy con IP fija de Digital Ocean para que el TMS permita
 
 ```
 GitHub Actions (EE.UU.)
-    ↓ proxy vía extensión Chrome
+    ↓ proxy local (localhost:8888, sin auth)
+    proxy_forwarder.py (agrega autenticación)
+    ↓
 Droplet DigitalOcean (vulcano-proxy: 64.227.95.70:3128)
-    ↓ Squid proxy con autenticación
+    ↓ Squid proxy con autenticación Basic
 TMS Appsis Core (integra.appsiscore.com)
     ↓ descarga CSV
 PostgreSQL en Render (Ohio, EE.UU.)
 ```
+
+El proxy local (`proxy_forwarder.py`) se ejecuta dentro del runner de GitHub Actions y reenvía las conexiones HTTPS (CONNECT) al Squid proxy de DigitalOcean con autenticación. Chrome se conecta al proxy local sin necesidad de autenticarse.
 
 ## Campos que se guardan en PostgreSQL
 
@@ -246,3 +250,5 @@ curl.exe -x "http://integra:TU_CLAVE@64.227.95.70:3128" -s -o NUL -w "Status: %{
 | Zona horaria incorrecta | `datetime.now()` usa UTC en GitHub | Se usa `ahora_colombia()` (UTC-5) para calcular "ayer" |
 | Secrets con espacios | Espacios/saltos de línea al final | Workflow limpia automáticamente con `tr -d '[:space:]'` |
 | Timeout del proxy | Squid con timeout corto | Timeouts aumentados en Squid: connect 60s, read/write/request 300s |
+| Chrome extension no funciona | Extensiones MV2/MV3 no cargan en headless | Proxy local `proxy_forwarder.py` con `--proxy-server` directo |
+| Secrets con espacios rompen URLs | Espacios causan "URL malformed" en curl | Paso "Preparar secrets limpios" hace trim automático |
