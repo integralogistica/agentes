@@ -404,8 +404,8 @@ def esperar_descarga(carpeta_descarga, timeout=120):
 # ═════════════════════════════════════════════════════════════════════════════
 #  FUNCIONES DE POSTGRESQL
 # ═════════════════════════════════════════════════════════════════════════════
-def leer_csv(archivo_csv, excluir_clientes=None):
-    """Lee el CSV, filtra columnas, limpia espacios y fechas. Excluye clientes indicados."""
+def leer_csv(archivo_csv, excluir_servicios=None):
+    """Lee el CSV, filtra columnas, limpia espacios y fechas. Excluye servicios indicados."""
     df = pd.read_csv(archivo_csv, sep=";", dtype=str, keep_default_na=False)
     columnas_csv = list(COLUMNAS.keys())
     df = df[columnas_csv]
@@ -416,14 +416,14 @@ def leer_csv(archivo_csv, excluir_clientes=None):
         if col not in COLUMNAS_FECHA:
             df[col] = df[col].apply(lambda v: " ".join(v.split()))
 
-    # Filtrar clientes excluidos
-    if excluir_clientes:
+    # Filtrar servicios excluidos
+    if excluir_servicios:
         antes = len(df)
-        excluir_upper = [c.upper().strip() for c in excluir_clientes]
-        df = df[~df["nombre_cliente"].str.upper().str.strip().isin(excluir_upper)]
+        excluir_upper = [s.upper().strip() for s in excluir_servicios]
+        df = df[~df["servicio"].str.upper().str.strip().isin(excluir_upper)]
         excluidas = antes - len(df)
         if excluidas > 0:
-            log.info(f"Filtradas {excluidas} guías de clientes excluidos: {excluir_clientes}")
+            log.info(f"Filtradas {excluidas} guías de servicios excluidos: {excluir_servicios}")
 
     # Limpiar fechas: 0000-00-00, vacios, NaN, NaT -> None
     for col in COLUMNAS_FECHA:
@@ -475,9 +475,9 @@ def crear_tabla_si_no_existe(cur):
     log.info("Tabla informe_guias_tms lista")
 
 
-def upsert_csv(archivo_csv, config_db, excluir_clientes=None):
+def upsert_csv(archivo_csv, config_db, excluir_servicios=None):
     """Inserta guías nuevas y actualiza las que ya existen (UPSERT) - OPTIMIZADO CON BATCH."""
-    df = leer_csv(archivo_csv, excluir_clientes=excluir_clientes)
+    df = leer_csv(archivo_csv, excluir_servicios=excluir_servicios)
     filas_total = len(df)
     log.info(f"Procesando {filas_total} filas del CSV")
 
@@ -556,7 +556,7 @@ def obtener_fechas_pendientes(config_db):
     return resultado  # (fecha_min, fecha_max, cantidad)
 
 
-def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_clientes=None):
+def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_servicios=None):
     """Descarga el historico de guias pendientes y las actualiza en la DB."""
     # Consultar que fechas tienen guias pendientes
     fecha_min, fecha_max, cantidad = obtener_fechas_pendientes(config_db)
@@ -592,7 +592,7 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_clientes=N
     archivo = esperar_descarga(carpeta_destino, timeout=300)
 
     # Leer CSV y hacer UPSERT (OPTIMIZADO CON BATCH)
-    df = leer_csv(archivo, excluir_clientes=excluir_clientes)
+    df = leer_csv(archivo, excluir_servicios=excluir_servicios)
     log.info(f"Historico: {len(df)} filas leidas")
 
     conn = conectar_db(config_db)
@@ -672,13 +672,13 @@ def main():
     carpeta_destino = Path(config["descarga"]["carpeta_destino"])
     carpeta_destino.mkdir(parents=True, exist_ok=True)
 
-    # Clientes excluidos: combinar config.json + variable de entorno (para GitHub Actions)
-    excluir_clientes = config.get("excluir_clientes", [])
-    env_excluir = os.environ.get("EXCLUIR_CLIENTES", "")
+    # Servicios excluidos: combinar config.json + variable de entorno (para GitHub Actions)
+    excluir_servicios = config.get("excluir_servicios", [])
+    env_excluir = os.environ.get("EXCLUIR_SERVICIOS", "")
     if env_excluir:
-        excluir_clientes.extend([c.strip() for c in env_excluir.split(",") if c.strip()])
-    if excluir_clientes:
-        log.info(f"Clientes excluidos: {excluir_clientes}")
+        excluir_servicios.extend([s.strip() for s in env_excluir.split(",") if s.strip()])
+    if excluir_servicios:
+        log.info(f"Servicios excluidos: {excluir_servicios}")
 
     driver = None
     archivo = None
@@ -711,7 +711,7 @@ def main():
         log.info("Guardando en PostgreSQL")
         log.info("=" * 50)
         try:
-            pendientes = upsert_csv(archivo, config["postgresql"], excluir_clientes=excluir_clientes)
+            pendientes = upsert_csv(archivo, config["postgresql"], excluir_servicios=excluir_servicios)
         except Exception as e:
             log.error(f"Error en PostgreSQL: {e}")
 
@@ -723,7 +723,7 @@ def main():
         try:
             driver = crear_navegador(carpeta_destino)
             hacer_login(driver, config["tms"]["url"], config["tms"]["usuario"], config["tms"]["clave"])
-            actualizar_pendientes(driver, carpeta_destino, config["postgresql"], excluir_clientes=excluir_clientes)
+            actualizar_pendientes(driver, carpeta_destino, config["postgresql"], excluir_servicios=excluir_servicios)
         except Exception as e:
             log.error(f"Error actualizando pendientes: {e}")
         finally:
