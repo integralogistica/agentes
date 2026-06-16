@@ -31,7 +31,7 @@ GitHub Actions usa un proxy con IP fija de Digital Ocean para que el TMS permita
 1. Consulta la DB: ¿hay guías pendientes de días anteriores?
 2. Si hay, descarga el rango de fechas necesario (hasta 20 días atrás)
 3. Actualiza el estado, novedad, fecha de entrega e imagen de esas guías
-4. Las guías con estado ENTREGADO o CON NOVEDAD no se vuelven a tocar
+4. Las guías con estado ENTREGADO no se vuelven a tocar (CON NOVEDAD sí se sigue actualizando)
 
 ## Infraestructura
 
@@ -72,7 +72,7 @@ El proxy local (`proxy_forwarder.py`) se ejecuta dentro del runner de GitHub Act
 
 ### Campos que se actualizan automáticamente
 
-Cuando una guía ya existe en la base y no está ENTREGADA ni CON NOVEDAD, se actualizan estos 4 campos:
+Cuando una guía ya existe en la base y su estado NO es `ENTREGADO`, se actualizan estos 4 campos (incluye `CON NOVEDAD`):
 
 - **estado**
 - **novedad**
@@ -228,7 +228,8 @@ curl.exe -x "http://integra:TU_CLAVE@64.227.95.70:3128" -s -o NUL -w "Status: %{
 
 ## Comportamiento con guías pendientes
 
-- Una guía se considera **finalizada** cuando su estado es ENTREGADO o CON NOVEDAD
+- Una guía se considera **finalizada** solo cuando su estado es `ENTREGADO`
+- Las guías `CON NOVEDAD` u otros estados se consideran **pendientes** y se siguen actualizando
 - Las guías pendientes se re-consultan automáticamente hasta 20 días atrás
 - Si una guía lleva más de 20 días pendiente, usar el modo manual con el rango de fechas
 - Las fechas vacías, `0000-00-00`, `NaN` o `NaT` se guardan como NULL en la base

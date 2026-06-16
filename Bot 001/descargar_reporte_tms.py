@@ -536,7 +536,7 @@ def upsert_csv(archivo_csv, config_db, excluir_servicios=None, excluir_clientes=
     cur.execute("SELECT COUNT(*) FROM informe_guias_tms")
     total = cur.fetchone()[0]
 
-    cur.execute("SELECT COUNT(*) FROM informe_guias_tms WHERE estado NOT IN ('ENTREGADO', 'CON NOVEDAD')")
+    cur.execute("SELECT COUNT(*) FROM informe_guias_tms WHERE estado NOT IN ('ENTREGADO')")
     pendientes = cur.fetchone()[0]
 
     log.info(f"Procesadas {filas_total} filas en {len(lotes)} lotes")
@@ -555,7 +555,7 @@ def obtener_fechas_pendientes(config_db):
     cur.execute("""
         SELECT MIN(fecha_emision), MAX(fecha_emision), COUNT(*)
         FROM informe_guias_tms
-        WHERE estado NOT IN ('ENTREGADO', 'CON NOVEDAD')
+        WHERE estado NOT IN ('ENTREGADO')
           AND fecha_emision IS NOT NULL
     """)
     resultado = cur.fetchone()
@@ -639,7 +639,7 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_servicios=
             continue
 
     # Contar pendientes restantes
-    cur.execute("SELECT COUNT(*) FROM informe_guias_tms WHERE estado NOT IN ('ENTREGADO', 'CON NOVEDAD')")
+    cur.execute("SELECT COUNT(*) FROM informe_guias_tms WHERE estado NOT IN ('ENTREGADO')")
     pendientes_restantes = cur.fetchone()[0]
 
     log.info(f"Historico procesado: {actualizados} filas")
