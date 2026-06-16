@@ -14,6 +14,10 @@
         "PORTABILIDAD PREPAGO",
         "CORREO INTERNO"
     ],
+    "excluir_clientes": [
+        "GESTION DE RECAUDO Y RENTAS",
+        "FAMISANAR"
+    ],
     "postgresql": {
         "host": "dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com",
         "port": 5432,
