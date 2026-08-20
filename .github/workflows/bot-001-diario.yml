@@ -5,11 +5,22 @@ on:
     # Corre a las 07:05 PM UTC = 2:05 AM hora Colombia (UTC-5)
     - cron: '05 07 * * *'
   workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
+    inputs:
+      fecha_inicio:
+        description: 'Fecha inicio YYYY-MM-DD (vacío = ayer, corrida normal)'
+        required: false
+        default: ''
+      fecha_fin:
+        description: 'Fecha fin YYYY-MM-DD (vacío = igual a inicio)'
+        required: false
+        default: ''
 
 jobs:
   descargar-informe:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 30 min para la corrida diaria; 90 para corridas manuales con rango de
+    # recuperación (días atrasados = CSV grande + espera de descarga más larga).
+    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && 90 || 30 }}
 
     steps:
       - name: Checkout código
@@ -168,7 +179,17 @@ jobs:
         run: |
           mkdir -p /tmp/tms_downloads
           cd "Bot 001"
-          python descargar_reporte_tms.py
+          # Corrida manual con rango de fechas (recuperación) o corrida diaria (ayer).
+          if [ -n "${{ github.event.inputs.fecha_inicio }}" ]; then
+            FECHAS="${{ github.event.inputs.fecha_inicio }}"
+            if [ -n "${{ github.event.inputs.fecha_fin }}" ]; then
+              FECHAS="$FECHAS ${{ github.event.inputs.fecha_fin }}"
+            fi
+            echo "Corrida manual de recuperación: $FECHAS"
+            python descargar_reporte_tms.py $FECHAS
+          else
+            python descargar_reporte_tms.py
+          fi
         env:
           HEADLESS: "true"
           PROXY_LOCAL: "http://localhost:8888"
