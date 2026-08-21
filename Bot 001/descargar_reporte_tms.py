@@ -558,16 +558,24 @@ def upsert_csv(archivo_csv, config_db, excluir_servicios=None, excluir_clientes=
 
 
 def obtener_fechas_pendientes(config_db):
-    """Consulta la DB y devuelve la fecha minima de las guias pendientes."""
+    """Consulta la DB y devuelve la fecha minima de las guias pendientes.
+
+    Solo guias dentro de la ventana de MAX_DIAS_HISTORICO: las mas viejas son
+    historico muerto (anuladas/estados que el TMS ya no reporta) y forzaban
+    descargas gigantes inutiles. Cualquier pendiente mas viejo que la ventana
+    queda como esta (se rescata con corrida manual por rango de fechas).
+    """
     conn = conectar_db(config_db)
     cur = conn.cursor()
 
+    limite = (ahora_colombia() - timedelta(days=MAX_DIAS_HISTORICO)).strftime("%Y-%m-%d")
     cur.execute("""
         SELECT MIN(fecha_emision), MAX(fecha_emision), COUNT(*)
         FROM informe_guias_tms
         WHERE estado NOT IN ('ENTREGADO')
           AND fecha_emision IS NOT NULL
-    """)
+          AND fecha_emision >= %s
+    """, (limite,))
     resultado = cur.fetchone()
 
     cur.close()
@@ -747,17 +755,25 @@ def main():
         log.info("=" * 50)
         log.info("Actualizando guias pendientes de dias anteriores")
         log.info("=" * 50)
+        error_pendientes = None
         try:
             driver = crear_navegador(carpeta_destino)
             hacer_login(driver, config["tms"]["url"], config["tms"]["usuario"], config["tms"]["clave"])
             actualizar_pendientes(driver, carpeta_destino, config["postgresql"], excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
         except Exception as e:
+            error_pendientes = e
             log.error(f"Error actualizando pendientes: {e}")
         finally:
             if driver:
                 time.sleep(3)
                 driver.quit()
                 log.info("Navegador cerrado")
+
+        # La corrida del dia NO se marca exitosa si el refresco de pendientes
+        # fallo: antes el error quedaba solo en el log y Actions salia verde
+        # sin que nadie notara que las guias viejas nunca se actualizaron.
+        if error_pendientes:
+            raise error_pendientes
 
     log.info("=" * 50)
     log.info("Proceso completado")
