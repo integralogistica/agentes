@@ -64,6 +64,7 @@ El proxy local (`proxy_forwarder.py`) se ejecuta dentro del runner de GitHub Act
 | novedad | TEXT | Última novedad registrada |
 | fecha_emision | DATE | Fecha de emisión |
 | fecha_preferente | DATE | Fecha preferente de entrega |
+| fecha_cita | **TEXT** | Fecha de cita — se guarda CRUDA porque el TMS le han metido basura (zonas Z_CIU/ZONA 10-0, teléfonos, ciudades; 0 % fechas válidas hasta 2026-07). Cuando la operación digite fechas reales llegará `YYYY-MM-DD` y se podrá tipar/migrar |
 | fecha_entrega | DATE | Fecha real de entrega |
 | fecha_digitalizacion | DATE | Fecha de digitalización |
 | planilla | TEXT | Número de planilla |
@@ -72,12 +73,13 @@ El proxy local (`proxy_forwarder.py`) se ejecuta dentro del runner de GitHub Act
 
 ### Campos que se actualizan automáticamente
 
-Cuando una guía ya existe en la base y su estado NO es `ENTREGADO`, se actualizan estos 4 campos (incluye `CON NOVEDAD`):
+Cuando una guía ya existe en la base y su estado NO es `ENTREGADO`, se actualizan estos 5 campos (incluye `CON NOVEDAD`):
 
 - **estado**
 - **novedad**
 - **fecha_entrega**
 - **enlace_imagen**
+- **fecha_cita** (2026-08-21: puede corregirse/llenarse después de emitida)
 
 ## Archivos de esta carpeta
 

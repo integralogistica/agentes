@@ -71,6 +71,9 @@ COLUMNAS = {
     "Novedad":                           "novedad",
     " Fecha  Emision ":                  "fecha_emision",
     " Fecha  Preferente ":               "fecha_preferente",
+    # fecha_cita NO va en COLUMNAS_FECHA: el TMS le ha metido basura, se guarda
+    # TEXT crudo (sin normalizar a NULL) para poder auditarla después.
+    " Fecha  Cita ":                     "fecha_cita",
     " Fecha  Entrega ":                  "fecha_entrega",
     " Fecha  Digitalizacion ":           "fecha_digitalizacion",
     "Planilla":                          "planilla",
@@ -81,7 +84,8 @@ COLUMNAS = {
 COLUMNAS_FECHA = {"fecha_emision", "fecha_preferente", "fecha_entrega", "fecha_digitalizacion"}
 
 # Campos que se actualizan cuando una guia pendiente cambia de estado
-CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen"]
+# (fecha_cita incluida 2026-08-21: puede corregirse/llenarse después)
+CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen", "fecha_cita"]
 
 # Maximo de dias hacia atras para consultar pendientes (para no demorar demasiado)
 MAX_DIAS_HISTORICO = 20
@@ -481,6 +485,12 @@ def crear_tabla_si_no_existe(cur):
     );
     """
     cur.execute(crear_tabla)
+    # La tabla ya existía sin fecha_cita → CREATE IF NOT EXISTS es no-op y la
+    # columna nunca aparecería. Se agrega de forma idempotente (TEXT: puede
+    # traer basura, no se tipa como DATE todavía).
+    cur.execute(
+        'ALTER TABLE informe_guias_tms ADD COLUMN IF NOT EXISTS "fecha_cita" TEXT;'
+    )
     log.info("Tabla informe_guias_tms lista")
 
 
