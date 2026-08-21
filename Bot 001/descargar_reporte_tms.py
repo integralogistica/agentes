@@ -173,6 +173,17 @@ def crear_navegador(carpeta_descarga):
 
 
 def hacer_login(driver, url, usuario, clave):
+    # Idempotente: si tras cargar la url ya hay sesion (existe el menu), no
+    # se re-loguea — hace login solo cuando el TMS muestra el formulario.
+    try:
+        from selenium.webdriver.common.by import By as _By
+        menus = driver.find_elements(_By.XPATH, "//*[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'gestion de informes')]")
+        if menus:
+            log.info("Sesion ya activa (menu visible), no se re-loguea")
+            return
+    except Exception:
+        pass
+
     log.info("Iniciando sesion en el TMS...")
 
     # Reintentar carga de pagina si falla
@@ -500,6 +511,16 @@ def crear_tabla_si_no_existe(cur):
     log.info("Tabla informe_guias_tms lista")
 
 
+def contar_filas_csv(archivo_csv, excluir_servicios=None, excluir_clientes=None) -> int:
+    """Cuenta las filas válidas que entrarian del CSV (tras los filtros),
+    sin tocar la base — para el resumen final de la corrida."""
+    try:
+        df = leer_csv(archivo_csv, excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
+        return len(df)
+    except Exception:
+        return 0
+
+
 def upsert_csv(archivo_csv, config_db, excluir_servicios=None, excluir_clientes=None):
     """Inserta guías nuevas y actualiza las que ya existen (UPSERT) - OPTIMIZADO CON BATCH."""
     df = leer_csv(archivo_csv, excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
@@ -557,7 +578,6 @@ def upsert_csv(archivo_csv, config_db, excluir_servicios=None, excluir_clientes=
 
     log.info(f"Procesadas {filas_total} filas en {len(lotes)} lotes")
     log.info(f"Total en tabla: {total} | Pendientes de actualizar: {pendientes}")
-
     cur.close()
     conn.close()
     return pendientes
@@ -589,14 +609,20 @@ def obtener_fechas_pendientes(config_db):
     return resultado  # (fecha_min, fecha_max, cantidad)
 
 
-def actualizar_pendientes(driver, carpeta_destino, config_db, url_tms, excluir_servicios=None, excluir_clientes=None):
-    """Descarga el historico de guias pendientes y las actualiza en la DB."""
+def actualizar_pendientes(driver, carpeta_destino, config_db, url_tms, usuario_tms, clave_tms, excluir_servicios=None, excluir_clientes=None):
+    """
+    Descarga el historico de guias pendientes y las actualiza en la DB.
+
+    Rehace login en cada intento de trozo (la sesion caduca en corridas
+    largas). Devuelve (actualizados_total, trozos_ok, trozos_total) para el
+    resumen final de la corrida.
+    """
     # Consultar que fechas tienen guias pendientes
     fecha_min, fecha_max, cantidad = obtener_fechas_pendientes(config_db)
 
     if cantidad == 0:
         log.info("No hay guias pendientes de actualizar")
-        return
+        return 0, 0, 0
 
     log.info(f"Guias pendientes: {cantidad} (desde {fecha_min} hasta {fecha_max})")
 
@@ -613,7 +639,7 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, url_tms, excluir_s
     # Si el rango es solo ayer, no necesita descarga extra (ya se hizo)
     if fecha_inicio >= ayer:
         log.info("Las guias pendientes ya estan cubiertas en la descarga diaria")
-        return
+        return 0, 0, 0
 
     # El TMS no produce a tiempo un CSV del rango completo → se pide en TROZOS
     # de TROZO_DIAS. Cada trozo se sube a PG apenas baja; si un trozo falla,
@@ -643,8 +669,10 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, url_tms, excluir_s
                 limpiar_previos(carpeta_destino)
 
                 # Reset entre trozos: cerrar ventanas del informe anterior,
-                # volver a la principal y recargar el home (el menú de
-                # GESTIÓN DE INFORMES solo está en la pantalla principal).
+                # volver a la principal y recargar el home. Se REHACE LOGIN en
+                # cada intento: la sesion del TMS caduca durante corridas
+                # largas y el menu GESTION DE INFORMES solo existe logueado
+                # (falla tipica: 9 trozos con timeout instantaneo en 2 min).
                 handles = driver.window_handles
                 for h in handles[1:]:
                     try:
@@ -655,6 +683,7 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, url_tms, excluir_s
                 driver.switch_to.window(handles[0])
                 driver.get(url_tms)
                 time.sleep(3)
+                hacer_login(driver, url_tms, usuario_tms, clave_tms)
 
                 navegar_a_informe(driver)
                 setear_fechas_y_buscar(driver, t_ini, t_fin)
@@ -663,7 +692,7 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, url_tms, excluir_s
                 trozo_ok = True
                 break
             except Exception as e:
-                log.warning(f"Trozo {n} intento {intento} fallo: {e}")
+                log.warning(f"Trozo {n} intento {intento} fallo: {type(e).__name__}: {e}")
                 if intento == 2:
                     trozos_fallidos.append((t_ini, t_fin))
 
@@ -724,6 +753,7 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, url_tms, excluir_s
             + ", ".join(f"{a} a {b}" for a, b in trozos_fallidos)
             + " — los demas quedaron actualizados; la proxima corrida retoma estos rangos."
         )
+    return actualizados_total, len(trozos), len(trozos)
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -800,25 +830,33 @@ def main():
         log.info("Navegador cerrado")
 
     # ══ PASO 2: Guardar en PostgreSQL (UPSERT) ══════════════════════════════
+    filas_diario = 0
     pendientes = 0
     if archivo and "postgresql" in config:
         log.info("Guardando en PostgreSQL")
         log.info("=" * 50)
         try:
+            filas_diario = contar_filas_csv(archivo)
             pendientes = upsert_csv(archivo, config["postgresql"], excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
         except Exception as e:
             log.error(f"Error en PostgreSQL: {e}")
 
     # ══ PASO 3: Actualizar guias pendientes (solo en modo automatico) ═════
+    hist_filas = 0
+    hist_trozos_ok = hist_trozos_total = 0
+    error_pendientes = None
     if modo == "AUTOMATICO" and pendientes > 0 and "postgresql" in config:
         log.info("=" * 50)
         log.info("Actualizando guias pendientes de dias anteriores")
         log.info("=" * 50)
-        error_pendientes = None
         try:
             driver = crear_navegador(carpeta_destino)
             hacer_login(driver, config["tms"]["url"], config["tms"]["usuario"], config["tms"]["clave"])
-            actualizar_pendientes(driver, carpeta_destino, config["postgresql"], config["tms"]["url"], excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
+            hist_filas, hist_trozos_ok, hist_trozos_total = actualizar_pendientes(
+                driver, carpeta_destino, config["postgresql"], config["tms"]["url"],
+                config["tms"]["usuario"], config["tms"]["clave"],
+                excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes,
+            )
         except Exception as e:
             error_pendientes = e
             log.error(f"Error actualizando pendientes: {e}")
@@ -828,15 +866,35 @@ def main():
                 driver.quit()
                 log.info("Navegador cerrado")
 
+    # ══ RESUMEN FINAL (siempre, exito o error) ═════════════════════════════
+    def resumen_final():
+        log.info("=" * 50)
+        log.info("RESUMEN DE LA CORRIDA")
+        log.info("=" * 50)
+        log.info(f"Modo: {modo} | Rango diario: {fecha_inicio} a {fecha_fin}")
+        log.info(f"Descarga del dia: {'OK' if archivo else 'FALLO'} | {filas_diario} guias del dia")
+        log.info(f"Pendientes detectados al inicio: {pendientes}")
+        if modo == "AUTOMATICO":
+            if hist_trozos_total > 0:
+                estado_h = f"OK ({hist_trozos_ok}/{hist_trozos_total} trozos)" if not error_pendientes \
+                    else f"PARCIAL/ERROR ({hist_trozos_ok}/{hist_trozos_total} trozos)"
+            else:
+                estado_h = "OK (sin historico pendiente)" if not error_pendientes else f"ERROR: {error_pendientes}"
+            log.info(f"Historico de pendientes: {estado_h} | {hist_filas} filas actualizadas")
+        if error_pendientes:
+            log.info("RESULTADO: ❌ CON ERRORES (ver arriba)")
+        else:
+            log.info("RESULTADO: ✅ COMPLETADO")
+        log.info("=" * 50)
+
+    try:
         # La corrida del dia NO se marca exitosa si el refresco de pendientes
         # fallo: antes el error quedaba solo en el log y Actions salia verde
         # sin que nadie notara que las guias viejas nunca se actualizaron.
         if error_pendientes:
             raise error_pendientes
-
-    log.info("=" * 50)
-    log.info("Proceso completado")
-    log.info("=" * 50)
+    finally:
+        resumen_final()
 
 
 if __name__ == "__main__":
