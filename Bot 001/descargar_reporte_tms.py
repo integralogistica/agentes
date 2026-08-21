@@ -589,7 +589,7 @@ def obtener_fechas_pendientes(config_db):
     return resultado  # (fecha_min, fecha_max, cantidad)
 
 
-def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_servicios=None, excluir_clientes=None):
+def actualizar_pendientes(driver, carpeta_destino, config_db, url_tms, excluir_servicios=None, excluir_clientes=None):
     """Descarga el historico de guias pendientes y las actualiza en la DB."""
     # Consultar que fechas tienen guias pendientes
     fecha_min, fecha_max, cantidad = obtener_fechas_pendientes(config_db)
@@ -633,14 +633,45 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_servicios=
     log.info(f"Historico en {len(trozos)} trozos de {TROZO_DIAS} dias: {fecha_inicio} a {ayer}")
 
     actualizados_total = 0
+    trozos_fallidos = []
     for n, (t_ini, t_fin) in enumerate(trozos, 1):
         log.info(f"── Trozo {n}/{len(trozos)}: {t_ini} a {t_fin} " + "=" * 30)
-        limpiar_previos(carpeta_destino)
 
-        navegar_a_informe(driver)
-        setear_fechas_y_buscar(driver, t_ini, t_fin)
-        descargar_csv(driver)
-        archivo = esperar_descarga(carpeta_destino, timeout=300)
+        trozo_ok = False
+        for intento in (1, 2):
+            try:
+                limpiar_previos(carpeta_destino)
+
+                # Reset entre trozos: cerrar ventanas del informe anterior,
+                # volver a la principal y recargar el home (el menú de
+                # GESTIÓN DE INFORMES solo está en la pantalla principal).
+                handles = driver.window_handles
+                for h in handles[1:]:
+                    try:
+                        driver.switch_to.window(h)
+                        driver.close()
+                    except Exception:
+                        pass
+                driver.switch_to.window(handles[0])
+                driver.get(url_tms)
+                time.sleep(3)
+
+                navegar_a_informe(driver)
+                setear_fechas_y_buscar(driver, t_ini, t_fin)
+                descargar_csv(driver)
+                archivo = esperar_descarga(carpeta_destino, timeout=300)
+                trozo_ok = True
+                break
+            except Exception as e:
+                log.warning(f"Trozo {n} intento {intento} fallo: {e}")
+                if intento == 2:
+                    trozos_fallidos.append((t_ini, t_fin))
+
+        if not trozo_ok:
+            # Los demas trozos pueden funcionar; el fallo se reporta al final
+            # y la corrida del dia siguiente retoma este rango (el pendiente
+            # mas viejo seguira siendo de aqui).
+            continue
 
         df = leer_csv(archivo, excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
         log.info(f"Trozo {n}: {len(df)} filas leidas")
@@ -658,7 +689,13 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_servicios=
         ON CONFLICT (guia) DO UPDATE SET {update_set}
         """
 
-        datos = [tuple(fila.values) for _, fila in df.iterrows()]
+        # Limpiar NaN/float antes del batch (mismo fix que upsert_csv): pandas
+        # devuelve float('nan') en celdas vacias y psycopg2 lo manda como
+        # 'NaN'::float, que Postgres rechaza en columnas DATE/TEXT.
+        datos = [
+            tuple(None if (isinstance(v, float) and v != v) else v for v in fila.values)
+            for _, fila in df.iterrows()
+        ]
 
         BATCH_SIZE = 1000
         lotes = [datos[i:i + BATCH_SIZE] for i in range(0, len(datos), BATCH_SIZE)]
@@ -681,6 +718,12 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_servicios=
         log.info(f"Trozo {n} procesado: {actualizados} filas (acumulado: {actualizados_total})")
 
     log.info(f"Historico completo procesado: {actualizados_total} filas")
+    if trozos_fallidos:
+        raise Exception(
+            f"{len(trozos_fallidos)} trozo(s) fallaron tras reintentos: "
+            + ", ".join(f"{a} a {b}" for a, b in trozos_fallidos)
+            + " — los demas quedaron actualizados; la proxima corrida retoma estos rangos."
+        )
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -775,7 +818,7 @@ def main():
         try:
             driver = crear_navegador(carpeta_destino)
             hacer_login(driver, config["tms"]["url"], config["tms"]["usuario"], config["tms"]["clave"])
-            actualizar_pendientes(driver, carpeta_destino, config["postgresql"], excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
+            actualizar_pendientes(driver, carpeta_destino, config["postgresql"], config["tms"]["url"], excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
         except Exception as e:
             error_pendientes = e
             log.error(f"Error actualizando pendientes: {e}")
