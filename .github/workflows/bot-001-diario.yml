@@ -18,9 +18,10 @@ on:
 jobs:
   descargar-informe:
     runs-on: ubuntu-latest
-    # 30 min para la corrida diaria; 90 para corridas manuales con rango de
-    # recuperación (días atrasados = CSV grande + espera de descarga más larga).
-    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && 90 || 30 }}
+    # 60 min para la corrida diaria (el paso de pendientes ahora baja hasta 60
+    # días atrás = CSV grande); 90 para corridas manuales con rango de
+    # recuperación explícito.
+    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && 90 || 60 }}
 
     steps:
       - name: Checkout código

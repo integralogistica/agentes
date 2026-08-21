@@ -88,7 +88,7 @@ COLUMNAS_FECHA = {"fecha_emision", "fecha_preferente", "fecha_entrega", "fecha_d
 CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen", "fecha_cita"]
 
 # Maximo de dias hacia atras para consultar pendientes (para no demorar demasiado)
-MAX_DIAS_HISTORICO = 20
+MAX_DIAS_HISTORICO = 60
 
 # Zona horaria Colombia (UTC-5)
 TZ_COLOMBIA = timezone(timedelta(hours=-5))
@@ -330,7 +330,7 @@ def setear_fechas_y_buscar(driver, fecha_inicio, fecha_fin):
 
     # Esperar mas tiempo si el rango es mayor
     dias = (datetime.strptime(fecha_fin, "%Y-%m-%d") - datetime.strptime(fecha_inicio, "%Y-%m-%d")).days + 1
-    espera = min(dias * 3 + 3, 120)  # 3 seg por dia, max 120 seg
+    espera = min(dias * 3 + 3, 300)  # 3 seg por dia, max 300 seg (rangos de 60 dias)
     log.info(f"Esperando {espera} segundos ({dias} dias de rango)...")
     time.sleep(espera)
 
