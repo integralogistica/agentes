@@ -90,6 +90,12 @@ CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen", "fec
 # Maximo de dias hacia atras para consultar pendientes (para no demorar demasiado)
 MAX_DIAS_HISTORICO = 60
 
+# El TMS no genera a tiempo un CSV de 60 dias de una sola vez (timeout de
+# descarga). El historico de pendientes se pide en TROZOS de esta cantidad de
+# dias: cada trozo navega+busca+descarga+sube a PG, asi lo que ya subio no se
+# pierde si un trozo posterior falla (2026-08-21).
+TROZO_DIAS = 7
+
 # Zona horaria Colombia (UTC-5)
 TZ_COLOMBIA = timezone(timedelta(hours=-5))
 
@@ -609,62 +615,72 @@ def actualizar_pendientes(driver, carpeta_destino, config_db, excluir_servicios=
         log.info("Las guias pendientes ya estan cubiertas en la descarga diaria")
         return
 
-    # Descargar el historico
-    log.info(f"Descargando historico: {fecha_inicio} a {ayer}")
-    limpiar_previos(carpeta_destino)
+    # El TMS no produce a tiempo un CSV del rango completo → se pide en TROZOS
+    # de TROZO_DIAS. Cada trozo se sube a PG apenas baja; si un trozo falla,
+    # lo anterior queda salvado y el reintento automatico retoma desde la
+    # fecha del pendiente mas viejo que quede.
+    from datetime import datetime as _dt
 
-    navegar_a_informe(driver)
-    setear_fechas_y_buscar(driver, fecha_inicio, ayer)
-    descargar_csv(driver)
-    archivo = esperar_descarga(carpeta_destino, timeout=300)
+    d_ini = _dt.strptime(fecha_inicio, "%Y-%m-%d").date()
+    d_fin = _dt.strptime(ayer, "%Y-%m-%d").date()
+    trozos = []
+    cursor = d_ini
+    while cursor <= d_fin:
+        fin_trozo = min(cursor + timedelta(days=TROZO_DIAS - 1), d_fin)
+        trozos.append((cursor.strftime("%Y-%m-%d"), fin_trozo.strftime("%Y-%m-%d")))
+        cursor = fin_trozo + timedelta(days=1)
 
-    # Leer CSV y hacer UPSERT (OPTIMIZADO CON BATCH)
-    df = leer_csv(archivo, excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
-    log.info(f"Historico: {len(df)} filas leidas")
+    log.info(f"Historico en {len(trozos)} trozos de {TROZO_DIAS} dias: {fecha_inicio} a {ayer}")
 
-    conn = conectar_db(config_db)
-    conn.autocommit = False
-    cur = conn.cursor()
+    actualizados_total = 0
+    for n, (t_ini, t_fin) in enumerate(trozos, 1):
+        log.info(f"── Trozo {n}/{len(trozos)}: {t_ini} a {t_fin} " + "=" * 30)
+        limpiar_previos(carpeta_destino)
 
-    cols = '", "'.join(df.columns)
-    placeholders = ", ".join(["%s"] * len(df.columns))
-    update_set = ", ".join([f'"{c}" = EXCLUDED."{c}"' for c in CAMPOS_ACTUALIZAR])
-    upsert_sql = f"""
-    INSERT INTO informe_guias_tms ("{cols}")
-    VALUES ({placeholders})
-    ON CONFLICT (guia) DO UPDATE SET {update_set}
-    """
+        navegar_a_informe(driver)
+        setear_fechas_y_buscar(driver, t_ini, t_fin)
+        descargar_csv(driver)
+        archivo = esperar_descarga(carpeta_destino, timeout=300)
 
-    # Preparar datos en lotes
-    datos = [tuple(fila.values) for _, fila in df.iterrows()]
+        df = leer_csv(archivo, excluir_servicios=excluir_servicios, excluir_clientes=excluir_clientes)
+        log.info(f"Trozo {n}: {len(df)} filas leidas")
 
-    # Ejecutar en lotes de 1000 filas
-    BATCH_SIZE = 1000
-    lotes = [datos[i:i + BATCH_SIZE] for i in range(0, len(datos), BATCH_SIZE)]
+        conn = conectar_db(config_db)
+        conn.autocommit = False
+        cur = conn.cursor()
 
-    log.info(f"Enviando {len(datos)} filas en {len(lotes)} lotes...")
+        cols = '", "'.join(df.columns)
+        placeholders = ", ".join(["%s"] * len(df.columns))
+        update_set = ", ".join([f'"{c}" = EXCLUDED."{c}"' for c in CAMPOS_ACTUALIZAR])
+        upsert_sql = f"""
+        INSERT INTO informe_guias_tms ("{cols}")
+        VALUES ({placeholders})
+        ON CONFLICT (guia) DO UPDATE SET {update_set}
+        """
 
-    actualizados = 0
-    for i, lote in enumerate(lotes, 1):
-        try:
-            execute_batch(cur, upsert_sql, lote, page_size=BATCH_SIZE)
-            conn.commit()  # Commit después de cada lote exitoso
-            actualizados += len(lote)
-            log.info(f"Lote {i}/{len(lotes)} completado ({len(lote)} filas)")
-        except Exception as e:
-            log.warning(f"Error en lote {i}: {e}")
-            conn.rollback()  # Solo deshace este lote
-            continue
+        datos = [tuple(fila.values) for _, fila in df.iterrows()]
 
-    # Contar pendientes restantes
-    cur.execute("SELECT COUNT(*) FROM informe_guias_tms WHERE estado NOT IN ('ENTREGADO')")
-    pendientes_restantes = cur.fetchone()[0]
+        BATCH_SIZE = 1000
+        lotes = [datos[i:i + BATCH_SIZE] for i in range(0, len(datos), BATCH_SIZE)]
+        log.info(f"Enviando {len(datos)} filas en {len(lotes)} lotes...")
 
-    log.info(f"Historico procesado: {actualizados} filas")
-    log.info(f"Pendientes restantes: {pendientes_restantes}")
+        actualizados = 0
+        for i, lote in enumerate(lotes, 1):
+            try:
+                execute_batch(cur, upsert_sql, lote, page_size=BATCH_SIZE)
+                conn.commit()  # Commit después de cada lote exitoso
+                actualizados += len(lote)
+            except Exception as e:
+                log.warning(f"Error en lote {i}: {e}")
+                conn.rollback()  # Solo deshace este lote
+                continue
 
-    cur.close()
-    conn.close()
+        cur.close()
+        conn.close()
+        actualizados_total += actualizados
+        log.info(f"Trozo {n} procesado: {actualizados} filas (acumulado: {actualizados_total})")
+
+    log.info(f"Historico completo procesado: {actualizados_total} filas")
 
 
 # ═════════════════════════════════════════════════════════════════════════════
