@@ -88,7 +88,7 @@ COLUMNAS_FECHA = {"fecha_emision", "fecha_preferente", "fecha_entrega", "fecha_d
 CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen", "fecha_cita"]
 
 # Maximo de dias hacia atras para consultar pendientes (para no demorar demasiado)
-MAX_DIAS_HISTORICO = 60
+MAX_DIAS_HISTORICO = 90
 
 # El TMS no genera a tiempo un CSV de 60 dias de una sola vez (timeout de
 # descarga). El historico de pendientes se pide en TROZOS de esta cantidad de

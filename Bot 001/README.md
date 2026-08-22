@@ -29,7 +29,7 @@ GitHub Actions usa un proxy con IP fija de Digital Ocean para que el TMS permita
 ### PASO 2 — Actualización de pendientes (si aplica)
 
 1. Consulta la DB: ¿hay guías pendientes de días anteriores?
-2. Si hay, descarga el rango de fechas necesario (hasta 60 días atrás)
+2. Si hay, descarga el rango de fechas necesario (hasta 90 días atrás)
 3. Actualiza el estado, novedad, fecha de entrega e imagen de esas guías
 4. Las guías con estado ENTREGADO no se vuelven a tocar (CON NOVEDAD sí se sigue actualizando)
 
@@ -122,7 +122,7 @@ El formato de fecha es siempre **AÑO-MES-DÍA**: `2026-06-05`
 | Característica | Manual (con fechas) | Automático (sin fechas) |
 |---|---|---|
 | **Descarga fechas específicas** | ✅ Sí | ❌ No (solo ayer) |
-| **Actualiza guías pendientes** | ❌ No | ✅ Sí (hasta 60 días atrás) |
+| **Actualiza guías pendientes** | ❌ No | ✅ Sí (hasta 90 días atrás) |
 | **Uso típico** | Cargar histórico / correcciones | Ejecución diaria programada |
 
 **Importante**: Si necesitas actualizar guías pendientes de días anteriores, ejecuta en modo automático (sin parámetros) después de cargar el histórico.
@@ -232,7 +232,7 @@ curl.exe -x "http://integra:TU_CLAVE@64.227.95.70:3128" -s -o NUL -w "Status: %{
 
 - Una guía se considera **finalizada** solo cuando su estado es `ENTREGADO`
 - Las guías `CON NOVEDAD` u otros estados se consideran **pendientes** y se siguen actualizando
-- Las guías pendientes se re-consultan automáticamente hasta 60 días atrás
+- Las guías pendientes se re-consultan automáticamente hasta 90 días atrás
 - Si una guía lleva más de 60 días pendiente, usar el modo manual con el rango de fechas
 - Las fechas vacías, `0000-00-00`, `NaN` o `NaT` se guardan como NULL en la base
 
