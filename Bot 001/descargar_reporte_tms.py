@@ -77,6 +77,7 @@ COLUMNAS = {
     " Fecha  Entrega ":                  "fecha_entrega",
     " Fecha  Digitalizacion ":           "fecha_digitalizacion",
     "Planilla":                          "planilla",
+    "Placa":                             "placa",
     " Enlace  Imagen  Digitalizada ":    "enlace_imagen",
     "Descarga":                          "descarga",
 }
@@ -84,8 +85,9 @@ COLUMNAS = {
 COLUMNAS_FECHA = {"fecha_emision", "fecha_preferente", "fecha_entrega", "fecha_digitalizacion"}
 
 # Campos que se actualizan cuando una guia pendiente cambia de estado
-# (fecha_cita incluida 2026-08-21: puede corregirse/llenarse después)
-CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen", "fecha_cita"]
+# (fecha_cita incluida 2026-08-21: puede corregirse/llenarse después;
+#  placa incluida 2026-10-30: una guía puede re-expedirse con otro vehículo)
+CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen", "fecha_cita", "placa"]
 
 # Maximo de dias hacia atras para consultar pendientes (para no demorar demasiado)
 MAX_DIAS_HISTORICO = 90
@@ -507,6 +509,12 @@ def crear_tabla_si_no_existe(cur):
     # traer basura, no se tipa como DATE todavía).
     cur.execute(
         'ALTER TABLE informe_guias_tms ADD COLUMN IF NOT EXISTS "fecha_cita" TEXT;'
+    )
+    # Igual que fecha_cita: la tabla ya existía sin placa, se agrega de forma
+    # idempotente. Las filas históricas quedan NULL hasta que se re-corra el
+    # rango de fechas (el UPSERT actualiza el campo).
+    cur.execute(
+        'ALTER TABLE informe_guias_tms ADD COLUMN IF NOT EXISTS "placa" TEXT;'
     )
     log.info("Tabla informe_guias_tms lista")
 

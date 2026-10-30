@@ -68,6 +68,7 @@ El proxy local (`proxy_forwarder.py`) se ejecuta dentro del runner de GitHub Act
 | fecha_entrega | DATE | Fecha real de entrega |
 | fecha_digitalizacion | DATE | Fecha de digitalización |
 | planilla | TEXT | Número de planilla |
+| placa | TEXT | Placa del vehículo (2026-10-30; históricos en NULL hasta re-correr el rango) |
 | enlace_imagen | TEXT | URL de la imagen de entrega |
 | descarga | TEXT | Tipo de descarga |
 
@@ -80,6 +81,7 @@ Cuando una guía ya existe en la base y su estado NO es `ENTREGADO`, se actualiz
 - **fecha_entrega**
 - **enlace_imagen**
 - **fecha_cita** (2026-08-21: puede corregirse/llenarse después de emitida)
+- **placa** (2026-10-30: una guía puede re-expedirse con otro vehículo)
 
 ## Archivos de esta carpeta
 
