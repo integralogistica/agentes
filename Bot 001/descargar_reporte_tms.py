@@ -76,18 +76,31 @@ COLUMNAS = {
     " Fecha  Cita ":                     "fecha_cita",
     " Fecha  Entrega ":                  "fecha_entrega",
     " Fecha  Digitalizacion ":           "fecha_digitalizacion",
+    # (2026-10-31) Origen/dpto completos + fecha de carga: los necesita el OT
+    # real (servicio técnico por RECOLECCIÓN usa la ciudad ORIGEN; el caso EN
+    # ACONDICIONAMIENTO cuenta la promesa desde la fecha de CARGA).
+    " Ciudad  Origen ":                  "ciudad_origen",
+    " Departamento  Origen ":            "departamento_origen",
+    " Departamento  Destino ":           "departamento_destino",
+    " Fecha  Carga ":                    "fecha_carga",
     "Planilla":                          "planilla",
     "Placa":                             "placa",
     " Enlace  Imagen  Digitalizada ":    "enlace_imagen",
     "Descarga":                          "descarga",
 }
 
-COLUMNAS_FECHA = {"fecha_emision", "fecha_preferente", "fecha_entrega", "fecha_digitalizacion"}
+COLUMNAS_FECHA = {"fecha_emision", "fecha_preferente", "fecha_entrega", "fecha_digitalizacion", "fecha_carga"}
 
 # Campos que se actualizan cuando una guia pendiente cambia de estado
 # (fecha_cita incluida 2026-08-21: puede corregirse/llenarse después;
-#  placa incluida 2026-10-30: una guía puede re-expedirse con otro vehículo)
-CAMPOS_ACTUALIZAR = ["estado", "novedad", "fecha_entrega", "enlace_imagen", "fecha_cita", "placa"]
+#  placa incluida 2026-10-30: una guía puede re-expedirse con otro vehículo;
+#  origen/dpto/carga incluidos 2026-10-31: son estables pero DEBEN estar aquí
+#  para que re-correr un rango histórico (backfill) llene las filas existentes
+#  — el ON CONFLICT solo actualiza lo que está en esta lista)
+CAMPOS_ACTUALIZAR = [
+    "estado", "novedad", "fecha_entrega", "enlace_imagen", "fecha_cita", "placa",
+    "ciudad_origen", "departamento_origen", "departamento_destino", "fecha_carga",
+]
 
 # Maximo de dias hacia atras para consultar pendientes (para no demorar demasiado)
 MAX_DIAS_HISTORICO = 90
@@ -516,6 +529,13 @@ def crear_tabla_si_no_existe(cur):
     cur.execute(
         'ALTER TABLE informe_guias_tms ADD COLUMN IF NOT EXISTS "placa" TEXT;'
     )
+    # (2026-10-31) Columnas del OT real: origen/dpto completos y fecha de carga.
+    # Idempotentes igual que las anteriores — las filas históricas quedan NULL
+    # hasta re-correr el rango (backfill).
+    cur.execute('ALTER TABLE informe_guias_tms ADD COLUMN IF NOT EXISTS "ciudad_origen" TEXT;')
+    cur.execute('ALTER TABLE informe_guias_tms ADD COLUMN IF NOT EXISTS "departamento_origen" TEXT;')
+    cur.execute('ALTER TABLE informe_guias_tms ADD COLUMN IF NOT EXISTS "departamento_destino" TEXT;')
+    cur.execute('ALTER TABLE informe_guias_tms ADD COLUMN IF NOT EXISTS "fecha_carga" DATE;')
     log.info("Tabla informe_guias_tms lista")
 
 
