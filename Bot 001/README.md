@@ -30,7 +30,7 @@ GitHub Actions usa un proxy con IP fija de Digital Ocean para que el TMS permita
 
 1. Consulta la DB: ¿hay guías pendientes de días anteriores?
 2. Si hay, descarga el rango de fechas necesario (hasta 90 días atrás)
-3. Actualiza el estado, novedad, fecha de entrega e imagen de esas guías
+3. Actualiza el estado, novedad, fecha de entrega, imagen, fecha de cita y placa de esas guías
 4. Las guías con estado ENTREGADO no se vuelven a tocar (CON NOVEDAD sí se sigue actualizando)
 
 ## Infraestructura
@@ -67,6 +67,10 @@ El proxy local (`proxy_forwarder.py`) se ejecuta dentro del runner de GitHub Act
 | fecha_cita | **TEXT** | Fecha de cita — se guarda CRUDA porque el TMS le han metido basura (zonas Z_CIU/ZONA 10-0, teléfonos, ciudades; 0 % fechas válidas hasta 2026-07). Cuando la operación digite fechas reales llegará `YYYY-MM-DD` y se podrá tipar/migrar |
 | fecha_entrega | DATE | Fecha real de entrega |
 | fecha_digitalizacion | DATE | Fecha de digitalización |
+| ciudad_origen | TEXT | Ciudad de origen (2026-10-31: la necesita el OT real — ST por recolección se calcula desde el ORIGEN) |
+| departamento_origen | TEXT | Departamento de origen (2026-10-31) |
+| departamento_destino | TEXT | Departamento de destino (2026-10-31: desambigua municipios repetidos como ARMENIA) |
+| fecha_carga | DATE | Fecha de carga al vehículo (2026-10-31: el OT cuenta la promesa desde aquí con novedad EN ACONDICIONAMIENTO) |
 | planilla | TEXT | Número de planilla |
 | placa | TEXT | Placa del vehículo (2026-10-30; históricos en NULL hasta re-correr el rango) |
 | enlace_imagen | TEXT | URL de la imagen de entrega |
@@ -74,7 +78,7 @@ El proxy local (`proxy_forwarder.py`) se ejecuta dentro del runner de GitHub Act
 
 ### Campos que se actualizan automáticamente
 
-Cuando una guía ya existe en la base y su estado NO es `ENTREGADO`, se actualizan estos 5 campos (incluye `CON NOVEDAD`):
+Cuando una guía ya existe en la base y su estado NO es `ENTREGADO`, se actualizan estos campos (incluye `CON NOVEDAD`):
 
 - **estado**
 - **novedad**
@@ -82,6 +86,27 @@ Cuando una guía ya existe en la base y su estado NO es `ENTREGADO`, se actualiz
 - **enlace_imagen**
 - **fecha_cita** (2026-08-21: puede corregirse/llenarse después de emitida)
 - **placa** (2026-10-30: una guía puede re-expedirse con otro vehículo)
+- **ciudad_origen / departamento_origen / departamento_destino / fecha_carga** (2026-10-31: estables, pero en la lista para que RE-CORRER un rango histórico llene las filas existentes — backfill)
+
+### Backfill de las columnas nuevas (2026-10-31)
+
+Las columnas de origen/dpto/fecha_carga quedaron NULL en el histórico. Para
+llenarlas, re-correr el rango en **trozos de ~15 días** (el TMS no genera CSV de
+rangos largos a tiempo) desde la fecha más antigua que se quiera cubrir:
+
+```bash
+python descargar_reporte_tms.py 2025-09-01 2025-09-15
+python descargar_reporte_tms.py 2025-09-16 2025-09-30
+# ... hasta la fecha actual
+```
+
+El UPSERT actualiza esas columnas en las guías ya existentes (están en
+`CAMPOS_ACTUALIZAR`). Verificar al final:
+
+```sql
+SELECT COUNT(*) FROM informe_guias_tms WHERE fecha_emision >= '2026-01-01'
+  AND (ciudad_origen IS NULL OR departamento_destino IS NULL);
+```
 
 ## Archivos de esta carpeta
 

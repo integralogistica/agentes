@@ -1,0 +1,2420 @@
+﻿INICIO 2026-10-31 17:46
+──> Trozo 2025-01-02 a 2025-01-16
+python : 2026-10-31 17:46:16,105 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 17:4...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 17:46:16,105 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 17:46:16,105 [INFO] Rango: 2025-01-02 a 2025-01-16
+2026-10-31 17:46:16,105 [INFO] ==================================================
+2026-10-31 17:46:16,120 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 17:46:16,121 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 17:46:21,944 [INFO] Iniciando sesion en el TMS...
+2026-10-31 17:46:27,683 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 17:46:27,825 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 17:46:27,852 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 17:46:27,879 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 17:46:32,374 [INFO] Sesion iniciada
+2026-10-31 17:46:32,374 [INFO] Navegando al informe general...
+2026-10-31 17:46:32,374 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 17:46:32,774 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 17:46:34,775 [INFO] Buscando: 'Avanzada'
+2026-10-31 17:46:35,267 [INFO] OK -> 'Avanzada'
+2026-10-31 17:46:37,267 [INFO] Buscando: 'Informe General'
+2026-10-31 17:46:37,797 [INFO] OK -> 'Informe General'
+2026-10-31 17:46:40,798 [INFO] Ventana de Informe General abierta
+2026-10-31 17:46:42,838 [INFO] Seteando fechas: 2025-01-02 a 2025-01-16
+2026-10-31 17:46:46,047 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 17:47:34,048 [INFO] Buscando boton de descarga...
+2026-10-31 17:47:35,058 [INFO] Descarga iniciada
+2026-10-31 17:47:35,058 [INFO] Esperando descarga...
+2026-10-31 17:47:42,092 [INFO] Descargado: Informe_General.csv
+2026-10-31 17:47:47,677 [INFO] Navegador cerrado
+2026-10-31 17:47:47,677 [INFO] Guardando en PostgreSQL
+2026-10-31 17:47:47,677 [INFO] ==================================================
+2026-10-31 17:47:48,419 [INFO] Filtradas 6219 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 17:47:48,435 [INFO] Procesando 3200 filas del CSV
+2026-10-31 17:47:48,435 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 17:47:49,077 [INFO] Tabla informe_guias_tms lista
+2026-10-31 17:47:49,260 [INFO] Enviando 3200 filas en 4 lotes de 1000...
+2026-10-31 17:47:52,128 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 17:47:54,107 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 17:47:56,104 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 17:47:56,499 [INFO] Lote 4/4 completado (200 filas)
+2026-10-31 17:47:58,275 [INFO] Procesadas 3200 filas en 4 lotes
+2026-10-31 17:47:58,275 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 17:47:58,280 [INFO] ==================================================
+2026-10-31 17:47:58,280 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 17:47:58,280 [INFO] ==================================================
+2026-10-31 17:47:58,280 [INFO] Modo: MANUAL | Rango diario: 2025-01-02 a 2025-01-16
+2026-10-31 17:47:58,281 [INFO] Descarga del dia: OK | 9419 guias del dia
+2026-10-31 17:47:58,281 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 17:47:58,281 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 17:47:58,281 [INFO] ==================================================
+──> Trozo 2025-01-17 a 2025-01-31
+python : 2026-10-31 17:48:00,954 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 17:4...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 17:48:00,954 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 17:48:00,954 [INFO] Rango: 2025-01-17 a 2025-01-31
+2026-10-31 17:48:00,954 [INFO] ==================================================
+2026-10-31 17:48:00,955 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 17:48:00,956 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 17:48:02,796 [INFO] Iniciando sesion en el TMS...
+2026-10-31 17:48:08,357 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 17:48:08,397 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 17:48:08,431 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 17:48:08,462 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 17:48:12,839 [INFO] Sesion iniciada
+2026-10-31 17:48:12,839 [INFO] Navegando al informe general...
+2026-10-31 17:48:12,839 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 17:48:13,390 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 17:48:15,390 [INFO] Buscando: 'Avanzada'
+2026-10-31 17:48:16,496 [INFO] OK -> 'Avanzada'
+2026-10-31 17:48:18,497 [INFO] Buscando: 'Informe General'
+2026-10-31 17:48:19,124 [INFO] OK -> 'Informe General'
+2026-10-31 17:48:22,125 [INFO] Ventana de Informe General abierta
+2026-10-31 17:48:24,151 [INFO] Seteando fechas: 2025-01-17 a 2025-01-31
+2026-10-31 17:48:27,786 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 17:49:15,787 [INFO] Buscando boton de descarga...
+2026-10-31 17:49:16,783 [INFO] Descarga iniciada
+2026-10-31 17:49:16,783 [INFO] Esperando descarga...
+2026-10-31 17:49:29,838 [INFO] Descargado: Informe_General.csv
+2026-10-31 17:49:35,314 [INFO] Navegador cerrado
+2026-10-31 17:49:35,315 [INFO] Guardando en PostgreSQL
+2026-10-31 17:49:35,315 [INFO] ==================================================
+2026-10-31 17:49:36,327 [INFO] Filtradas 12663 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 17:49:36,345 [INFO] Procesando 3554 filas del CSV
+2026-10-31 17:49:36,345 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 17:49:36,990 [INFO] Tabla informe_guias_tms lista
+2026-10-31 17:49:37,211 [INFO] Enviando 3554 filas en 4 lotes de 1000...
+2026-10-31 17:49:39,215 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 17:49:41,517 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 17:49:43,472 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 17:49:45,472 [INFO] Lote 4/4 completado (554 filas)
+2026-10-31 17:49:47,775 [INFO] Procesadas 3554 filas en 4 lotes
+2026-10-31 17:49:47,775 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 17:49:47,779 [INFO] ==================================================
+2026-10-31 17:49:47,779 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 17:49:47,780 [INFO] ==================================================
+2026-10-31 17:49:47,780 [INFO] Modo: MANUAL | Rango diario: 2025-01-17 a 2025-01-31
+2026-10-31 17:49:47,780 [INFO] Descarga del dia: OK | 16217 guias del dia
+2026-10-31 17:49:47,780 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 17:49:47,780 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 17:49:47,780 [INFO] ==================================================
+──> Trozo 2025-02-01 a 2025-02-15
+python : 2026-10-31 17:49:49,791 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 17:4...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 17:49:49,791 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 17:49:49,791 [INFO] Rango: 2025-02-01 a 2025-02-15
+2026-10-31 17:49:49,791 [INFO] ==================================================
+2026-10-31 17:49:49,792 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 17:49:49,792 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 17:49:51,410 [INFO] Iniciando sesion en el TMS...
+2026-10-31 17:49:56,878 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 17:49:56,912 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 17:49:56,943 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 17:49:56,972 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 17:50:01,290 [INFO] Sesion iniciada
+2026-10-31 17:50:01,290 [INFO] Navegando al informe general...
+2026-10-31 17:50:01,290 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 17:50:01,702 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 17:50:03,703 [INFO] Buscando: 'Avanzada'
+2026-10-31 17:50:04,164 [INFO] OK -> 'Avanzada'
+2026-10-31 17:50:06,165 [INFO] Buscando: 'Informe General'
+2026-10-31 17:50:06,688 [INFO] OK -> 'Informe General'
+2026-10-31 17:50:09,688 [INFO] Ventana de Informe General abierta
+2026-10-31 17:50:11,705 [INFO] Seteando fechas: 2025-02-01 a 2025-02-15
+2026-10-31 17:50:15,677 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 17:51:03,678 [INFO] Buscando boton de descarga...
+2026-10-31 17:51:04,815 [INFO] Descarga iniciada
+2026-10-31 17:51:04,815 [INFO] Esperando descarga...
+2026-10-31 17:51:29,987 [INFO] Descargado: Informe_General.csv
+2026-10-31 17:51:35,870 [INFO] Navegador cerrado
+2026-10-31 17:51:35,871 [INFO] Guardando en PostgreSQL
+2026-10-31 17:51:35,871 [INFO] ==================================================
+2026-10-31 17:51:37,006 [INFO] Filtradas 10714 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 17:51:37,025 [INFO] Procesando 3264 filas del CSV
+2026-10-31 17:51:37,025 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 17:51:37,699 [INFO] Tabla informe_guias_tms lista
+2026-10-31 17:51:37,929 [INFO] Enviando 3264 filas en 4 lotes de 1000...
+2026-10-31 17:51:39,924 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 17:51:47,230 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 17:51:50,681 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 17:51:51,826 [INFO] Lote 4/4 completado (264 filas)
+2026-10-31 17:51:54,482 [INFO] Procesadas 3264 filas en 4 lotes
+2026-10-31 17:51:54,482 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 17:51:54,485 [INFO] ==================================================
+2026-10-31 17:51:54,485 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 17:51:54,485 [INFO] ==================================================
+2026-10-31 17:51:54,485 [INFO] Modo: MANUAL | Rango diario: 2025-02-01 a 2025-02-15
+2026-10-31 17:51:54,485 [INFO] Descarga del dia: OK | 13978 guias del dia
+2026-10-31 17:51:54,485 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 17:51:54,485 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 17:51:54,485 [INFO] ==================================================
+──> Trozo 2025-02-16 a 2025-03-02
+python : 2026-10-31 17:51:57,345 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 17:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 17:51:57,345 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 17:51:57,345 [INFO] Rango: 2025-02-16 a 2025-03-02
+2026-10-31 17:51:57,345 [INFO] ==================================================
+2026-10-31 17:51:57,347 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 17:51:57,347 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 17:51:58,971 [INFO] Iniciando sesion en el TMS...
+2026-10-31 17:52:04,484 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 17:52:04,518 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 17:52:04,548 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 17:52:04,575 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 17:52:09,149 [INFO] Sesion iniciada
+2026-10-31 17:52:09,149 [INFO] Navegando al informe general...
+2026-10-31 17:52:09,149 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 17:52:09,606 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 17:52:11,606 [INFO] Buscando: 'Avanzada'
+2026-10-31 17:52:12,289 [INFO] OK -> 'Avanzada'
+2026-10-31 17:52:14,290 [INFO] Buscando: 'Informe General'
+2026-10-31 17:52:15,066 [INFO] OK -> 'Informe General'
+2026-10-31 17:52:18,068 [INFO] Ventana de Informe General abierta
+2026-10-31 17:52:20,088 [INFO] Seteando fechas: 2025-02-16 a 2025-03-02
+2026-10-31 17:52:24,005 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 17:53:12,006 [INFO] Buscando boton de descarga...
+2026-10-31 17:53:13,439 [INFO] Descarga iniciada
+2026-10-31 17:53:13,439 [INFO] Esperando descarga...
+2026-10-31 17:53:20,483 [INFO] Descargado: Informe_General.csv
+2026-10-31 17:53:28,332 [INFO] Navegador cerrado
+2026-10-31 17:53:28,332 [INFO] Guardando en PostgreSQL
+2026-10-31 17:53:28,332 [INFO] ==================================================
+2026-10-31 17:53:28,993 [INFO] Filtradas 4186 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 17:53:29,012 [INFO] Procesando 3743 filas del CSV
+2026-10-31 17:53:29,012 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 17:53:29,692 [INFO] Tabla informe_guias_tms lista
+2026-10-31 17:53:29,904 [INFO] Enviando 3743 filas en 4 lotes de 1000...
+2026-10-31 17:53:33,726 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 17:53:36,944 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 17:53:39,763 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 17:53:41,592 [INFO] Lote 4/4 completado (743 filas)
+2026-10-31 17:53:43,297 [INFO] Procesadas 3743 filas en 4 lotes
+2026-10-31 17:53:43,297 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 17:53:43,303 [INFO] ==================================================
+2026-10-31 17:53:43,303 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 17:53:43,303 [INFO] ==================================================
+2026-10-31 17:53:43,303 [INFO] Modo: MANUAL | Rango diario: 2025-02-16 a 2025-03-02
+2026-10-31 17:53:43,303 [INFO] Descarga del dia: OK | 7929 guias del dia
+2026-10-31 17:53:43,303 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 17:53:43,303 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 17:53:43,303 [INFO] ==================================================
+──> Trozo 2025-03-03 a 2025-03-17
+python : 2026-10-31 17:53:46,221 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 17:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 17:53:46,221 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 17:53:46,221 [INFO] Rango: 2025-03-03 a 2025-03-17
+2026-10-31 17:53:46,221 [INFO] ==================================================
+2026-10-31 17:53:46,223 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 17:53:46,223 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 17:53:47,980 [INFO] Iniciando sesion en el TMS...
+2026-10-31 17:53:53,560 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 17:53:53,602 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 17:53:53,722 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 17:53:53,791 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 17:53:58,254 [INFO] Sesion iniciada
+2026-10-31 17:53:58,254 [INFO] Navegando al informe general...
+2026-10-31 17:53:58,254 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 17:53:58,704 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 17:54:00,705 [INFO] Buscando: 'Avanzada'
+2026-10-31 17:54:01,795 [INFO] OK -> 'Avanzada'
+2026-10-31 17:54:03,796 [INFO] Buscando: 'Informe General'
+2026-10-31 17:54:04,487 [INFO] OK -> 'Informe General'
+2026-10-31 17:54:07,487 [INFO] Ventana de Informe General abierta
+2026-10-31 17:54:09,504 [INFO] Seteando fechas: 2025-03-03 a 2025-03-17
+2026-10-31 17:54:13,095 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 17:55:01,095 [INFO] Buscando boton de descarga...
+2026-10-31 17:55:02,157 [INFO] Descarga iniciada
+2026-10-31 17:55:02,157 [INFO] Esperando descarga...
+2026-10-31 17:55:10,194 [INFO] Descargado: Informe_General.csv
+2026-10-31 17:55:15,736 [INFO] Navegador cerrado
+2026-10-31 17:55:15,736 [INFO] Guardando en PostgreSQL
+2026-10-31 17:55:15,737 [INFO] ==================================================
+2026-10-31 17:55:16,374 [INFO] Filtradas 4160 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 17:55:16,396 [INFO] Procesando 4116 filas del CSV
+2026-10-31 17:55:16,396 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 17:55:17,104 [INFO] Tabla informe_guias_tms lista
+2026-10-31 17:55:17,380 [INFO] Enviando 4116 filas en 5 lotes de 1000...
+2026-10-31 17:55:19,494 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 17:55:22,424 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 17:55:26,046 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 17:55:29,260 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 17:55:29,453 [INFO] Lote 5/5 completado (116 filas)
+2026-10-31 17:55:32,107 [INFO] Procesadas 4116 filas en 5 lotes
+2026-10-31 17:55:32,108 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 17:55:32,114 [INFO] ==================================================
+2026-10-31 17:55:32,114 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 17:55:32,114 [INFO] ==================================================
+2026-10-31 17:55:32,114 [INFO] Modo: MANUAL | Rango diario: 2025-03-03 a 2025-03-17
+2026-10-31 17:55:32,114 [INFO] Descarga del dia: OK | 8276 guias del dia
+2026-10-31 17:55:32,114 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 17:55:32,114 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 17:55:32,114 [INFO] ==================================================
+──> Trozo 2025-03-18 a 2025-04-01
+python : 2026-10-31 17:55:34,791 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 17:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 17:55:34,791 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 17:55:34,791 [INFO] Rango: 2025-03-18 a 2025-04-01
+2026-10-31 17:55:34,791 [INFO] ==================================================
+2026-10-31 17:55:34,792 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 17:55:34,793 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 17:55:36,814 [INFO] Iniciando sesion en el TMS...
+2026-10-31 17:55:42,332 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 17:55:42,376 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 17:55:42,411 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 17:55:42,448 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 17:55:46,967 [INFO] Sesion iniciada
+2026-10-31 17:55:46,968 [INFO] Navegando al informe general...
+2026-10-31 17:55:46,968 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 17:55:47,412 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 17:55:49,413 [INFO] Buscando: 'Avanzada'
+2026-10-31 17:55:50,066 [INFO] OK -> 'Avanzada'
+2026-10-31 17:55:52,067 [INFO] Buscando: 'Informe General'
+2026-10-31 17:55:52,706 [INFO] OK -> 'Informe General'
+2026-10-31 17:55:55,707 [INFO] Ventana de Informe General abierta
+2026-10-31 17:55:57,729 [INFO] Seteando fechas: 2025-03-18 a 2025-04-01
+2026-10-31 17:56:01,575 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 17:56:49,577 [INFO] Buscando boton de descarga...
+2026-10-31 17:56:50,863 [INFO] Descarga iniciada
+2026-10-31 17:56:50,864 [INFO] Esperando descarga...
+2026-10-31 17:57:02,954 [INFO] Descargado: Informe_General.csv
+2026-10-31 17:57:08,341 [INFO] Navegador cerrado
+2026-10-31 17:57:08,341 [INFO] Guardando en PostgreSQL
+2026-10-31 17:57:08,341 [INFO] ==================================================
+2026-10-31 17:57:09,184 [INFO] Filtradas 10512 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 17:57:09,201 [INFO] Procesando 3924 filas del CSV
+2026-10-31 17:57:09,202 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 17:57:09,828 [INFO] Tabla informe_guias_tms lista
+2026-10-31 17:57:10,069 [INFO] Enviando 3924 filas en 4 lotes de 1000...
+2026-10-31 17:57:13,572 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 17:57:16,058 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 17:57:18,456 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 17:57:22,719 [INFO] Lote 4/4 completado (924 filas)
+2026-10-31 17:57:25,518 [INFO] Procesadas 3924 filas en 4 lotes
+2026-10-31 17:57:25,518 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 17:57:25,528 [INFO] ==================================================
+2026-10-31 17:57:25,528 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 17:57:25,528 [INFO] ==================================================
+2026-10-31 17:57:25,528 [INFO] Modo: MANUAL | Rango diario: 2025-03-18 a 2025-04-01
+2026-10-31 17:57:25,528 [INFO] Descarga del dia: OK | 14436 guias del dia
+2026-10-31 17:57:25,528 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 17:57:25,528 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 17:57:25,528 [INFO] ==================================================
+──> Trozo 2025-04-02 a 2025-04-16
+python : 2026-10-31 17:57:29,690 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 17:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 17:57:29,691 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 17:57:29,691 [INFO] Rango: 2025-04-02 a 2025-04-16
+2026-10-31 17:57:29,691 [INFO] ==================================================
+2026-10-31 17:57:29,693 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 17:57:29,693 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 17:57:32,045 [INFO] Iniciando sesion en el TMS...
+2026-10-31 17:57:37,971 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 17:57:38,140 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 17:57:38,267 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 17:57:38,334 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 17:57:43,067 [INFO] Sesion iniciada
+2026-10-31 17:57:43,067 [INFO] Navegando al informe general...
+2026-10-31 17:57:43,067 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 17:57:43,903 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 17:57:45,904 [INFO] Buscando: 'Avanzada'
+2026-10-31 17:57:46,541 [INFO] OK -> 'Avanzada'
+2026-10-31 17:57:48,542 [INFO] Buscando: 'Informe General'
+2026-10-31 17:57:49,238 [INFO] OK -> 'Informe General'
+2026-10-31 17:57:52,239 [INFO] Ventana de Informe General abierta
+2026-10-31 17:57:54,266 [INFO] Seteando fechas: 2025-04-02 a 2025-04-16
+2026-10-31 17:57:58,278 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 17:58:46,279 [INFO] Buscando boton de descarga...
+2026-10-31 17:58:47,342 [INFO] Descarga iniciada
+2026-10-31 17:58:47,342 [INFO] Esperando descarga...
+2026-10-31 17:58:57,426 [INFO] Descargado: Informe_General.csv
+2026-10-31 17:59:04,963 [INFO] Navegador cerrado
+2026-10-31 17:59:04,963 [INFO] Guardando en PostgreSQL
+2026-10-31 17:59:04,963 [INFO] ==================================================
+2026-10-31 17:59:06,667 [INFO] Filtradas 6939 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 17:59:06,707 [INFO] Procesando 5041 filas del CSV
+2026-10-31 17:59:06,707 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 17:59:07,917 [INFO] Tabla informe_guias_tms lista
+2026-10-31 17:59:08,543 [INFO] Enviando 5041 filas en 6 lotes de 1000...
+2026-10-31 17:59:11,361 [INFO] Lote 1/6 completado (1000 filas)
+2026-10-31 17:59:13,468 [INFO] Lote 2/6 completado (1000 filas)
+2026-10-31 17:59:15,568 [INFO] Lote 3/6 completado (1000 filas)
+2026-10-31 17:59:20,429 [INFO] Lote 4/6 completado (1000 filas)
+2026-10-31 17:59:24,194 [INFO] Lote 5/6 completado (1000 filas)
+2026-10-31 17:59:24,309 [INFO] Lote 6/6 completado (41 filas)
+2026-10-31 17:59:26,131 [INFO] Procesadas 5041 filas en 6 lotes
+2026-10-31 17:59:26,131 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 17:59:26,155 [INFO] ==================================================
+2026-10-31 17:59:26,160 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 17:59:26,160 [INFO] ==================================================
+2026-10-31 17:59:26,160 [INFO] Modo: MANUAL | Rango diario: 2025-04-02 a 2025-04-16
+2026-10-31 17:59:26,160 [INFO] Descarga del dia: OK | 11980 guias del dia
+2026-10-31 17:59:26,160 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 17:59:26,160 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 17:59:26,160 [INFO] ==================================================
+──> Trozo 2025-04-17 a 2025-05-01
+python : 2026-10-31 17:59:30,201 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 17:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 17:59:30,201 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 17:59:30,201 [INFO] Rango: 2025-04-17 a 2025-05-01
+2026-10-31 17:59:30,201 [INFO] ==================================================
+2026-10-31 17:59:30,203 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 17:59:30,204 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 17:59:32,596 [INFO] Iniciando sesion en el TMS...
+2026-10-31 17:59:38,145 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 17:59:38,188 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 17:59:38,221 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 17:59:38,257 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 17:59:42,808 [INFO] Sesion iniciada
+2026-10-31 17:59:42,808 [INFO] Navegando al informe general...
+2026-10-31 17:59:42,808 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 17:59:43,311 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 17:59:45,312 [INFO] Buscando: 'Avanzada'
+2026-10-31 17:59:46,189 [INFO] OK -> 'Avanzada'
+2026-10-31 17:59:48,190 [INFO] Buscando: 'Informe General'
+2026-10-31 17:59:48,827 [INFO] OK -> 'Informe General'
+2026-10-31 17:59:51,827 [INFO] Ventana de Informe General abierta
+2026-10-31 17:59:53,844 [INFO] Seteando fechas: 2025-04-17 a 2025-05-01
+2026-10-31 17:59:57,724 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:00:45,724 [INFO] Buscando boton de descarga...
+2026-10-31 18:00:46,844 [INFO] Descarga iniciada
+2026-10-31 18:00:46,844 [INFO] Esperando descarga...
+2026-10-31 18:00:55,920 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:01:01,453 [INFO] Navegador cerrado
+2026-10-31 18:01:01,453 [INFO] Guardando en PostgreSQL
+2026-10-31 18:01:01,453 [INFO] ==================================================
+2026-10-31 18:01:02,225 [INFO] Filtradas 8045 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:01:02,243 [INFO] Procesando 3547 filas del CSV
+2026-10-31 18:01:02,243 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:01:02,922 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:01:03,204 [INFO] Enviando 3547 filas en 4 lotes de 1000...
+2026-10-31 18:01:06,483 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 18:01:12,639 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 18:01:14,871 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 18:01:15,874 [INFO] Lote 4/4 completado (547 filas)
+2026-10-31 18:01:17,656 [INFO] Procesadas 3547 filas en 4 lotes
+2026-10-31 18:01:17,656 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 18:01:17,664 [INFO] ==================================================
+2026-10-31 18:01:17,664 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:01:17,664 [INFO] ==================================================
+2026-10-31 18:01:17,664 [INFO] Modo: MANUAL | Rango diario: 2025-04-17 a 2025-05-01
+2026-10-31 18:01:17,664 [INFO] Descarga del dia: OK | 11592 guias del dia
+2026-10-31 18:01:17,664 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 18:01:17,664 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:01:17,664 [INFO] ==================================================
+──> Trozo 2025-05-02 a 2025-05-16
+python : 2026-10-31 18:01:20,288 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:01:20,288 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:01:20,288 [INFO] Rango: 2025-05-02 a 2025-05-16
+2026-10-31 18:01:20,288 [INFO] ==================================================
+2026-10-31 18:01:20,290 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:01:20,290 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:01:22,018 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:01:27,543 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:01:27,581 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:01:27,611 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:01:27,641 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:01:32,101 [INFO] Sesion iniciada
+2026-10-31 18:01:32,101 [INFO] Navegando al informe general...
+2026-10-31 18:01:32,101 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:01:32,594 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:01:34,594 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:01:35,204 [INFO] OK -> 'Avanzada'
+2026-10-31 18:01:37,204 [INFO] Buscando: 'Informe General'
+2026-10-31 18:01:37,790 [INFO] OK -> 'Informe General'
+2026-10-31 18:01:40,791 [INFO] Ventana de Informe General abierta
+2026-10-31 18:01:42,810 [INFO] Seteando fechas: 2025-05-02 a 2025-05-16
+2026-10-31 18:01:46,749 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:02:34,749 [INFO] Buscando boton de descarga...
+2026-10-31 18:02:35,793 [INFO] Descarga iniciada
+2026-10-31 18:02:35,793 [INFO] Esperando descarga...
+2026-10-31 18:02:42,829 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:02:48,238 [INFO] Navegador cerrado
+2026-10-31 18:02:48,238 [INFO] Guardando en PostgreSQL
+2026-10-31 18:02:48,238 [INFO] ==================================================
+2026-10-31 18:02:48,725 [INFO] Filtradas 1435 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:02:48,761 [INFO] Procesando 3109 filas del CSV
+2026-10-31 18:02:48,761 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:02:50,549 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:02:50,951 [INFO] Enviando 3109 filas en 4 lotes de 1000...
+2026-10-31 18:02:54,996 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 18:02:57,147 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 18:02:58,489 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 18:02:58,705 [INFO] Lote 4/4 completado (109 filas)
+2026-10-31 18:03:01,553 [INFO] Procesadas 3109 filas en 4 lotes
+2026-10-31 18:03:01,553 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 18:03:01,556 [INFO] ==================================================
+2026-10-31 18:03:01,557 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:03:01,557 [INFO] ==================================================
+2026-10-31 18:03:01,557 [INFO] Modo: MANUAL | Rango diario: 2025-05-02 a 2025-05-16
+2026-10-31 18:03:01,557 [INFO] Descarga del dia: OK | 4544 guias del dia
+2026-10-31 18:03:01,557 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 18:03:01,557 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:03:01,558 [INFO] ==================================================
+──> Trozo 2025-05-17 a 2025-05-31
+python : 2026-10-31 18:03:03,758 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:03:03,758 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:03:03,758 [INFO] Rango: 2025-05-17 a 2025-05-31
+2026-10-31 18:03:03,758 [INFO] ==================================================
+2026-10-31 18:03:03,759 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:03:03,759 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:03:05,732 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:03:11,277 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:03:11,335 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:03:11,365 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:03:11,399 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:03:15,795 [INFO] Sesion iniciada
+2026-10-31 18:03:15,796 [INFO] Navegando al informe general...
+2026-10-31 18:03:15,796 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:03:16,223 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:03:18,223 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:03:18,689 [INFO] OK -> 'Avanzada'
+2026-10-31 18:03:20,690 [INFO] Buscando: 'Informe General'
+2026-10-31 18:03:21,311 [INFO] OK -> 'Informe General'
+2026-10-31 18:03:24,313 [INFO] Ventana de Informe General abierta
+2026-10-31 18:03:26,336 [INFO] Seteando fechas: 2025-05-17 a 2025-05-31
+2026-10-31 18:03:30,491 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:04:18,492 [INFO] Buscando boton de descarga...
+2026-10-31 18:04:20,189 [INFO] Descarga iniciada
+2026-10-31 18:04:20,189 [INFO] Esperando descarga...
+2026-10-31 18:04:34,573 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:04:40,865 [INFO] Navegador cerrado
+2026-10-31 18:04:40,865 [INFO] Guardando en PostgreSQL
+2026-10-31 18:04:40,865 [INFO] ==================================================
+2026-10-31 18:04:42,093 [INFO] Filtradas 9494 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:04:42,120 [INFO] Procesando 4753 filas del CSV
+2026-10-31 18:04:42,120 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:04:42,768 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:04:43,110 [INFO] Enviando 4753 filas en 5 lotes de 1000...
+2026-10-31 18:04:47,857 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 18:04:51,323 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 18:04:54,414 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 18:04:56,603 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 18:04:57,999 [INFO] Lote 5/5 completado (753 filas)
+2026-10-31 18:05:00,162 [INFO] Procesadas 4753 filas en 5 lotes
+2026-10-31 18:05:00,162 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 18:05:00,171 [INFO] ==================================================
+2026-10-31 18:05:00,171 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:05:00,171 [INFO] ==================================================
+2026-10-31 18:05:00,171 [INFO] Modo: MANUAL | Rango diario: 2025-05-17 a 2025-05-31
+2026-10-31 18:05:00,171 [INFO] Descarga del dia: OK | 14247 guias del dia
+2026-10-31 18:05:00,171 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 18:05:00,171 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:05:00,172 [INFO] ==================================================
+──> Trozo 2025-06-01 a 2025-06-15
+python : 2026-10-31 18:05:03,287 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:05:03,288 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:05:03,288 [INFO] Rango: 2025-06-01 a 2025-06-15
+2026-10-31 18:05:03,288 [INFO] ==================================================
+2026-10-31 18:05:03,290 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:05:03,290 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:05:05,327 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:05:10,914 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:05:10,977 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:05:11,020 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:05:11,073 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:05:16,128 [INFO] Sesion iniciada
+2026-10-31 18:05:16,128 [INFO] Navegando al informe general...
+2026-10-31 18:05:16,128 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:05:16,679 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:05:18,679 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:05:19,367 [INFO] OK -> 'Avanzada'
+2026-10-31 18:05:21,367 [INFO] Buscando: 'Informe General'
+2026-10-31 18:05:22,012 [INFO] OK -> 'Informe General'
+2026-10-31 18:05:25,013 [INFO] Ventana de Informe General abierta
+2026-10-31 18:05:27,037 [INFO] Seteando fechas: 2025-06-01 a 2025-06-15
+2026-10-31 18:05:31,382 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:06:19,383 [INFO] Buscando boton de descarga...
+2026-10-31 18:06:20,465 [INFO] Descarga iniciada
+2026-10-31 18:06:20,466 [INFO] Esperando descarga...
+2026-10-31 18:06:29,561 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:06:36,091 [INFO] Navegador cerrado
+2026-10-31 18:06:36,092 [INFO] Guardando en PostgreSQL
+2026-10-31 18:06:36,092 [INFO] ==================================================
+2026-10-31 18:06:36,149 [INFO] Procesando 0 filas del CSV
+2026-10-31 18:06:36,149 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:06:36,915 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:06:36,952 [INFO] Enviando 0 filas en 0 lotes de 1000...
+2026-10-31 18:06:39,676 [INFO] Procesadas 0 filas en 0 lotes
+2026-10-31 18:06:39,676 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 18:06:39,677 [INFO] ==================================================
+2026-10-31 18:06:39,677 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:06:39,678 [INFO] ==================================================
+2026-10-31 18:06:39,678 [INFO] Modo: MANUAL | Rango diario: 2025-06-01 a 2025-06-15
+2026-10-31 18:06:39,678 [INFO] Descarga del dia: OK | 0 guias del dia
+2026-10-31 18:06:39,678 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 18:06:39,678 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:06:39,678 [INFO] ==================================================
+──> Trozo 2025-06-16 a 2025-06-30
+python : 2026-10-31 18:06:41,924 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:06:41,924 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:06:41,924 [INFO] Rango: 2025-06-16 a 2025-06-30
+2026-10-31 18:06:41,924 [INFO] ==================================================
+2026-10-31 18:06:41,926 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:06:41,926 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:06:43,652 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:06:49,205 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:06:49,298 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:06:49,377 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:06:49,425 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:06:54,355 [INFO] Sesion iniciada
+2026-10-31 18:06:54,355 [INFO] Navegando al informe general...
+2026-10-31 18:06:54,355 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:06:54,835 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:06:56,836 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:06:57,921 [INFO] OK -> 'Avanzada'
+2026-10-31 18:06:59,922 [INFO] Buscando: 'Informe General'
+2026-10-31 18:07:00,525 [INFO] OK -> 'Informe General'
+2026-10-31 18:07:03,527 [INFO] Ventana de Informe General abierta
+2026-10-31 18:07:05,575 [INFO] Seteando fechas: 2025-06-16 a 2025-06-30
+2026-10-31 18:07:09,854 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:07:57,855 [INFO] Buscando boton de descarga...
+2026-10-31 18:07:59,145 [INFO] Descarga iniciada
+2026-10-31 18:07:59,146 [INFO] Esperando descarga...
+2026-10-31 18:08:07,208 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:08:12,940 [INFO] Navegador cerrado
+2026-10-31 18:08:12,940 [INFO] Guardando en PostgreSQL
+2026-10-31 18:08:12,940 [INFO] ==================================================
+2026-10-31 18:08:13,926 [INFO] Filtradas 4451 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:08:13,964 [INFO] Procesando 5133 filas del CSV
+2026-10-31 18:08:13,964 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:08:14,656 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:08:15,300 [INFO] Enviando 5133 filas en 6 lotes de 1000...
+2026-10-31 18:08:18,717 [INFO] Lote 1/6 completado (1000 filas)
+2026-10-31 18:08:25,293 [INFO] Lote 2/6 completado (1000 filas)
+2026-10-31 18:08:29,663 [INFO] Lote 3/6 completado (1000 filas)
+2026-10-31 18:08:33,526 [INFO] Lote 4/6 completado (1000 filas)
+2026-10-31 18:08:35,622 [INFO] Lote 5/6 completado (1000 filas)
+2026-10-31 18:08:35,922 [INFO] Lote 6/6 completado (133 filas)
+2026-10-31 18:08:41,791 [INFO] Procesadas 5133 filas en 6 lotes
+2026-10-31 18:08:41,791 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 18:08:41,800 [INFO] ==================================================
+2026-10-31 18:08:41,800 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:08:41,800 [INFO] ==================================================
+2026-10-31 18:08:41,800 [INFO] Modo: MANUAL | Rango diario: 2025-06-16 a 2025-06-30
+2026-10-31 18:08:41,800 [INFO] Descarga del dia: OK | 9584 guias del dia
+2026-10-31 18:08:41,800 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 18:08:41,800 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:08:41,800 [INFO] ==================================================
+──> Trozo 2025-07-01 a 2025-07-15
+python : 2026-10-31 18:08:46,638 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:08:46,638 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:08:46,638 [INFO] Rango: 2025-07-01 a 2025-07-15
+2026-10-31 18:08:46,638 [INFO] ==================================================
+2026-10-31 18:08:46,640 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:08:46,640 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:08:49,226 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:08:54,936 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:08:55,004 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:08:55,057 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:08:55,104 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:09:00,262 [INFO] Sesion iniciada
+2026-10-31 18:09:00,263 [INFO] Navegando al informe general...
+2026-10-31 18:09:00,263 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:09:00,867 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:09:02,868 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:09:04,468 [INFO] OK -> 'Avanzada'
+2026-10-31 18:09:06,469 [INFO] Buscando: 'Informe General'
+2026-10-31 18:09:07,331 [INFO] OK -> 'Informe General'
+2026-10-31 18:09:10,333 [INFO] Ventana de Informe General abierta
+2026-10-31 18:09:12,372 [INFO] Seteando fechas: 2025-07-01 a 2025-07-15
+2026-10-31 18:09:17,226 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:10:05,227 [INFO] Buscando boton de descarga...
+2026-10-31 18:10:06,380 [INFO] Descarga iniciada
+2026-10-31 18:10:06,380 [INFO] Esperando descarga...
+2026-10-31 18:10:11,410 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:10:17,284 [INFO] Navegador cerrado
+2026-10-31 18:10:17,284 [INFO] Guardando en PostgreSQL
+2026-10-31 18:10:17,284 [INFO] ==================================================
+2026-10-31 18:10:18,144 [INFO] Filtradas 6842 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:10:18,164 [INFO] Procesando 1936 filas del CSV
+2026-10-31 18:10:18,164 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:10:18,829 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:10:18,988 [INFO] Enviando 1936 filas en 2 lotes de 1000...
+2026-10-31 18:10:20,894 [INFO] Lote 1/2 completado (1000 filas)
+2026-10-31 18:10:22,329 [INFO] Lote 2/2 completado (936 filas)
+2026-10-31 18:10:24,790 [INFO] Procesadas 1936 filas en 2 lotes
+2026-10-31 18:10:24,790 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 18:10:24,793 [INFO] ==================================================
+2026-10-31 18:10:24,793 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:10:24,793 [INFO] ==================================================
+2026-10-31 18:10:24,793 [INFO] Modo: MANUAL | Rango diario: 2025-07-01 a 2025-07-15
+2026-10-31 18:10:24,793 [INFO] Descarga del dia: OK | 8778 guias del dia
+2026-10-31 18:10:24,793 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 18:10:24,793 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:10:24,793 [INFO] ==================================================
+──> Trozo 2025-07-16 a 2025-07-30
+python : 2026-10-31 18:10:27,844 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:1...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:10:27,844 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:10:27,844 [INFO] Rango: 2025-07-16 a 2025-07-30
+2026-10-31 18:10:27,844 [INFO] ==================================================
+2026-10-31 18:10:27,846 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:10:27,846 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:10:29,745 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:10:35,363 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:10:35,406 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:10:35,439 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:10:35,493 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:10:40,126 [INFO] Sesion iniciada
+2026-10-31 18:10:40,126 [INFO] Navegando al informe general...
+2026-10-31 18:10:40,126 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:10:40,607 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:10:42,608 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:10:43,162 [INFO] OK -> 'Avanzada'
+2026-10-31 18:10:45,162 [INFO] Buscando: 'Informe General'
+2026-10-31 18:10:45,772 [INFO] OK -> 'Informe General'
+2026-10-31 18:10:48,773 [INFO] Ventana de Informe General abierta
+2026-10-31 18:10:50,794 [INFO] Seteando fechas: 2025-07-16 a 2025-07-30
+2026-10-31 18:10:54,606 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:11:42,606 [INFO] Buscando boton de descarga...
+2026-10-31 18:11:43,628 [INFO] Descarga iniciada
+2026-10-31 18:11:43,628 [INFO] Esperando descarga...
+2026-10-31 18:11:58,701 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:12:04,173 [INFO] Navegador cerrado
+2026-10-31 18:12:04,174 [INFO] Guardando en PostgreSQL
+2026-10-31 18:12:04,174 [INFO] ==================================================
+2026-10-31 18:12:04,945 [INFO] Filtradas 4990 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:12:04,970 [INFO] Procesando 6114 filas del CSV
+2026-10-31 18:12:04,970 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:12:05,611 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:12:05,921 [INFO] Enviando 6114 filas en 7 lotes de 1000...
+2026-10-31 18:12:09,259 [INFO] Lote 1/7 completado (1000 filas)
+2026-10-31 18:12:12,301 [INFO] Lote 2/7 completado (1000 filas)
+2026-10-31 18:12:16,149 [INFO] Lote 3/7 completado (1000 filas)
+2026-10-31 18:12:19,509 [INFO] Lote 4/7 completado (1000 filas)
+2026-10-31 18:12:22,250 [INFO] Lote 5/7 completado (1000 filas)
+2026-10-31 18:12:33,338 [INFO] Lote 6/7 completado (1000 filas)
+2026-10-31 18:12:33,749 [INFO] Lote 7/7 completado (114 filas)
+2026-10-31 18:12:39,709 [INFO] Procesadas 6114 filas en 7 lotes
+2026-10-31 18:12:39,710 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7845
+2026-10-31 18:12:39,716 [INFO] ==================================================
+2026-10-31 18:12:39,716 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:12:39,716 [INFO] ==================================================
+2026-10-31 18:12:39,716 [INFO] Modo: MANUAL | Rango diario: 2025-07-16 a 2025-07-30
+2026-10-31 18:12:39,716 [INFO] Descarga del dia: OK | 11104 guias del dia
+2026-10-31 18:12:39,716 [INFO] Pendientes detectados al inicio: 7845
+2026-10-31 18:12:39,716 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:12:39,717 [INFO] ==================================================
+──> Trozo 2025-07-31 a 2025-08-14
+python : 2026-10-31 18:12:42,116 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:1...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:12:42,116 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:12:42,116 [INFO] Rango: 2025-07-31 a 2025-08-14
+2026-10-31 18:12:42,116 [INFO] ==================================================
+2026-10-31 18:12:42,117 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:12:42,117 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:12:43,655 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:12:49,173 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:12:49,228 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:12:49,259 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:12:49,287 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:12:53,722 [INFO] Sesion iniciada
+2026-10-31 18:12:53,722 [INFO] Navegando al informe general...
+2026-10-31 18:12:53,722 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:12:54,122 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:12:56,122 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:12:56,540 [INFO] OK -> 'Avanzada'
+2026-10-31 18:12:58,541 [INFO] Buscando: 'Informe General'
+2026-10-31 18:12:59,078 [INFO] OK -> 'Informe General'
+2026-10-31 18:13:02,078 [INFO] Ventana de Informe General abierta
+2026-10-31 18:13:04,116 [INFO] Seteando fechas: 2025-07-31 a 2025-08-14
+2026-10-31 18:13:07,939 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:13:55,940 [INFO] Buscando boton de descarga...
+2026-10-31 18:13:56,889 [INFO] Descarga iniciada
+2026-10-31 18:13:56,889 [INFO] Esperando descarga...
+2026-10-31 18:14:09,945 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:14:15,430 [INFO] Navegador cerrado
+2026-10-31 18:14:15,430 [INFO] Guardando en PostgreSQL
+2026-10-31 18:14:15,430 [INFO] ==================================================
+2026-10-31 18:14:16,235 [INFO] Filtradas 7249 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:14:16,257 [INFO] Procesando 6447 filas del CSV
+2026-10-31 18:14:16,257 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:14:17,988 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:14:18,438 [INFO] Enviando 6447 filas en 7 lotes de 1000...
+2026-10-31 18:14:21,753 [INFO] Lote 1/7 completado (1000 filas)
+2026-10-31 18:14:25,178 [INFO] Lote 2/7 completado (1000 filas)
+2026-10-31 18:14:28,156 [INFO] Lote 3/7 completado (1000 filas)
+2026-10-31 18:14:31,382 [INFO] Lote 4/7 completado (1000 filas)
+2026-10-31 18:14:33,821 [INFO] Lote 5/7 completado (1000 filas)
+2026-10-31 18:14:35,677 [INFO] Lote 6/7 completado (1000 filas)
+2026-10-31 18:14:39,765 [INFO] Lote 7/7 completado (447 filas)
+2026-10-31 18:14:45,717 [INFO] Procesadas 6447 filas en 7 lotes
+2026-10-31 18:14:45,717 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7843
+2026-10-31 18:14:45,722 [INFO] ==================================================
+2026-10-31 18:14:45,722 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:14:45,722 [INFO] ==================================================
+2026-10-31 18:14:45,722 [INFO] Modo: MANUAL | Rango diario: 2025-07-31 a 2025-08-14
+2026-10-31 18:14:45,722 [INFO] Descarga del dia: OK | 13696 guias del dia
+2026-10-31 18:14:45,722 [INFO] Pendientes detectados al inicio: 7843
+2026-10-31 18:14:45,722 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:14:45,722 [INFO] ==================================================
+──> Trozo 2025-08-15 a 2025-08-29
+python : 2026-10-31 18:14:47,757 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:1...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:14:47,757 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:14:47,757 [INFO] Rango: 2025-08-15 a 2025-08-29
+2026-10-31 18:14:47,757 [INFO] ==================================================
+2026-10-31 18:14:47,758 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:14:47,758 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:14:49,731 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:14:55,255 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:14:55,296 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:14:55,351 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:14:55,381 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:15:00,067 [INFO] Sesion iniciada
+2026-10-31 18:15:00,068 [INFO] Navegando al informe general...
+2026-10-31 18:15:00,068 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:15:00,491 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:15:02,491 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:15:03,062 [INFO] OK -> 'Avanzada'
+2026-10-31 18:15:05,063 [INFO] Buscando: 'Informe General'
+2026-10-31 18:15:05,735 [INFO] OK -> 'Informe General'
+2026-10-31 18:15:08,736 [INFO] Ventana de Informe General abierta
+2026-10-31 18:15:10,760 [INFO] Seteando fechas: 2025-08-15 a 2025-08-29
+2026-10-31 18:15:14,736 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:16:02,737 [INFO] Buscando boton de descarga...
+2026-10-31 18:16:03,793 [INFO] Descarga iniciada
+2026-10-31 18:16:03,793 [INFO] Esperando descarga...
+2026-10-31 18:16:14,850 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:16:20,378 [INFO] Navegador cerrado
+2026-10-31 18:16:20,378 [INFO] Guardando en PostgreSQL
+2026-10-31 18:16:20,378 [INFO] ==================================================
+2026-10-31 18:16:21,811 [INFO] Filtradas 8705 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:16:21,847 [INFO] Procesando 5910 filas del CSV
+2026-10-31 18:16:21,848 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:16:23,962 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:16:24,395 [INFO] Enviando 5910 filas en 6 lotes de 1000...
+2026-10-31 18:16:26,465 [INFO] Lote 1/6 completado (1000 filas)
+2026-10-31 18:16:29,536 [INFO] Lote 2/6 completado (1000 filas)
+2026-10-31 18:16:33,928 [INFO] Lote 3/6 completado (1000 filas)
+2026-10-31 18:16:36,070 [INFO] Lote 4/6 completado (1000 filas)
+2026-10-31 18:16:37,962 [INFO] Lote 5/6 completado (1000 filas)
+2026-10-31 18:16:39,876 [INFO] Lote 6/6 completado (910 filas)
+2026-10-31 18:16:43,142 [INFO] Procesadas 5910 filas en 6 lotes
+2026-10-31 18:16:43,142 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7840
+2026-10-31 18:16:43,165 [INFO] ==================================================
+2026-10-31 18:16:43,166 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:16:43,166 [INFO] ==================================================
+2026-10-31 18:16:43,166 [INFO] Modo: MANUAL | Rango diario: 2025-08-15 a 2025-08-29
+2026-10-31 18:16:43,166 [INFO] Descarga del dia: OK | 14615 guias del dia
+2026-10-31 18:16:43,166 [INFO] Pendientes detectados al inicio: 7840
+2026-10-31 18:16:43,166 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:16:43,166 [INFO] ==================================================
+──> Trozo 2025-08-30 a 2025-09-13
+python : 2026-10-31 18:16:46,000 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:1...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:16:46,000 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:16:46,001 [INFO] Rango: 2025-08-30 a 2025-09-13
+2026-10-31 18:16:46,001 [INFO] ==================================================
+2026-10-31 18:16:46,002 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:16:46,002 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:16:47,810 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:16:53,400 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:16:53,466 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:16:53,529 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:16:53,581 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:16:58,290 [INFO] Sesion iniciada
+2026-10-31 18:16:58,291 [INFO] Navegando al informe general...
+2026-10-31 18:16:58,291 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:16:58,740 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:17:00,743 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:17:02,804 [INFO] OK -> 'Avanzada'
+2026-10-31 18:17:04,805 [INFO] Buscando: 'Informe General'
+2026-10-31 18:17:05,455 [INFO] OK -> 'Informe General'
+2026-10-31 18:17:08,455 [INFO] Ventana de Informe General abierta
+2026-10-31 18:17:10,478 [INFO] Seteando fechas: 2025-08-30 a 2025-09-13
+2026-10-31 18:17:14,496 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:18:02,497 [INFO] Buscando boton de descarga...
+2026-10-31 18:18:03,836 [INFO] Descarga iniciada
+2026-10-31 18:18:03,836 [INFO] Esperando descarga...
+2026-10-31 18:18:12,902 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:18:18,379 [INFO] Navegador cerrado
+2026-10-31 18:18:18,380 [INFO] Guardando en PostgreSQL
+2026-10-31 18:18:18,380 [INFO] ==================================================
+2026-10-31 18:18:19,085 [INFO] Filtradas 5641 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:18:19,105 [INFO] Procesando 6034 filas del CSV
+2026-10-31 18:18:19,105 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:18:19,743 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:18:20,107 [INFO] Enviando 6034 filas en 7 lotes de 1000...
+2026-10-31 18:18:23,645 [INFO] Lote 1/7 completado (1000 filas)
+2026-10-31 18:18:27,871 [INFO] Lote 2/7 completado (1000 filas)
+2026-10-31 18:18:31,574 [INFO] Lote 3/7 completado (1000 filas)
+2026-10-31 18:18:33,874 [INFO] Lote 4/7 completado (1000 filas)
+2026-10-31 18:18:35,979 [INFO] Lote 5/7 completado (1000 filas)
+2026-10-31 18:18:37,982 [INFO] Lote 6/7 completado (1000 filas)
+2026-10-31 18:18:38,088 [INFO] Lote 7/7 completado (34 filas)
+2026-10-31 18:18:39,852 [INFO] Procesadas 6034 filas en 7 lotes
+2026-10-31 18:18:39,852 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:18:39,858 [INFO] ==================================================
+2026-10-31 18:18:39,858 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:18:39,858 [INFO] ==================================================
+2026-10-31 18:18:39,858 [INFO] Modo: MANUAL | Rango diario: 2025-08-30 a 2025-09-13
+2026-10-31 18:18:39,858 [INFO] Descarga del dia: OK | 11675 guias del dia
+2026-10-31 18:18:39,858 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:18:39,858 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:18:39,858 [INFO] ==================================================
+──> Trozo 2025-09-14 a 2025-09-28
+python : 2026-10-31 18:18:41,967 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:1...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:18:41,967 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:18:41,967 [INFO] Rango: 2025-09-14 a 2025-09-28
+2026-10-31 18:18:41,967 [INFO] ==================================================
+2026-10-31 18:18:41,968 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:18:41,969 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:18:43,611 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:18:49,177 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:18:49,238 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:18:49,304 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:18:49,346 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:18:53,842 [INFO] Sesion iniciada
+2026-10-31 18:18:53,842 [INFO] Navegando al informe general...
+2026-10-31 18:18:53,842 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:18:54,278 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:18:56,279 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:18:56,733 [INFO] OK -> 'Avanzada'
+2026-10-31 18:18:58,734 [INFO] Buscando: 'Informe General'
+2026-10-31 18:18:59,311 [INFO] OK -> 'Informe General'
+2026-10-31 18:19:02,312 [INFO] Ventana de Informe General abierta
+2026-10-31 18:19:04,339 [INFO] Seteando fechas: 2025-09-14 a 2025-09-28
+2026-10-31 18:19:08,161 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:19:56,161 [INFO] Buscando boton de descarga...
+2026-10-31 18:19:57,337 [INFO] Descarga iniciada
+2026-10-31 18:19:57,337 [INFO] Esperando descarga...
+2026-10-31 18:20:07,389 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:20:13,801 [INFO] Navegador cerrado
+2026-10-31 18:20:13,801 [INFO] Guardando en PostgreSQL
+2026-10-31 18:20:13,802 [INFO] ==================================================
+2026-10-31 18:20:14,986 [INFO] Filtradas 11154 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:20:15,009 [INFO] Procesando 4645 filas del CSV
+2026-10-31 18:20:15,009 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:20:15,730 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:20:16,067 [INFO] Enviando 4645 filas en 5 lotes de 1000...
+2026-10-31 18:20:18,591 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 18:20:21,961 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 18:20:28,193 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 18:20:32,198 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 18:20:33,592 [INFO] Lote 5/5 completado (645 filas)
+2026-10-31 18:20:35,973 [INFO] Procesadas 4645 filas en 5 lotes
+2026-10-31 18:20:35,974 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:20:35,983 [INFO] ==================================================
+2026-10-31 18:20:35,983 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:20:35,983 [INFO] ==================================================
+2026-10-31 18:20:35,983 [INFO] Modo: MANUAL | Rango diario: 2025-09-14 a 2025-09-28
+2026-10-31 18:20:35,983 [INFO] Descarga del dia: OK | 15799 guias del dia
+2026-10-31 18:20:35,983 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:20:35,983 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:20:35,983 [INFO] ==================================================
+──> Trozo 2025-09-29 a 2025-10-13
+python : 2026-10-31 18:20:39,861 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:2...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:20:39,861 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:20:39,861 [INFO] Rango: 2025-09-29 a 2025-10-13
+2026-10-31 18:20:39,861 [INFO] ==================================================
+2026-10-31 18:20:39,863 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:20:39,864 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:20:42,003 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:20:47,603 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:20:47,657 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:20:47,698 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:20:47,729 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:20:52,319 [INFO] Sesion iniciada
+2026-10-31 18:20:52,319 [INFO] Navegando al informe general...
+2026-10-31 18:20:52,319 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:20:52,798 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:20:54,799 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:20:55,657 [INFO] OK -> 'Avanzada'
+2026-10-31 18:20:57,658 [INFO] Buscando: 'Informe General'
+2026-10-31 18:20:58,897 [INFO] OK -> 'Informe General'
+2026-10-31 18:21:01,898 [INFO] Ventana de Informe General abierta
+2026-10-31 18:21:03,919 [INFO] Seteando fechas: 2025-09-29 a 2025-10-13
+2026-10-31 18:21:08,202 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:21:56,203 [INFO] Buscando boton de descarga...
+2026-10-31 18:21:57,409 [INFO] Descarga iniciada
+2026-10-31 18:21:57,409 [INFO] Esperando descarga...
+2026-10-31 18:22:09,476 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:22:15,039 [INFO] Navegador cerrado
+2026-10-31 18:22:15,039 [INFO] Guardando en PostgreSQL
+2026-10-31 18:22:15,039 [INFO] ==================================================
+2026-10-31 18:22:16,285 [INFO] Filtradas 11026 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:22:16,318 [INFO] Procesando 6345 filas del CSV
+2026-10-31 18:22:16,318 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:22:18,039 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:22:18,456 [INFO] Enviando 6345 filas en 7 lotes de 1000...
+2026-10-31 18:22:20,599 [INFO] Lote 1/7 completado (1000 filas)
+2026-10-31 18:22:22,761 [INFO] Lote 2/7 completado (1000 filas)
+2026-10-31 18:22:24,402 [INFO] Lote 3/7 completado (1000 filas)
+2026-10-31 18:22:26,897 [INFO] Lote 4/7 completado (1000 filas)
+2026-10-31 18:22:30,563 [INFO] Lote 5/7 completado (1000 filas)
+2026-10-31 18:22:33,710 [INFO] Lote 6/7 completado (1000 filas)
+2026-10-31 18:22:34,306 [INFO] Lote 7/7 completado (345 filas)
+2026-10-31 18:22:36,364 [INFO] Procesadas 6345 filas en 7 lotes
+2026-10-31 18:22:36,364 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:22:36,387 [INFO] ==================================================
+2026-10-31 18:22:36,387 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:22:36,388 [INFO] ==================================================
+2026-10-31 18:22:36,388 [INFO] Modo: MANUAL | Rango diario: 2025-09-29 a 2025-10-13
+2026-10-31 18:22:36,389 [INFO] Descarga del dia: OK | 17371 guias del dia
+2026-10-31 18:22:36,389 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:22:36,389 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:22:36,389 [INFO] ==================================================
+──> Trozo 2025-10-14 a 2025-10-28
+python : 2026-10-31 18:22:42,440 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:2...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:22:42,440 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:22:42,440 [INFO] Rango: 2025-10-14 a 2025-10-28
+2026-10-31 18:22:42,440 [INFO] ==================================================
+2026-10-31 18:22:42,444 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:22:42,444 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:22:44,680 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:22:50,206 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:22:50,263 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:22:50,306 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:22:50,349 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:22:55,041 [INFO] Sesion iniciada
+2026-10-31 18:22:55,042 [INFO] Navegando al informe general...
+2026-10-31 18:22:55,042 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:22:55,573 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:22:57,574 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:22:58,728 [INFO] OK -> 'Avanzada'
+2026-10-31 18:23:00,728 [INFO] Buscando: 'Informe General'
+2026-10-31 18:23:01,512 [INFO] OK -> 'Informe General'
+2026-10-31 18:23:04,512 [INFO] Ventana de Informe General abierta
+2026-10-31 18:23:06,653 [INFO] Seteando fechas: 2025-10-14 a 2025-10-28
+2026-10-31 18:23:10,913 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:23:58,914 [INFO] Buscando boton de descarga...
+2026-10-31 18:24:00,120 [INFO] Descarga iniciada
+2026-10-31 18:24:00,120 [INFO] Esperando descarga...
+2026-10-31 18:24:14,407 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:24:20,662 [INFO] Navegador cerrado
+2026-10-31 18:24:20,662 [INFO] Guardando en PostgreSQL
+2026-10-31 18:24:20,662 [INFO] ==================================================
+2026-10-31 18:24:22,334 [INFO] Filtradas 10857 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:24:22,370 [INFO] Procesando 4830 filas del CSV
+2026-10-31 18:24:22,370 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:24:23,084 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:24:23,504 [INFO] Enviando 4830 filas en 5 lotes de 1000...
+2026-10-31 18:24:25,610 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 18:24:30,275 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 18:24:33,461 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 18:24:37,028 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 18:24:38,519 [INFO] Lote 5/5 completado (830 filas)
+2026-10-31 18:24:40,480 [INFO] Procesadas 4830 filas en 5 lotes
+2026-10-31 18:24:40,480 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:24:40,513 [INFO] ==================================================
+2026-10-31 18:24:40,514 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:24:40,514 [INFO] ==================================================
+2026-10-31 18:24:40,514 [INFO] Modo: MANUAL | Rango diario: 2025-10-14 a 2025-10-28
+2026-10-31 18:24:40,514 [INFO] Descarga del dia: OK | 15687 guias del dia
+2026-10-31 18:24:40,514 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:24:40,514 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:24:40,514 [INFO] ==================================================
+──> Trozo 2025-10-29 a 2025-11-12
+python : 2026-10-31 18:24:46,500 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:2...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:24:46,500 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:24:46,500 [INFO] Rango: 2025-10-29 a 2025-11-12
+2026-10-31 18:24:46,500 [INFO] ==================================================
+2026-10-31 18:24:46,503 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:24:46,503 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:24:49,011 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:24:54,652 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:24:54,839 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:24:55,048 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:24:55,331 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:25:00,844 [INFO] Sesion iniciada
+2026-10-31 18:25:00,844 [INFO] Navegando al informe general...
+2026-10-31 18:25:00,844 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:25:01,765 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:25:03,766 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:25:04,249 [INFO] OK -> 'Avanzada'
+2026-10-31 18:25:06,251 [INFO] Buscando: 'Informe General'
+2026-10-31 18:25:06,851 [INFO] OK -> 'Informe General'
+2026-10-31 18:25:09,852 [INFO] Ventana de Informe General abierta
+2026-10-31 18:25:11,880 [INFO] Seteando fechas: 2025-10-29 a 2025-11-12
+2026-10-31 18:25:16,316 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:26:04,317 [INFO] Buscando boton de descarga...
+2026-10-31 18:26:05,462 [INFO] Descarga iniciada
+2026-10-31 18:26:05,462 [INFO] Esperando descarga...
+2026-10-31 18:26:14,505 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:26:20,062 [INFO] Navegador cerrado
+2026-10-31 18:26:20,062 [INFO] Guardando en PostgreSQL
+2026-10-31 18:26:20,062 [INFO] ==================================================
+2026-10-31 18:26:20,780 [INFO] Filtradas 3909 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:26:20,824 [INFO] Procesando 6217 filas del CSV
+2026-10-31 18:26:20,824 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:26:21,479 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:26:21,861 [INFO] Enviando 6217 filas en 7 lotes de 1000...
+2026-10-31 18:26:25,218 [INFO] Lote 1/7 completado (1000 filas)
+2026-10-31 18:26:28,238 [INFO] Lote 2/7 completado (1000 filas)
+2026-10-31 18:26:31,619 [INFO] Lote 3/7 completado (1000 filas)
+2026-10-31 18:26:33,519 [INFO] Lote 4/7 completado (1000 filas)
+2026-10-31 18:26:36,620 [INFO] Lote 5/7 completado (1000 filas)
+2026-10-31 18:26:40,119 [INFO] Lote 6/7 completado (1000 filas)
+2026-10-31 18:26:41,218 [INFO] Lote 7/7 completado (217 filas)
+2026-10-31 18:26:43,888 [INFO] Procesadas 6217 filas en 7 lotes
+2026-10-31 18:26:43,888 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:26:43,898 [INFO] ==================================================
+2026-10-31 18:26:43,898 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:26:43,898 [INFO] ==================================================
+2026-10-31 18:26:43,898 [INFO] Modo: MANUAL | Rango diario: 2025-10-29 a 2025-11-12
+2026-10-31 18:26:43,898 [INFO] Descarga del dia: OK | 10126 guias del dia
+2026-10-31 18:26:43,898 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:26:43,899 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:26:43,899 [INFO] ==================================================
+──> Trozo 2025-11-13 a 2025-11-27
+python : 2026-10-31 18:26:47,002 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:2...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:26:47,002 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:26:47,002 [INFO] Rango: 2025-11-13 a 2025-11-27
+2026-10-31 18:26:47,002 [INFO] ==================================================
+2026-10-31 18:26:47,003 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:26:47,003 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:26:48,693 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:26:54,213 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:26:54,268 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:26:54,318 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:26:54,364 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:27:00,826 [INFO] Sesion iniciada
+2026-10-31 18:27:00,826 [INFO] Navegando al informe general...
+2026-10-31 18:27:00,827 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:27:01,339 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:27:03,340 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:27:03,969 [INFO] OK -> 'Avanzada'
+2026-10-31 18:27:05,969 [INFO] Buscando: 'Informe General'
+2026-10-31 18:27:07,564 [INFO] OK -> 'Informe General'
+2026-10-31 18:27:10,565 [INFO] Ventana de Informe General abierta
+2026-10-31 18:27:12,722 [INFO] Seteando fechas: 2025-11-13 a 2025-11-27
+2026-10-31 18:27:17,789 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:28:05,790 [INFO] Buscando boton de descarga...
+2026-10-31 18:28:08,309 [INFO] Descarga iniciada
+2026-10-31 18:28:08,310 [INFO] Esperando descarga...
+2026-10-31 18:28:20,948 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:28:40,776 [INFO] Navegador cerrado
+2026-10-31 18:28:40,776 [INFO] Guardando en PostgreSQL
+2026-10-31 18:28:40,777 [INFO] ==================================================
+2026-10-31 18:28:45,183 [INFO] Filtradas 9422 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:28:45,229 [INFO] Procesando 4598 filas del CSV
+2026-10-31 18:28:45,229 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:28:46,161 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:28:46,874 [INFO] Enviando 4598 filas en 5 lotes de 1000...
+2026-10-31 18:28:49,434 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 18:28:52,480 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 18:28:55,239 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 18:28:59,141 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 18:29:00,736 [INFO] Lote 5/5 completado (598 filas)
+2026-10-31 18:29:04,704 [INFO] Procesadas 4598 filas en 5 lotes
+2026-10-31 18:29:04,704 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:29:04,727 [INFO] ==================================================
+2026-10-31 18:29:04,727 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:29:04,727 [INFO] ==================================================
+2026-10-31 18:29:04,727 [INFO] Modo: MANUAL | Rango diario: 2025-11-13 a 2025-11-27
+2026-10-31 18:29:04,727 [INFO] Descarga del dia: OK | 14020 guias del dia
+2026-10-31 18:29:04,727 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:29:04,727 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:29:04,727 [INFO] ==================================================
+──> Trozo 2025-11-28 a 2025-12-12
+python : 2026-10-31 18:29:11,932 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:2...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:29:11,936 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:29:11,937 [INFO] Rango: 2025-11-28 a 2025-12-12
+2026-10-31 18:29:11,937 [INFO] ==================================================
+2026-10-31 18:29:11,943 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:29:11,943 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:29:15,353 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:29:20,929 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:29:20,988 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:29:21,035 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:29:21,090 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:29:25,891 [INFO] Sesion iniciada
+2026-10-31 18:29:25,891 [INFO] Navegando al informe general...
+2026-10-31 18:29:25,892 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:29:26,664 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:29:28,666 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:29:29,491 [INFO] OK -> 'Avanzada'
+2026-10-31 18:29:31,494 [INFO] Buscando: 'Informe General'
+2026-10-31 18:29:32,308 [INFO] OK -> 'Informe General'
+2026-10-31 18:29:35,309 [INFO] Ventana de Informe General abierta
+2026-10-31 18:29:37,333 [INFO] Seteando fechas: 2025-11-28 a 2025-12-12
+2026-10-31 18:29:41,959 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:30:29,970 [INFO] Buscando boton de descarga...
+2026-10-31 18:30:31,482 [INFO] Descarga iniciada
+2026-10-31 18:30:31,482 [INFO] Esperando descarga...
+2026-10-31 18:30:44,609 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:30:50,227 [INFO] Navegador cerrado
+2026-10-31 18:30:50,227 [INFO] Guardando en PostgreSQL
+2026-10-31 18:30:50,227 [INFO] ==================================================
+2026-10-31 18:30:51,686 [INFO] Filtradas 9443 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:30:51,725 [INFO] Procesando 6403 filas del CSV
+2026-10-31 18:30:51,725 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:30:52,464 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:30:53,143 [INFO] Enviando 6403 filas en 7 lotes de 1000...
+2026-10-31 18:30:56,728 [INFO] Lote 1/7 completado (1000 filas)
+2026-10-31 18:31:01,549 [INFO] Lote 2/7 completado (1000 filas)
+2026-10-31 18:31:06,008 [INFO] Lote 3/7 completado (1000 filas)
+2026-10-31 18:31:11,165 [INFO] Lote 4/7 completado (1000 filas)
+2026-10-31 18:31:13,574 [INFO] Lote 5/7 completado (1000 filas)
+2026-10-31 18:31:15,954 [INFO] Lote 6/7 completado (1000 filas)
+2026-10-31 18:31:16,868 [INFO] Lote 7/7 completado (403 filas)
+2026-10-31 18:31:19,920 [INFO] Procesadas 6403 filas en 7 lotes
+2026-10-31 18:31:19,920 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:31:19,938 [INFO] ==================================================
+2026-10-31 18:31:19,938 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:31:19,938 [INFO] ==================================================
+2026-10-31 18:31:19,939 [INFO] Modo: MANUAL | Rango diario: 2025-11-28 a 2025-12-12
+2026-10-31 18:31:19,939 [INFO] Descarga del dia: OK | 15846 guias del dia
+2026-10-31 18:31:19,939 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:31:19,939 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:31:19,939 [INFO] ==================================================
+──> Trozo 2025-12-13 a 2025-12-27
+python : 2026-10-31 18:31:24,918 [INFO] ==================================================
+En línea: 1 Carácter: 811
++ ... og -Append; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:3...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:31:24,919 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:31:24,919 [INFO] Rango: 2025-12-13 a 2025-12-27
+2026-10-31 18:31:24,919 [INFO] ==================================================
+2026-10-31 18:31:24,921 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:31:24,922 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:31:27,204 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:31:32,866 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:31:32,932 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:31:32,981 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:31:33,094 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+REINICIO desde 2025-01-17 2026-10-31 18:34
+──> Trozo 2025-01-17 a 2025-01-31
+python : 2026-10-31 18:34:58,833 [INFO] ==================================================
+En línea: 1 Carácter: 824
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:3...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:34:58,849 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:34:58,853 [INFO] Rango: 2025-01-17 a 2025-01-31
+2026-10-31 18:34:58,854 [INFO] ==================================================
+2026-10-31 18:34:58,858 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:34:58,858 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:35:03,785 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:35:09,538 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:35:09,754 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:35:09,872 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:35:10,025 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:35:14,942 [INFO] Sesion iniciada
+2026-10-31 18:35:14,943 [INFO] Navegando al informe general...
+2026-10-31 18:35:14,943 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:35:15,597 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:35:17,598 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:35:18,374 [INFO] OK -> 'Avanzada'
+2026-10-31 18:35:20,375 [INFO] Buscando: 'Informe General'
+2026-10-31 18:35:21,273 [INFO] OK -> 'Informe General'
+2026-10-31 18:35:24,273 [INFO] Ventana de Informe General abierta
+2026-10-31 18:35:26,373 [INFO] Seteando fechas: 2025-01-17 a 2025-01-31
+2026-10-31 18:35:30,935 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:36:18,935 [INFO] Buscando boton de descarga...
+2026-10-31 18:36:20,007 [INFO] Descarga iniciada
+2026-10-31 18:36:20,007 [INFO] Esperando descarga...
+2026-10-31 18:36:33,098 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:36:38,697 [INFO] Navegador cerrado
+2026-10-31 18:36:38,697 [INFO] Guardando en PostgreSQL
+2026-10-31 18:36:38,697 [INFO] ==================================================
+2026-10-31 18:36:40,079 [INFO] Filtradas 12663 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:36:40,105 [INFO] Procesando 3554 filas del CSV
+2026-10-31 18:36:40,106 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:36:41,214 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:36:41,480 [INFO] Enviando 3554 filas en 4 lotes de 1000...
+2026-10-31 18:36:43,791 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 18:36:47,016 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 18:36:48,988 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 18:36:49,986 [INFO] Lote 4/4 completado (554 filas)
+2026-10-31 18:36:54,850 [INFO] Procesadas 3554 filas en 4 lotes
+2026-10-31 18:36:54,850 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:36:54,881 [INFO] ==================================================
+2026-10-31 18:36:54,881 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:36:54,882 [INFO] ==================================================
+2026-10-31 18:36:54,882 [INFO] Modo: MANUAL | Rango diario: 2025-01-17 a 2025-01-31
+2026-10-31 18:36:54,884 [INFO] Descarga del dia: OK | 16217 guias del dia
+2026-10-31 18:36:54,884 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:36:54,884 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:36:54,884 [INFO] ==================================================
+──> Trozo 2025-02-01 a 2025-02-15
+python : 2026-10-31 18:37:03,126 [INFO] ==================================================
+En línea: 1 Carácter: 824
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:3...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:37:03,126 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:37:03,126 [INFO] Rango: 2025-02-01 a 2025-02-15
+2026-10-31 18:37:03,126 [INFO] ==================================================
+2026-10-31 18:37:03,161 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:37:03,162 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:37:10,594 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:37:16,228 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:37:16,324 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:37:16,385 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:37:16,496 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:37:22,197 [INFO] Sesion iniciada
+2026-10-31 18:37:22,198 [INFO] Navegando al informe general...
+2026-10-31 18:37:22,198 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:37:23,004 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:37:25,005 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:37:25,512 [INFO] OK -> 'Avanzada'
+2026-10-31 18:37:27,513 [INFO] Buscando: 'Informe General'
+2026-10-31 18:37:28,219 [INFO] OK -> 'Informe General'
+2026-10-31 18:37:31,220 [INFO] Ventana de Informe General abierta
+2026-10-31 18:37:33,273 [INFO] Seteando fechas: 2025-02-01 a 2025-02-15
+2026-10-31 18:37:37,845 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:38:25,845 [INFO] Buscando boton de descarga...
+2026-10-31 18:38:27,676 [INFO] Descarga iniciada
+2026-10-31 18:38:27,676 [INFO] Esperando descarga...
+2026-10-31 18:38:48,835 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:38:54,488 [INFO] Navegador cerrado
+2026-10-31 18:38:54,488 [INFO] Guardando en PostgreSQL
+2026-10-31 18:38:54,488 [INFO] ==================================================
+2026-10-31 18:38:55,664 [INFO] Filtradas 10714 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:38:55,688 [INFO] Procesando 3264 filas del CSV
+2026-10-31 18:38:55,689 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:38:56,724 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:38:57,051 [INFO] Enviando 3264 filas en 4 lotes de 1000...
+2026-10-31 18:38:59,204 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 18:39:01,620 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 18:39:03,704 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 18:39:04,201 [INFO] Lote 4/4 completado (264 filas)
+2026-10-31 18:39:06,662 [INFO] Procesadas 3264 filas en 4 lotes
+2026-10-31 18:39:06,662 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:39:06,669 [INFO] ==================================================
+2026-10-31 18:39:06,669 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:39:06,669 [INFO] ==================================================
+2026-10-31 18:39:06,670 [INFO] Modo: MANUAL | Rango diario: 2025-02-01 a 2025-02-15
+2026-10-31 18:39:06,670 [INFO] Descarga del dia: OK | 13978 guias del dia
+2026-10-31 18:39:06,670 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:39:06,670 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:39:06,670 [INFO] ==================================================
+──> Trozo 2025-02-16 a 2025-03-02
+python : 2026-10-31 18:39:11,115 [INFO] ==================================================
+En línea: 1 Carácter: 824
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:3...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:39:11,116 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:39:11,116 [INFO] Rango: 2025-02-16 a 2025-03-02
+2026-10-31 18:39:11,116 [INFO] ==================================================
+2026-10-31 18:39:11,118 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:39:11,118 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:39:13,361 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:39:18,929 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:39:18,987 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:39:19,068 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:39:19,115 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:39:24,261 [INFO] Sesion iniciada
+2026-10-31 18:39:24,261 [INFO] Navegando al informe general...
+2026-10-31 18:39:24,261 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:39:24,742 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:39:26,744 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:39:28,437 [INFO] OK -> 'Avanzada'
+2026-10-31 18:39:30,438 [INFO] Buscando: 'Informe General'
+2026-10-31 18:39:31,001 [INFO] OK -> 'Informe General'
+2026-10-31 18:39:34,001 [INFO] Ventana de Informe General abierta
+2026-10-31 18:39:36,104 [INFO] Seteando fechas: 2025-02-16 a 2025-03-02
+2026-10-31 18:39:40,417 [INFO] Esperando 48 segundos (15 dias de rango)...
+REINICIO optimizado desde 2025-12-13 2026-10-31 18:40
+──> Trozo 2025-12-13 a 2025-12-27
+python : 2026-10-31 18:40:23,559 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:4...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:40:23,559 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:40:23,559 [INFO] Rango: 2025-12-13 a 2025-12-27
+2026-10-31 18:40:23,559 [INFO] ==================================================
+2026-10-31 18:40:23,562 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:40:23,562 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:40:25,605 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:40:31,323 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:40:31,538 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:40:31,620 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:40:31,715 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:40:36,959 [INFO] Sesion iniciada
+2026-10-31 18:40:36,959 [INFO] Navegando al informe general...
+2026-10-31 18:40:36,959 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:40:37,721 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:40:39,722 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:40:40,490 [INFO] OK -> 'Avanzada'
+2026-10-31 18:40:42,491 [INFO] Buscando: 'Informe General'
+2026-10-31 18:40:43,175 [INFO] OK -> 'Informe General'
+2026-10-31 18:40:46,175 [INFO] Ventana de Informe General abierta
+2026-10-31 18:40:48,223 [INFO] Seteando fechas: 2025-12-13 a 2025-12-27
+2026-10-31 18:40:52,675 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:41:40,676 [INFO] Buscando boton de descarga...
+2026-10-31 18:41:41,904 [INFO] Descarga iniciada
+2026-10-31 18:41:41,904 [INFO] Esperando descarga...
+2026-10-31 18:41:48,958 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:41:54,825 [INFO] Navegador cerrado
+2026-10-31 18:41:54,825 [INFO] Guardando en PostgreSQL
+2026-10-31 18:41:54,825 [INFO] ==================================================
+2026-10-31 18:41:55,868 [INFO] Filtradas 5184 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:41:55,896 [INFO] Procesando 4224 filas del CSV
+2026-10-31 18:41:55,896 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:41:56,903 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:41:57,229 [INFO] Enviando 4224 filas en 5 lotes de 1000...
+2026-10-31 18:41:59,518 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 18:42:02,078 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 18:42:04,012 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 18:42:06,115 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 18:42:06,618 [INFO] Lote 5/5 completado (224 filas)
+2026-10-31 18:42:09,389 [INFO] Procesadas 4224 filas en 5 lotes
+2026-10-31 18:42:09,389 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7833
+2026-10-31 18:42:09,394 [INFO] ==================================================
+2026-10-31 18:42:09,394 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:42:09,394 [INFO] ==================================================
+2026-10-31 18:42:09,394 [INFO] Modo: MANUAL | Rango diario: 2025-12-13 a 2025-12-27
+2026-10-31 18:42:09,394 [INFO] Descarga del dia: OK | 9408 guias del dia
+2026-10-31 18:42:09,394 [INFO] Pendientes detectados al inicio: 7833
+2026-10-31 18:42:09,394 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:42:09,394 [INFO] ==================================================
+──> Trozo 2025-12-28 a 2026-01-11
+python : 2026-10-31 18:42:12,741 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:4...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:42:12,741 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:42:12,741 [INFO] Rango: 2025-12-28 a 2026-01-11
+2026-10-31 18:42:12,741 [INFO] ==================================================
+2026-10-31 18:42:12,743 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:42:12,743 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:42:14,935 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:42:20,522 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:42:20,648 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:42:20,760 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:42:20,876 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:42:26,244 [INFO] Sesion iniciada
+2026-10-31 18:42:26,244 [INFO] Navegando al informe general...
+2026-10-31 18:42:26,244 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:42:26,830 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:42:28,831 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:42:29,720 [INFO] OK -> 'Avanzada'
+2026-10-31 18:42:31,721 [INFO] Buscando: 'Informe General'
+2026-10-31 18:42:32,524 [INFO] OK -> 'Informe General'
+2026-10-31 18:42:35,524 [INFO] Ventana de Informe General abierta
+2026-10-31 18:42:37,567 [INFO] Seteando fechas: 2025-12-28 a 2026-01-11
+2026-10-31 18:42:42,146 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:43:30,147 [INFO] Buscando boton de descarga...
+2026-10-31 18:43:31,330 [INFO] Descarga iniciada
+2026-10-31 18:43:31,330 [INFO] Esperando descarga...
+2026-10-31 18:43:48,658 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:43:55,851 [INFO] Navegador cerrado
+2026-10-31 18:43:55,851 [INFO] Guardando en PostgreSQL
+2026-10-31 18:43:55,851 [INFO] ==================================================
+2026-10-31 18:43:57,284 [INFO] Filtradas 10571 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:43:57,498 [INFO] Procesando 3966 filas del CSV
+2026-10-31 18:43:57,498 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:43:58,438 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:43:58,905 [INFO] Enviando 3966 filas en 4 lotes de 1000...
+2026-10-31 18:44:02,727 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 18:44:06,295 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 18:44:09,839 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 18:44:14,031 [INFO] Lote 4/4 completado (966 filas)
+2026-10-31 18:44:17,020 [INFO] Procesadas 3966 filas en 4 lotes
+2026-10-31 18:44:17,020 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7833
+2026-10-31 18:44:17,028 [INFO] ==================================================
+2026-10-31 18:44:17,028 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:44:17,028 [INFO] ==================================================
+2026-10-31 18:44:17,028 [INFO] Modo: MANUAL | Rango diario: 2025-12-28 a 2026-01-11
+2026-10-31 18:44:17,028 [INFO] Descarga del dia: OK | 14537 guias del dia
+2026-10-31 18:44:17,028 [INFO] Pendientes detectados al inicio: 7833
+2026-10-31 18:44:17,028 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:44:17,028 [INFO] ==================================================
+──> Trozo 2026-01-12 a 2026-01-26
+python : 2026-10-31 18:44:20,233 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:4...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:44:20,234 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:44:20,234 [INFO] Rango: 2026-01-12 a 2026-01-26
+2026-10-31 18:44:20,234 [INFO] ==================================================
+2026-10-31 18:44:20,235 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:44:20,235 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:44:22,519 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:44:28,099 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:44:28,146 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:44:28,197 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:44:28,234 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:44:32,734 [INFO] Sesion iniciada
+2026-10-31 18:44:32,734 [INFO] Navegando al informe general...
+2026-10-31 18:44:32,734 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:44:33,167 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:44:35,167 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:44:35,664 [INFO] OK -> 'Avanzada'
+2026-10-31 18:44:37,665 [INFO] Buscando: 'Informe General'
+2026-10-31 18:44:38,189 [INFO] OK -> 'Informe General'
+2026-10-31 18:44:41,189 [INFO] Ventana de Informe General abierta
+2026-10-31 18:44:43,210 [INFO] Seteando fechas: 2026-01-12 a 2026-01-26
+2026-10-31 18:44:47,524 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:45:35,525 [INFO] Buscando boton de descarga...
+2026-10-31 18:45:36,632 [INFO] Descarga iniciada
+2026-10-31 18:45:36,633 [INFO] Esperando descarga...
+2026-10-31 18:45:44,670 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:45:50,573 [INFO] Navegador cerrado
+2026-10-31 18:45:50,573 [INFO] Guardando en PostgreSQL
+2026-10-31 18:45:50,574 [INFO] ==================================================
+2026-10-31 18:45:51,407 [INFO] Filtradas 3975 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:45:51,435 [INFO] Procesando 4249 filas del CSV
+2026-10-31 18:45:51,435 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:45:52,240 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:45:52,558 [INFO] Enviando 4249 filas en 5 lotes de 1000...
+2026-10-31 18:45:54,845 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 18:45:57,367 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 18:45:59,443 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 18:46:01,969 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 18:46:02,635 [INFO] Lote 5/5 completado (249 filas)
+2026-10-31 18:46:04,438 [INFO] Procesadas 4249 filas en 5 lotes
+2026-10-31 18:46:04,438 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7833
+2026-10-31 18:46:04,446 [INFO] ==================================================
+2026-10-31 18:46:04,446 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:46:04,446 [INFO] ==================================================
+2026-10-31 18:46:04,447 [INFO] Modo: MANUAL | Rango diario: 2026-01-12 a 2026-01-26
+2026-10-31 18:46:04,447 [INFO] Descarga del dia: OK | 8224 guias del dia
+2026-10-31 18:46:04,447 [INFO] Pendientes detectados al inicio: 7833
+2026-10-31 18:46:04,447 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:46:04,447 [INFO] ==================================================
+──> Trozo 2026-01-27 a 2026-02-10
+python : 2026-10-31 18:46:07,760 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:4...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:46:07,761 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:46:07,761 [INFO] Rango: 2026-01-27 a 2026-02-10
+2026-10-31 18:46:07,761 [INFO] ==================================================
+2026-10-31 18:46:07,764 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:46:07,765 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:46:10,054 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:46:15,858 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:46:15,921 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:46:15,978 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:46:16,027 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:46:20,785 [INFO] Sesion iniciada
+2026-10-31 18:46:20,785 [INFO] Navegando al informe general...
+2026-10-31 18:46:20,786 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:46:21,412 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:46:23,412 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:46:24,648 [INFO] OK -> 'Avanzada'
+2026-10-31 18:46:26,649 [INFO] Buscando: 'Informe General'
+2026-10-31 18:46:27,369 [INFO] OK -> 'Informe General'
+2026-10-31 18:46:30,370 [INFO] Ventana de Informe General abierta
+2026-10-31 18:46:32,394 [INFO] Seteando fechas: 2026-01-27 a 2026-02-10
+2026-10-31 18:46:36,763 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:47:24,764 [INFO] Buscando boton de descarga...
+2026-10-31 18:47:25,924 [INFO] Descarga iniciada
+2026-10-31 18:47:25,924 [INFO] Esperando descarga...
+2026-10-31 18:47:39,049 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:47:44,648 [INFO] Navegador cerrado
+2026-10-31 18:47:44,649 [INFO] Guardando en PostgreSQL
+2026-10-31 18:47:44,649 [INFO] ==================================================
+2026-10-31 18:47:45,758 [INFO] Filtradas 5549 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:47:45,807 [INFO] Procesando 5491 filas del CSV
+2026-10-31 18:47:45,807 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:47:46,529 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:47:46,955 [INFO] Enviando 5491 filas en 6 lotes de 1000...
+2026-10-31 18:47:49,148 [INFO] Lote 1/6 completado (1000 filas)
+2026-10-31 18:47:53,553 [INFO] Lote 2/6 completado (1000 filas)
+2026-10-31 18:47:56,147 [INFO] Lote 3/6 completado (1000 filas)
+2026-10-31 18:48:01,413 [INFO] Lote 4/6 completado (1000 filas)
+2026-10-31 18:48:04,813 [INFO] Lote 5/6 completado (1000 filas)
+2026-10-31 18:48:06,172 [INFO] Lote 6/6 completado (491 filas)
+2026-10-31 18:48:08,813 [INFO] Procesadas 5491 filas en 6 lotes
+2026-10-31 18:48:08,813 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7832
+2026-10-31 18:48:08,822 [INFO] ==================================================
+2026-10-31 18:48:08,822 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:48:08,822 [INFO] ==================================================
+2026-10-31 18:48:08,822 [INFO] Modo: MANUAL | Rango diario: 2026-01-27 a 2026-02-10
+2026-10-31 18:48:08,822 [INFO] Descarga del dia: OK | 11040 guias del dia
+2026-10-31 18:48:08,822 [INFO] Pendientes detectados al inicio: 7832
+2026-10-31 18:48:08,822 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:48:08,822 [INFO] ==================================================
+──> Trozo 2026-02-11 a 2026-02-25
+python : 2026-10-31 18:48:13,266 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:4...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:48:13,266 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:48:13,266 [INFO] Rango: 2026-02-11 a 2026-02-25
+2026-10-31 18:48:13,266 [INFO] ==================================================
+2026-10-31 18:48:13,267 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:48:13,267 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:48:15,756 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:48:21,406 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:48:21,463 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:48:21,505 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:48:21,557 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:48:26,167 [INFO] Sesion iniciada
+2026-10-31 18:48:26,168 [INFO] Navegando al informe general...
+2026-10-31 18:48:26,168 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:48:26,673 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:48:28,675 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:48:29,672 [INFO] OK -> 'Avanzada'
+2026-10-31 18:48:31,672 [INFO] Buscando: 'Informe General'
+2026-10-31 18:48:32,367 [INFO] OK -> 'Informe General'
+2026-10-31 18:48:35,368 [INFO] Ventana de Informe General abierta
+2026-10-31 18:48:37,389 [INFO] Seteando fechas: 2026-02-11 a 2026-02-25
+2026-10-31 18:48:42,382 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:49:30,383 [INFO] Buscando boton de descarga...
+2026-10-31 18:49:31,516 [INFO] Descarga iniciada
+2026-10-31 18:49:31,516 [INFO] Esperando descarga...
+2026-10-31 18:49:41,657 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:49:47,245 [INFO] Navegador cerrado
+2026-10-31 18:49:47,245 [INFO] Guardando en PostgreSQL
+2026-10-31 18:49:47,246 [INFO] ==================================================
+2026-10-31 18:49:48,709 [INFO] Filtradas 8275 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:49:48,735 [INFO] Procesando 4498 filas del CSV
+2026-10-31 18:49:48,735 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:49:49,751 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:49:50,077 [INFO] Enviando 4498 filas en 5 lotes de 1000...
+2026-10-31 18:49:52,728 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 18:49:54,557 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 18:49:57,975 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 18:50:01,164 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 18:50:02,864 [INFO] Lote 5/5 completado (498 filas)
+2026-10-31 18:50:05,031 [INFO] Procesadas 4498 filas en 5 lotes
+2026-10-31 18:50:05,031 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7831
+2026-10-31 18:50:05,037 [INFO] ==================================================
+2026-10-31 18:50:05,037 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:50:05,037 [INFO] ==================================================
+2026-10-31 18:50:05,037 [INFO] Modo: MANUAL | Rango diario: 2026-02-11 a 2026-02-25
+2026-10-31 18:50:05,037 [INFO] Descarga del dia: OK | 12773 guias del dia
+2026-10-31 18:50:05,037 [INFO] Pendientes detectados al inicio: 7831
+2026-10-31 18:50:05,037 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:50:05,037 [INFO] ==================================================
+──> Trozo 2026-02-26 a 2026-03-12
+python : 2026-10-31 18:50:07,713 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:50:07,713 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:50:07,714 [INFO] Rango: 2026-02-26 a 2026-03-12
+2026-10-31 18:50:07,714 [INFO] ==================================================
+2026-10-31 18:50:07,716 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:50:07,716 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:50:09,551 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:50:15,041 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:50:15,082 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:50:15,121 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:50:15,154 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:50:19,566 [INFO] Sesion iniciada
+2026-10-31 18:50:19,566 [INFO] Navegando al informe general...
+2026-10-31 18:50:19,566 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:50:20,006 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:50:22,007 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:50:22,551 [INFO] OK -> 'Avanzada'
+2026-10-31 18:50:24,552 [INFO] Buscando: 'Informe General'
+2026-10-31 18:50:25,200 [INFO] OK -> 'Informe General'
+2026-10-31 18:50:28,201 [INFO] Ventana de Informe General abierta
+2026-10-31 18:50:30,221 [INFO] Seteando fechas: 2026-02-26 a 2026-03-12
+2026-10-31 18:50:34,447 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:51:22,448 [INFO] Buscando boton de descarga...
+2026-10-31 18:51:23,504 [INFO] Descarga iniciada
+2026-10-31 18:51:23,504 [INFO] Esperando descarga...
+2026-10-31 18:51:55,656 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:52:01,195 [INFO] Navegador cerrado
+2026-10-31 18:52:01,195 [INFO] Guardando en PostgreSQL
+2026-10-31 18:52:01,195 [INFO] ==================================================
+2026-10-31 18:52:03,144 [INFO] Filtradas 23610 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:52:03,178 [INFO] Procesando 5755 filas del CSV
+2026-10-31 18:52:03,178 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:52:03,955 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:52:04,573 [INFO] Enviando 5755 filas en 6 lotes de 1000...
+2026-10-31 18:52:06,778 [INFO] Lote 1/6 completado (1000 filas)
+2026-10-31 18:52:09,793 [INFO] Lote 2/6 completado (1000 filas)
+2026-10-31 18:52:12,188 [INFO] Lote 3/6 completado (1000 filas)
+2026-10-31 18:52:17,590 [INFO] Lote 4/6 completado (1000 filas)
+2026-10-31 18:52:21,294 [INFO] Lote 5/6 completado (1000 filas)
+2026-10-31 18:52:23,186 [INFO] Lote 6/6 completado (755 filas)
+2026-10-31 18:52:25,151 [INFO] Procesadas 5755 filas en 6 lotes
+2026-10-31 18:52:25,151 [INFO] Total en tabla: 225261 | Pendientes de actualizar: 7829
+2026-10-31 18:52:25,162 [INFO] ==================================================
+2026-10-31 18:52:25,162 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:52:25,162 [INFO] ==================================================
+2026-10-31 18:52:25,162 [INFO] Modo: MANUAL | Rango diario: 2026-02-26 a 2026-03-12
+2026-10-31 18:52:25,162 [INFO] Descarga del dia: OK | 29365 guias del dia
+2026-10-31 18:52:25,162 [INFO] Pendientes detectados al inicio: 7829
+2026-10-31 18:52:25,162 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:52:25,162 [INFO] ==================================================
+──> Trozo 2026-03-13 a 2026-03-27
+python : 2026-10-31 18:52:28,912 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:52:28,912 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:52:28,912 [INFO] Rango: 2026-03-13 a 2026-03-27
+2026-10-31 18:52:28,912 [INFO] ==================================================
+2026-10-31 18:52:28,913 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:52:28,914 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:52:30,601 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:52:36,269 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:52:36,307 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:52:36,340 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:52:36,373 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:52:40,949 [INFO] Sesion iniciada
+2026-10-31 18:52:40,949 [INFO] Navegando al informe general...
+2026-10-31 18:52:40,949 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:52:41,629 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:52:43,629 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:52:44,578 [INFO] OK -> 'Avanzada'
+2026-10-31 18:52:46,579 [INFO] Buscando: 'Informe General'
+2026-10-31 18:52:47,213 [INFO] OK -> 'Informe General'
+2026-10-31 18:52:50,213 [INFO] Ventana de Informe General abierta
+2026-10-31 18:52:52,262 [INFO] Seteando fechas: 2026-03-13 a 2026-03-27
+2026-10-31 18:52:56,786 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:53:44,787 [INFO] Buscando boton de descarga...
+2026-10-31 18:53:45,895 [INFO] Descarga iniciada
+2026-10-31 18:53:45,895 [INFO] Esperando descarga...
+2026-10-31 18:54:55,364 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:55:01,290 [INFO] Navegador cerrado
+2026-10-31 18:55:01,291 [INFO] Guardando en PostgreSQL
+2026-10-31 18:55:01,291 [INFO] ==================================================
+2026-10-31 18:55:06,020 [INFO] Filtradas 50844 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:55:06,054 [INFO] Procesando 6833 filas del CSV
+2026-10-31 18:55:06,054 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:55:07,960 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:55:08,373 [INFO] Enviando 6833 filas en 7 lotes de 1000...
+2026-10-31 18:55:13,853 [INFO] Lote 1/7 completado (1000 filas)
+2026-10-31 18:55:17,412 [INFO] Lote 2/7 completado (1000 filas)
+2026-10-31 18:55:19,791 [INFO] Lote 3/7 completado (1000 filas)
+2026-10-31 18:55:22,496 [INFO] Lote 4/7 completado (1000 filas)
+2026-10-31 18:55:24,500 [INFO] Lote 5/7 completado (1000 filas)
+2026-10-31 18:55:28,208 [INFO] Lote 6/7 completado (1000 filas)
+2026-10-31 18:55:32,034 [INFO] Lote 7/7 completado (833 filas)
+2026-10-31 18:55:34,763 [INFO] Procesadas 6833 filas en 7 lotes
+2026-10-31 18:55:34,763 [INFO] Total en tabla: 227133 | Pendientes de actualizar: 8057
+2026-10-31 18:55:34,773 [INFO] ==================================================
+2026-10-31 18:55:34,773 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:55:34,773 [INFO] ==================================================
+2026-10-31 18:55:34,773 [INFO] Modo: MANUAL | Rango diario: 2026-03-13 a 2026-03-27
+2026-10-31 18:55:34,773 [INFO] Descarga del dia: OK | 57677 guias del dia
+2026-10-31 18:55:34,774 [INFO] Pendientes detectados al inicio: 8057
+2026-10-31 18:55:34,774 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:55:34,774 [INFO] ==================================================
+──> Trozo 2026-03-28 a 2026-04-11
+python : 2026-10-31 18:55:38,078 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:55:38,079 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:55:38,079 [INFO] Rango: 2026-03-28 a 2026-04-11
+2026-10-31 18:55:38,079 [INFO] ==================================================
+2026-10-31 18:55:38,082 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:55:38,082 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:55:40,319 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:55:45,843 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:55:45,887 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:55:45,929 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:55:45,971 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:55:50,939 [INFO] Sesion iniciada
+2026-10-31 18:55:50,939 [INFO] Navegando al informe general...
+2026-10-31 18:55:50,939 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:55:51,389 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:55:53,389 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:55:54,070 [INFO] OK -> 'Avanzada'
+2026-10-31 18:55:56,071 [INFO] Buscando: 'Informe General'
+2026-10-31 18:55:56,734 [INFO] OK -> 'Informe General'
+2026-10-31 18:55:59,735 [INFO] Ventana de Informe General abierta
+2026-10-31 18:56:01,758 [INFO] Seteando fechas: 2026-03-28 a 2026-04-11
+2026-10-31 18:56:06,732 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:56:54,733 [INFO] Buscando boton de descarga...
+2026-10-31 18:56:56,014 [INFO] Descarga iniciada
+2026-10-31 18:56:56,014 [INFO] Esperando descarga...
+2026-10-31 18:58:04,376 [INFO] Descargado: Informe_General.csv
+2026-10-31 18:58:10,118 [INFO] Navegador cerrado
+2026-10-31 18:58:10,118 [INFO] Guardando en PostgreSQL
+2026-10-31 18:58:10,118 [INFO] ==================================================
+2026-10-31 18:58:17,053 [INFO] Filtradas 99676 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 18:58:17,062 [INFO] Filtradas 2396 guías de clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:58:17,072 [INFO] Procesando 5092 filas del CSV
+2026-10-31 18:58:17,072 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 18:58:17,853 [INFO] Tabla informe_guias_tms lista
+2026-10-31 18:58:18,113 [INFO] Enviando 5092 filas en 6 lotes de 1000...
+2026-10-31 18:58:20,381 [INFO] Lote 1/6 completado (1000 filas)
+2026-10-31 18:58:22,776 [INFO] Lote 2/6 completado (1000 filas)
+2026-10-31 18:58:26,822 [INFO] Lote 3/6 completado (1000 filas)
+2026-10-31 18:58:30,172 [INFO] Lote 4/6 completado (1000 filas)
+2026-10-31 18:58:32,526 [INFO] Lote 5/6 completado (1000 filas)
+2026-10-31 18:58:32,715 [INFO] Lote 6/6 completado (92 filas)
+2026-10-31 18:58:34,675 [INFO] Procesadas 5092 filas en 6 lotes
+2026-10-31 18:58:34,675 [INFO] Total en tabla: 227133 | Pendientes de actualizar: 8051
+2026-10-31 18:58:34,694 [INFO] ==================================================
+2026-10-31 18:58:34,694 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 18:58:34,694 [INFO] ==================================================
+2026-10-31 18:58:34,694 [INFO] Modo: MANUAL | Rango diario: 2026-03-28 a 2026-04-11
+2026-10-31 18:58:34,695 [INFO] Descarga del dia: OK | 107164 guias del dia
+2026-10-31 18:58:34,695 [INFO] Pendientes detectados al inicio: 8051
+2026-10-31 18:58:34,695 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 18:58:34,695 [INFO] ==================================================
+──> Trozo 2026-04-12 a 2026-04-26
+python : 2026-10-31 18:58:38,552 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 18:5...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 18:58:38,553 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 18:58:38,553 [INFO] Rango: 2026-04-12 a 2026-04-26
+2026-10-31 18:58:38,553 [INFO] ==================================================
+2026-10-31 18:58:38,557 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 18:58:38,557 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 18:58:40,943 [INFO] Iniciando sesion en el TMS...
+2026-10-31 18:58:46,644 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 18:58:46,719 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 18:58:46,801 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 18:58:46,859 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 18:58:51,754 [INFO] Sesion iniciada
+2026-10-31 18:58:51,754 [INFO] Navegando al informe general...
+2026-10-31 18:58:51,754 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 18:58:53,032 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 18:58:55,034 [INFO] Buscando: 'Avanzada'
+2026-10-31 18:58:55,929 [INFO] OK -> 'Avanzada'
+2026-10-31 18:58:57,930 [INFO] Buscando: 'Informe General'
+2026-10-31 18:58:58,710 [INFO] OK -> 'Informe General'
+2026-10-31 18:59:01,711 [INFO] Ventana de Informe General abierta
+2026-10-31 18:59:03,750 [INFO] Seteando fechas: 2026-04-12 a 2026-04-26
+2026-10-31 18:59:08,927 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 18:59:56,928 [INFO] Buscando boton de descarga...
+2026-10-31 18:59:58,241 [INFO] Descarga iniciada
+2026-10-31 18:59:58,241 [INFO] Esperando descarga...
+2026-10-31 19:00:19,533 [INFO] Descargado: Informe_General.csv
+2026-10-31 19:00:25,728 [INFO] Navegador cerrado
+2026-10-31 19:00:25,728 [INFO] Guardando en PostgreSQL
+2026-10-31 19:00:25,728 [INFO] ==================================================
+2026-10-31 19:00:28,169 [INFO] Filtradas 21961 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 19:00:28,184 [INFO] Filtradas 1725 guías de clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:00:28,202 [INFO] Procesando 4828 filas del CSV
+2026-10-31 19:00:28,202 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 19:00:29,104 [INFO] Tabla informe_guias_tms lista
+2026-10-31 19:00:29,527 [INFO] Enviando 4828 filas en 5 lotes de 1000...
+2026-10-31 19:00:32,151 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 19:00:34,021 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 19:00:41,497 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 19:00:45,881 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 19:00:49,205 [INFO] Lote 5/5 completado (828 filas)
+2026-10-31 19:00:53,404 [INFO] Procesadas 4828 filas en 5 lotes
+2026-10-31 19:00:53,405 [INFO] Total en tabla: 227133 | Pendientes de actualizar: 8048
+2026-10-31 19:00:53,418 [INFO] ==================================================
+2026-10-31 19:00:53,418 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 19:00:53,418 [INFO] ==================================================
+2026-10-31 19:00:53,419 [INFO] Modo: MANUAL | Rango diario: 2026-04-12 a 2026-04-26
+2026-10-31 19:00:53,419 [INFO] Descarga del dia: OK | 28514 guias del dia
+2026-10-31 19:00:53,420 [INFO] Pendientes detectados al inicio: 8048
+2026-10-31 19:00:53,420 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 19:00:53,421 [INFO] ==================================================
+──> Trozo 2026-04-27 a 2026-05-11
+python : 2026-10-31 19:00:57,924 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 19:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 19:00:57,924 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 19:00:57,924 [INFO] Rango: 2026-04-27 a 2026-05-11
+2026-10-31 19:00:57,924 [INFO] ==================================================
+2026-10-31 19:00:57,926 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 19:00:57,926 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:01:00,326 [INFO] Iniciando sesion en el TMS...
+2026-10-31 19:01:07,867 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 19:01:07,922 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 19:01:07,957 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 19:01:08,001 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 19:01:16,259 [INFO] Sesion iniciada
+2026-10-31 19:01:16,259 [INFO] Navegando al informe general...
+2026-10-31 19:01:16,259 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 19:01:16,988 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 19:01:18,990 [INFO] Buscando: 'Avanzada'
+2026-10-31 19:01:19,511 [INFO] OK -> 'Avanzada'
+2026-10-31 19:01:21,512 [INFO] Buscando: 'Informe General'
+2026-10-31 19:01:22,408 [INFO] OK -> 'Informe General'
+2026-10-31 19:01:25,408 [INFO] Ventana de Informe General abierta
+2026-10-31 19:01:27,479 [INFO] Seteando fechas: 2026-04-27 a 2026-05-11
+2026-10-31 19:01:33,486 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 19:02:21,487 [INFO] Buscando boton de descarga...
+2026-10-31 19:02:23,038 [INFO] Descarga iniciada
+2026-10-31 19:02:23,039 [INFO] Esperando descarga...
+2026-10-31 19:02:55,294 [INFO] Descargado: Informe_General.csv
+2026-10-31 19:03:00,681 [INFO] Navegador cerrado
+2026-10-31 19:03:00,682 [INFO] Guardando en PostgreSQL
+2026-10-31 19:03:00,682 [INFO] ==================================================
+2026-10-31 19:03:01,035 [INFO] Filtradas 1435 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 19:03:01,059 [INFO] Procesando 3109 filas del CSV
+2026-10-31 19:03:01,059 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 19:03:04,176 [INFO] Tabla informe_guias_tms lista
+2026-10-31 19:03:04,433 [INFO] Enviando 3109 filas en 4 lotes de 1000...
+2026-10-31 19:03:11,700 [INFO] Lote 1/4 completado (1000 filas)
+2026-10-31 19:03:15,503 [INFO] Lote 2/4 completado (1000 filas)
+2026-10-31 19:03:19,438 [INFO] Lote 3/4 completado (1000 filas)
+2026-10-31 19:03:20,007 [INFO] Lote 4/4 completado (109 filas)
+2026-10-31 19:03:27,814 [INFO] Procesadas 3109 filas en 4 lotes
+2026-10-31 19:03:27,814 [INFO] Total en tabla: 227133 | Pendientes de actualizar: 8045
+2026-10-31 19:03:27,835 [INFO] ==================================================
+2026-10-31 19:03:27,835 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 19:03:27,835 [INFO] ==================================================
+2026-10-31 19:03:27,835 [INFO] Modo: MANUAL | Rango diario: 2026-04-27 a 2026-05-11
+2026-10-31 19:03:27,835 [INFO] Descarga del dia: OK | 4544 guias del dia
+2026-10-31 19:03:27,835 [INFO] Pendientes detectados al inicio: 8045
+2026-10-31 19:03:27,835 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 19:03:27,835 [INFO] ==================================================
+──> Trozo 2026-05-12 a 2026-05-26
+python : 2026-10-31 19:03:30,357 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 19:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 19:03:30,357 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 19:03:30,358 [INFO] Rango: 2026-05-12 a 2026-05-26
+2026-10-31 19:03:30,358 [INFO] ==================================================
+2026-10-31 19:03:30,360 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 19:03:30,360 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:03:32,260 [INFO] Iniciando sesion en el TMS...
+2026-10-31 19:03:37,796 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 19:03:37,855 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 19:03:37,894 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 19:03:37,929 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 19:03:42,479 [INFO] Sesion iniciada
+2026-10-31 19:03:42,479 [INFO] Navegando al informe general...
+2026-10-31 19:03:42,479 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 19:03:42,919 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 19:03:44,919 [INFO] Buscando: 'Avanzada'
+2026-10-31 19:03:45,950 [INFO] OK -> 'Avanzada'
+2026-10-31 19:03:47,951 [INFO] Buscando: 'Informe General'
+2026-10-31 19:03:48,579 [INFO] OK -> 'Informe General'
+2026-10-31 19:03:51,579 [INFO] Ventana de Informe General abierta
+2026-10-31 19:03:53,627 [INFO] Seteando fechas: 2026-05-12 a 2026-05-26
+2026-10-31 19:03:59,153 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 19:04:47,155 [INFO] Buscando boton de descarga...
+2026-10-31 19:04:48,199 [INFO] Descarga iniciada
+2026-10-31 19:04:48,199 [INFO] Esperando descarga...
+2026-10-31 19:05:23,364 [INFO] Descargado: Informe_General.csv
+2026-10-31 19:05:28,776 [INFO] Navegador cerrado
+2026-10-31 19:05:28,776 [INFO] Guardando en PostgreSQL
+2026-10-31 19:05:28,776 [INFO] ==================================================
+2026-10-31 19:05:30,527 [INFO] Filtradas 22534 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 19:05:30,535 [INFO] Filtradas 1183 guías de clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:05:30,547 [INFO] Procesando 4677 filas del CSV
+2026-10-31 19:05:30,547 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 19:05:31,276 [INFO] Tabla informe_guias_tms lista
+2026-10-31 19:05:31,624 [INFO] Enviando 4677 filas en 5 lotes de 1000...
+2026-10-31 19:05:33,987 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 19:05:35,857 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 19:05:37,819 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 19:05:41,916 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 19:05:43,970 [INFO] Lote 5/5 completado (677 filas)
+2026-10-31 19:05:47,034 [INFO] Procesadas 4677 filas en 5 lotes
+2026-10-31 19:05:47,034 [INFO] Total en tabla: 227133 | Pendientes de actualizar: 8045
+2026-10-31 19:05:47,038 [INFO] ==================================================
+2026-10-31 19:05:47,038 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 19:05:47,038 [INFO] ==================================================
+2026-10-31 19:05:47,038 [INFO] Modo: MANUAL | Rango diario: 2026-05-12 a 2026-05-26
+2026-10-31 19:05:47,038 [INFO] Descarga del dia: OK | 28394 guias del dia
+2026-10-31 19:05:47,038 [INFO] Pendientes detectados al inicio: 8045
+2026-10-31 19:05:47,038 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 19:05:47,038 [INFO] ==================================================
+──> Trozo 2026-05-27 a 2026-06-10
+python : 2026-10-31 19:05:49,319 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 19:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 19:05:49,320 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 19:05:49,320 [INFO] Rango: 2026-05-27 a 2026-06-10
+2026-10-31 19:05:49,320 [INFO] ==================================================
+2026-10-31 19:05:49,321 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 19:05:49,321 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:05:50,870 [INFO] Iniciando sesion en el TMS...
+2026-10-31 19:05:56,364 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 19:05:56,404 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 19:05:56,443 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 19:05:56,472 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 19:06:00,917 [INFO] Sesion iniciada
+2026-10-31 19:06:00,917 [INFO] Navegando al informe general...
+2026-10-31 19:06:00,918 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 19:06:01,409 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 19:06:03,410 [INFO] Buscando: 'Avanzada'
+2026-10-31 19:06:04,117 [INFO] OK -> 'Avanzada'
+2026-10-31 19:06:06,119 [INFO] Buscando: 'Informe General'
+2026-10-31 19:06:07,721 [INFO] OK -> 'Informe General'
+2026-10-31 19:06:10,721 [INFO] Ventana de Informe General abierta
+2026-10-31 19:06:12,743 [INFO] Seteando fechas: 2026-05-27 a 2026-06-10
+2026-10-31 19:06:19,622 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 19:07:07,623 [INFO] Buscando boton de descarga...
+2026-10-31 19:07:08,929 [INFO] Descarga iniciada
+2026-10-31 19:07:08,929 [INFO] Esperando descarga...
+2026-10-31 19:07:41,226 [INFO] Descargado: Informe_General.csv
+2026-10-31 19:07:48,191 [INFO] Navegador cerrado
+2026-10-31 19:07:48,192 [INFO] Guardando en PostgreSQL
+2026-10-31 19:07:48,192 [INFO] ==================================================
+2026-10-31 19:07:50,705 [INFO] Filtradas 16831 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 19:07:50,736 [INFO] Procesando 6078 filas del CSV
+2026-10-31 19:07:50,736 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 19:07:51,471 [INFO] Tabla informe_guias_tms lista
+2026-10-31 19:07:51,982 [INFO] Enviando 6078 filas en 7 lotes de 1000...
+2026-10-31 19:07:53,932 [INFO] Lote 1/7 completado (1000 filas)
+2026-10-31 19:07:55,702 [INFO] Lote 2/7 completado (1000 filas)
+2026-10-31 19:07:57,177 [INFO] Lote 3/7 completado (1000 filas)
+2026-10-31 19:07:58,864 [INFO] Lote 4/7 completado (1000 filas)
+2026-10-31 19:08:00,967 [INFO] Lote 5/7 completado (1000 filas)
+2026-10-31 19:08:02,575 [INFO] Lote 6/7 completado (1000 filas)
+2026-10-31 19:08:02,728 [INFO] Lote 7/7 completado (78 filas)
+2026-10-31 19:08:06,331 [INFO] Procesadas 6078 filas en 7 lotes
+2026-10-31 19:08:06,332 [INFO] Total en tabla: 227133 | Pendientes de actualizar: 8045
+2026-10-31 19:08:06,341 [INFO] ==================================================
+2026-10-31 19:08:06,341 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 19:08:06,341 [INFO] ==================================================
+2026-10-31 19:08:06,341 [INFO] Modo: MANUAL | Rango diario: 2026-05-27 a 2026-06-10
+2026-10-31 19:08:06,341 [INFO] Descarga del dia: OK | 22909 guias del dia
+2026-10-31 19:08:06,341 [INFO] Pendientes detectados al inicio: 8045
+2026-10-31 19:08:06,341 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 19:08:06,342 [INFO] ==================================================
+──> Trozo 2026-06-11 a 2026-06-25
+python : 2026-10-31 19:08:09,581 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 19:0...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 19:08:09,581 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 19:08:09,582 [INFO] Rango: 2026-06-11 a 2026-06-25
+2026-10-31 19:08:09,582 [INFO] ==================================================
+2026-10-31 19:08:09,583 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 19:08:09,583 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:08:11,757 [INFO] Iniciando sesion en el TMS...
+2026-10-31 19:08:18,071 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 19:08:18,111 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 19:08:18,142 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 19:08:18,175 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 19:08:22,691 [INFO] Sesion iniciada
+2026-10-31 19:08:22,692 [INFO] Navegando al informe general...
+2026-10-31 19:08:22,692 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 19:08:23,149 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 19:08:25,150 [INFO] Buscando: 'Avanzada'
+2026-10-31 19:08:26,228 [INFO] OK -> 'Avanzada'
+2026-10-31 19:08:28,229 [INFO] Buscando: 'Informe General'
+2026-10-31 19:08:29,757 [INFO] OK -> 'Informe General'
+2026-10-31 19:08:32,757 [INFO] Ventana de Informe General abierta
+2026-10-31 19:08:34,782 [INFO] Seteando fechas: 2026-06-11 a 2026-06-25
+2026-10-31 19:08:41,265 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 19:09:29,266 [INFO] Buscando boton de descarga...
+2026-10-31 19:09:31,163 [INFO] Descarga iniciada
+2026-10-31 19:09:31,163 [INFO] Esperando descarga...
+2026-10-31 19:10:07,477 [INFO] Descargado: Informe_General.csv
+2026-10-31 19:10:17,459 [INFO] Navegador cerrado
+2026-10-31 19:10:17,460 [INFO] Guardando en PostgreSQL
+2026-10-31 19:10:17,460 [INFO] ==================================================
+2026-10-31 19:10:22,229 [INFO] Filtradas 45484 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 
+'PORTABILIDAD PREPAGO', 'CORREO INTERNO']
+2026-10-31 19:10:22,242 [INFO] Filtradas 1178 guías de clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:10:22,259 [INFO] Procesando 4952 filas del CSV
+2026-10-31 19:10:22,259 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 19:10:23,030 [INFO] Tabla informe_guias_tms lista
+2026-10-31 19:10:23,528 [INFO] Enviando 4952 filas en 5 lotes de 1000...
+2026-10-31 19:10:26,882 [INFO] Lote 1/5 completado (1000 filas)
+2026-10-31 19:10:29,848 [INFO] Lote 2/5 completado (1000 filas)
+2026-10-31 19:10:32,502 [INFO] Lote 3/5 completado (1000 filas)
+2026-10-31 19:10:34,145 [INFO] Lote 4/5 completado (1000 filas)
+2026-10-31 19:10:35,599 [INFO] Lote 5/5 completado (952 filas)
+2026-10-31 19:10:38,562 [INFO] Procesadas 4952 filas en 5 lotes
+2026-10-31 19:10:38,562 [INFO] Total en tabla: 227133 | Pendientes de actualizar: 8045
+2026-10-31 19:10:38,574 [INFO] ==================================================
+2026-10-31 19:10:38,574 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 19:10:38,574 [INFO] ==================================================
+2026-10-31 19:10:38,574 [INFO] Modo: MANUAL | Rango diario: 2026-06-11 a 2026-06-25
+2026-10-31 19:10:38,574 [INFO] Descarga del dia: OK | 51614 guias del dia
+2026-10-31 19:10:38,574 [INFO] Pendientes detectados al inicio: 8045
+2026-10-31 19:10:38,574 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 19:10:38,574 [INFO] ==================================================
+──> Trozo 2026-06-26 a 2026-07-10
+python : 2026-10-31 19:10:43,501 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 19:1...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 19:10:43,502 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 19:10:43,502 [INFO] Rango: 2026-06-26 a 2026-07-10
+2026-10-31 19:10:43,502 [INFO] ==================================================
+2026-10-31 19:10:43,504 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 19:10:43,504 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:10:45,676 [INFO] Iniciando sesion en el TMS...
+2026-10-31 19:10:51,292 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 19:10:51,556 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 19:10:51,648 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 19:10:51,710 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 19:10:56,419 [INFO] Sesion iniciada
+2026-10-31 19:10:56,420 [INFO] Navegando al informe general...
+2026-10-31 19:10:56,420 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 19:10:57,501 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 19:10:59,502 [INFO] Buscando: 'Avanzada'
+2026-10-31 19:11:00,607 [INFO] OK -> 'Avanzada'
+2026-10-31 19:11:02,608 [INFO] Buscando: 'Informe General'
+2026-10-31 19:11:03,250 [INFO] OK -> 'Informe General'
+2026-10-31 19:11:06,251 [INFO] Ventana de Informe General abierta
+2026-10-31 19:11:08,277 [INFO] Seteando fechas: 2026-06-26 a 2026-07-10
+2026-10-31 19:11:14,177 [INFO] Esperando 48 segundos (15 dias de rango)...
+2026-10-31 19:12:02,177 [INFO] Buscando boton de descarga...
+2026-10-31 19:12:03,326 [INFO] Descarga iniciada
+2026-10-31 19:12:03,326 [INFO] Esperando descarga...
+2026-10-31 19:12:15,411 [INFO] Descargado: Informe_General.csv
+2026-10-31 19:12:20,969 [INFO] Navegador cerrado
+2026-10-31 19:12:20,969 [INFO] Guardando en PostgreSQL
+2026-10-31 19:12:20,969 [INFO] ==================================================
+2026-10-31 19:12:21,847 [INFO] Filtradas 9241 guías de servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD 
+PREPAGO', 'CORREO INTERNO']
+2026-10-31 19:12:21,882 [INFO] Procesando 5407 filas del CSV
+2026-10-31 19:12:21,882 [INFO] Conectando a PostgreSQL: host='dpg-d6opt91aae7s73aevumg-a.ohio-postgres.render.com' port='5432' 
+database='integra_db_vzhg'
+2026-10-31 19:12:22,497 [INFO] Tabla informe_guias_tms lista
+2026-10-31 19:12:22,817 [INFO] Enviando 5407 filas en 6 lotes de 1000...
+2026-10-31 19:12:25,062 [INFO] Lote 1/6 completado (1000 filas)
+2026-10-31 19:12:28,196 [INFO] Lote 2/6 completado (1000 filas)
+2026-10-31 19:12:29,803 [INFO] Lote 3/6 completado (1000 filas)
+2026-10-31 19:12:32,710 [INFO] Lote 4/6 completado (1000 filas)
+2026-10-31 19:12:34,299 [INFO] Lote 5/6 completado (1000 filas)
+2026-10-31 19:12:34,906 [INFO] Lote 6/6 completado (407 filas)
+2026-10-31 19:12:37,359 [INFO] Procesadas 5407 filas en 6 lotes
+2026-10-31 19:12:37,359 [INFO] Total en tabla: 227133 | Pendientes de actualizar: 8045
+2026-10-31 19:12:37,364 [INFO] ==================================================
+2026-10-31 19:12:37,364 [INFO] RESUMEN DE LA CORRIDA
+2026-10-31 19:12:37,364 [INFO] ==================================================
+2026-10-31 19:12:37,364 [INFO] Modo: MANUAL | Rango diario: 2026-06-26 a 2026-07-10
+2026-10-31 19:12:37,364 [INFO] Descarga del dia: OK | 14648 guias del dia
+2026-10-31 19:12:37,364 [INFO] Pendientes detectados al inicio: 8045
+2026-10-31 19:12:37,364 [INFO] RESULTADO: ✅ COMPLETADO
+2026-10-31 19:12:37,364 [INFO] ==================================================
+──> Trozo 2026-07-11 a 2026-07-25
+python : 2026-10-31 19:12:41,401 [INFO] ==================================================
+En línea: 1 Carácter: 835
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 19:1...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 19:12:41,401 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 19:12:41,401 [INFO] Rango: 2026-07-11 a 2026-07-25
+2026-10-31 19:12:41,401 [INFO] ==================================================
+2026-10-31 19:12:41,402 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 19:12:41,402 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:12:43,361 [INFO] Iniciando sesion en el TMS...
+2026-10-31 19:12:48,874 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 19:12:48,914 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 19:12:48,950 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 19:12:48,987 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 19:12:53,679 [INFO] Sesion iniciada
+2026-10-31 19:12:53,679 [INFO] Navegando al informe general...
+2026-10-31 19:12:53,679 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 19:12:54,125 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 19:12:56,126 [INFO] Buscando: 'Avanzada'
+2026-10-31 19:12:56,892 [INFO] OK -> 'Avanzada'
+2026-10-31 19:12:58,893 [INFO] Buscando: 'Informe General'
+2026-10-31 19:12:59,634 [INFO] OK -> 'Informe General'
+2026-10-31 19:13:02,635 [INFO] Ventana de Informe General abierta
+2026-10-31 19:13:04,657 [INFO] Seteando fechas: 2026-07-11 a 2026-07-25
+2026-10-31 19:13:10,985 [INFO] Esperando 48 segundos (15 dias de rango)...
+TRAMO FINAL desde 2026-07-11 2026-10-31 19:14
+──> Trozo 2026-07-11 a 2026-07-25
+python : 2026-10-31 19:14:49,510 [INFO] ==================================================
+En línea: 1 Carácter: 827
++ ... oding utf8; python descargar_reporte_tms.py $d.ToString('yyyy-MM-dd') ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-31 19:1...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-10-31 19:14:49,510 [INFO] Bot 001 - Informe General TMS [MANUAL]
+2026-10-31 19:14:49,510 [INFO] Rango: 2026-07-11 a 2026-07-25
+2026-10-31 19:14:49,510 [INFO] ==================================================
+2026-10-31 19:14:49,511 [INFO] Servicios excluidos: ['MENSAJERIA EXPRESA', 'PORTABILIDAD POSPAGO', 'PORTABILIDAD PREPAGO', 'CORREO 
+INTERNO']
+2026-10-31 19:14:49,512 [INFO] Clientes excluidos: ['GESTION DE RECAUDO Y RENTAS', 'FAMISANAR']
+2026-10-31 19:14:51,223 [INFO] Iniciando sesion en el TMS...
+2026-10-31 19:14:56,826 [INFO] Inputs encontrados en la pagina: 3
+2026-10-31 19:14:56,874 [INFO]   input[0]: type='text' name='web_usu' id='Gform7' placeholder=''
+2026-10-31 19:14:56,932 [INFO]   input[1]: type='password' name='web_pass' id='Gform5' placeholder=''
+2026-10-31 19:14:56,985 [INFO]   input[2]: type='submit' name='form8' id='Gform8' placeholder=''
+2026-10-31 19:15:01,819 [INFO] Sesion iniciada
+2026-10-31 19:15:01,820 [INFO] Navegando al informe general...
+2026-10-31 19:15:01,820 [INFO] Buscando: 'GESTION DE INFORMES'
+2026-10-31 19:15:02,236 [INFO] OK -> 'GESTION DE INFORMES'
+2026-10-31 19:15:04,237 [INFO] Buscando: 'Avanzada'
+2026-10-31 19:15:04,854 [INFO] OK -> 'Avanzada'
+2026-10-31 19:15:06,855 [INFO] Buscando: 'Informe General'
+2026-10-31 19:15:07,442 [INFO] OK -> 'Informe General'
+2026-10-31 19:15:10,443 [INFO] Ventana de Informe General abierta
+2026-10-31 19:15:12,457 [INFO] Seteando fechas: 2026-07-11 a 2026-07-25
+2026-10-31 19:15:19,258 [INFO] Esperando 48 segundos (15 dias de rango)...
