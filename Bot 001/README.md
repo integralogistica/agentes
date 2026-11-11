@@ -288,7 +288,7 @@ El script está optimizado con **batch processing** para máxima velocidad:
 | 12,000 | ~62 min | ~30-60 seg | **~60x más rápido** 🚀 |
 | 100,000 | ~8-10 horas | ~8-10 min | **~60x más rápido** 🚀 |
 
-### Cómo funciona
+### Cómo funciona la consulta
 
 - Usa `execute_batch()` de psycopg2
 - Envía 1,000 filas por consulta en lugar de 1 fila por consulta
