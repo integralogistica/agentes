@@ -87,6 +87,7 @@ Cuando una guía ya existe en la base y su estado NO es `ENTREGADO`, se actualiz
 - **fecha_cita** (2026-08-21: puede corregirse/llenarse después de emitida)
 - **placa** (2026-10-30: una guía puede re-expedirse con otro vehículo)
 - **ciudad_origen / departamento_origen / departamento_destino / fecha_carga** (2026-10-31: estables, pero en la lista para que RE-CORRER un rango histórico llene las filas existentes — backfill)
+- **ciudad_destino** (2026-11-20: Siscore puede corregir el destino después de emitida la guía; antes solo se escribía al insertar)
 
 ### Backfill de las columnas nuevas (2026-10-31)
 

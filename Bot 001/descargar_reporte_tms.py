@@ -97,9 +97,13 @@ COLUMNAS_FECHA = {"fecha_emision", "fecha_preferente", "fecha_entrega", "fecha_d
 #  origen/dpto/carga incluidos 2026-10-31: son estables pero DEBEN estar aquí
 #  para que re-correr un rango histórico (backfill) llene las filas existentes
 #  — el ON CONFLICT solo actualiza lo que está en esta lista)
+# ciudad_destino incluida 2026-11-20: Siscore puede CORREGIR el destino después
+# de emitida la guía — antes solo se escribía al INSERT y una corrección del TMS
+# quedaba ignorada para siempre.
 CAMPOS_ACTUALIZAR = [
     "estado", "novedad", "fecha_entrega", "enlace_imagen", "fecha_cita", "placa",
     "ciudad_origen", "departamento_origen", "departamento_destino", "fecha_carga",
+    "ciudad_destino",
 ]
 
 # Maximo de dias hacia atras para consultar pendientes (para no demorar demasiado)
